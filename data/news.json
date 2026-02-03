@@ -1,0 +1,661 @@
+{
+  "shanghai": [
+    {
+      "title": "🏠 嘉定新城建设提速，多个重大项目集中开工",
+      "link": "https://www.jiading.gov.cn/",
+      "summary": "嘉定区推动新城建设，聚焦科技创新",
+      "source": "嘉定发布",
+      "time": "02-03",
+      "isNew": true,
+      "score": 3
+    },
+    {
+      "title": "👥 南翔镇加装电梯工程又有新进展，多个小区完成签约",
+      "link": "https://www.jiading.gov.cn/",
+      "summary": "南翔镇推进老旧小区加装电梯",
+      "source": "南翔镇",
+      "time": "02-03",
+      "isNew": true,
+      "score": 3
+    },
+    {
+      "title": "🌸 州桥老街春节民俗活动安排出炉",
+      "link": "https://www.jiading.gov.cn/",
+      "summary": "州桥老街春节期间民俗文化活动",
+      "source": "嘉定文旅",
+      "time": "02-01",
+      "isNew": false,
+      "score": 2
+    },
+    {
+      "title": "👥 江桥镇推进'15分钟社区生活圈'建设",
+      "link": "https://www.jiading.gov.cn/",
+      "summary": "江桥镇便民服务设施升级",
+      "source": "江桥镇",
+      "time": "02-03",
+      "isNew": true,
+      "score": 2
+    },
+    {
+      "title": "澳枪击事件嫌疑人为父子：曾宣誓效忠“伊斯兰国”，行凶枪支为合法持有",
+      "link": "https://www.thepaper.cn/newsDetail_forward_32178049",
+      "summary": "澎湃新闻 · 上海",
+      "source": "澎湃新闻",
+      "time": "Tue, 16 Dec 2025",
+      "isNew": false,
+      "score": 0
+    },
+    {
+      "title": "儿童手表“小天才圈”调查：点赞成每日功课，有商家可解除家长管控",
+      "link": "https://www.thepaper.cn/newsDetail_forward_32177210",
+      "summary": "澎湃新闻 · 上海",
+      "source": "澎湃新闻",
+      "time": "Mon, 15 Dec 2025",
+      "isNew": false,
+      "score": 0
+    },
+    {
+      "title": "产地造假、年份速成、无视监管！央视曝光新会陈皮市场乱象",
+      "link": "https://www.thepaper.cn/newsDetail_forward_32176166",
+      "summary": "澎湃新闻 · 上海",
+      "source": "澎湃新闻",
+      "time": "Mon, 15 Dec 2025",
+      "isNew": false,
+      "score": 0
+    },
+    {
+      "title": "《怦然心动》导演莱纳与妻子在家中遇害，警方尚未证实是其子所杀",
+      "link": "https://www.thepaper.cn/newsDetail_forward_32178391",
+      "summary": "澎湃新闻 · 上海",
+      "source": "澎湃新闻",
+      "time": "Mon, 15 Dec 2025",
+      "isNew": false,
+      "score": 0
+    },
+    {
+      "title": "旅日大熊猫“晓晓”“蕾蕾”将于明年1月回国",
+      "link": "https://www.thepaper.cn/newsDetail_forward_32178397",
+      "summary": "澎湃新闻 · 上海",
+      "source": "澎湃新闻",
+      "time": "Mon, 15 Dec 2025",
+      "isNew": false,
+      "score": 0
+    },
+    {
+      "title": "演员何晴追悼会举行，其子追思母亲：北京这场雪像是为她而下",
+      "link": "https://www.thepaper.cn/newsDetail_forward_32178536",
+      "summary": "澎湃新闻 · 上海",
+      "source": "澎湃新闻",
+      "time": "Mon, 15 Dec 2025",
+      "isNew": false,
+      "score": 0
+    },
+    {
+      "title": "港澳平：坚决支持香港特区对反中乱港首恶分子黎智英依法定罪",
+      "link": "https://www.thepaper.cn/newsDetail_forward_32178745",
+      "summary": "澎湃新闻 · 上海",
+      "source": "澎湃新闻",
+      "time": "Mon, 15 Dec 2025",
+      "isNew": false,
+      "score": 0
+    },
+    {
+      "title": "澳海滩恐袭最后6分钟：103声枪响，有人脚踢被制服枪手发泄",
+      "link": "https://www.thepaper.cn/newsDetail_forward_32178202",
+      "summary": "澎湃新闻 · 上海",
+      "source": "澎湃新闻",
+      "time": "Mon, 15 Dec 2025",
+      "isNew": false,
+      "score": 0
+    },
+    {
+      "title": "云南体育局回应“运动员被索要奖金”事件：成立调查组全面开展调查",
+      "link": "https://www.thepaper.cn/newsDetail_forward_32178791",
+      "summary": "澎湃新闻 · 上海",
+      "source": "澎湃新闻",
+      "time": "Mon, 15 Dec 2025",
+      "isNew": false,
+      "score": 0
+    },
+    {
+      "title": "云南体育局回应“运动员被索要奖金”事件：成立调查组全面开展调查",
+      "link": "https://www.thepaper.cn/newsDetail_forward_32178795",
+      "summary": "澎湃新闻 · 上海",
+      "source": "澎湃新闻",
+      "time": "Mon, 15 Dec 2025",
+      "isNew": false,
+      "score": 0
+    },
+    {
+      "title": "港澳平：坚决支持香港特区对反中乱港首恶分子黎智英依法定罪",
+      "link": "https://www.thepaper.cn/newsDetail_forward_32178803",
+      "summary": "澎湃新闻 · 上海",
+      "source": "澎湃新闻",
+      "time": "Mon, 15 Dec 2025",
+      "isNew": false,
+      "score": 0
+    },
+    {
+      "title": "香港特区行政长官李家超：欢迎法庭对黎智英案定罪判决",
+      "link": "https://www.thepaper.cn/newsDetail_forward_32178412",
+      "summary": "澎湃新闻 · 上海",
+      "source": "澎湃新闻",
+      "time": "Mon, 15 Dec 2025",
+      "isNew": false,
+      "score": 0
+    },
+    {
+      "title": "江西一男子隐瞒精神类病史被退兵，2年内不得升学、考公",
+      "link": "https://www.thepaper.cn/newsDetail_forward_32178572",
+      "summary": "澎湃新闻 · 上海",
+      "source": "澎湃新闻",
+      "time": "Mon, 15 Dec 2025",
+      "isNew": false,
+      "score": 0
+    },
+    {
+      "title": "中央生态环保督察通报天津部分地区生态保护和修复治理短板明显",
+      "link": "https://www.thepaper.cn/newsDetail_forward_32178587",
+      "summary": "澎湃新闻 · 上海",
+      "source": "澎湃新闻",
+      "time": "Mon, 15 Dec 2025",
+      "isNew": false,
+      "score": 0
+    },
+    {
+      "title": "携带地贫基因被解聘幼师再申诉已被受理，当地成立案件审查组",
+      "link": "https://www.thepaper.cn/newsDetail_forward_32178005",
+      "summary": "澎湃新闻 · 上海",
+      "source": "澎湃新闻",
+      "time": "Mon, 15 Dec 2025",
+      "isNew": false,
+      "score": 0
+    },
+    {
+      "title": "中央生态环保督察通报北京怀柔昌平生态保护和修复治理问题",
+      "link": "https://www.thepaper.cn/newsDetail_forward_32178041",
+      "summary": "澎湃新闻 · 上海",
+      "source": "澎湃新闻",
+      "time": "Mon, 15 Dec 2025",
+      "isNew": false,
+      "score": 0
+    },
+    {
+      "title": "洛阳钼业加速“吸金”！拟以逾10亿美元拿下巴西4座在产金矿",
+      "link": "https://www.thepaper.cn/newsDetail_forward_32177828",
+      "summary": "澎湃新闻 · 上海",
+      "source": "澎湃新闻",
+      "time": "Mon, 15 Dec 2025",
+      "isNew": false,
+      "score": 0
+    },
+    {
+      "title": "澳枪击事件嫌疑人为父子：曾宣誓效忠“伊斯兰国”，行凶枪支为合法持有",
+      "link": "https://www.thepaper.cn/newsDetail_forward_32178390",
+      "summary": "澎湃新闻 · 上海",
+      "source": "澎湃新闻",
+      "time": "Mon, 15 Dec 2025",
+      "isNew": false,
+      "score": 0
+    },
+    {
+      "title": "澳洲枪手被击倒瞬间！嫌犯为一对父子，警方查获6把枪支",
+      "link": "https://www.thepaper.cn/newsDetail_forward_32178394",
+      "summary": "澎湃新闻 · 上海",
+      "source": "澎湃新闻",
+      "time": "Mon, 15 Dec 2025",
+      "isNew": false,
+      "score": 0
+    },
+    {
+      "title": "证监会：持续增强市场内在稳定性，讲好“股市叙事”",
+      "link": "https://www.thepaper.cn/newsDetail_forward_32178047",
+      "summary": "澎湃新闻 · 上海",
+      "source": "澎湃新闻",
+      "time": "Mon, 15 Dec 2025",
+      "isNew": false,
+      "score": 0
+    },
+    {
+      "title": "零跑董事长朱江明回应员工吐槽年会：暴露了公司组织能力的短板，已启动全面复盘",
+      "link": "https://finance.sina.com.cn/roll/2026-02-03/doc-inhkpeic6761505.shtml",
+      "summary": "新浪上海",
+      "source": "新浪上海",
+      "time": "",
+      "isNew": true,
+      "score": 0
+    },
+    {
+      "title": "深化本地化布局，Xbox PC App 集成网易 UU 加速器",
+      "link": "https://finance.sina.com.cn/tech/elec/xpfb/2026-02-03/doc-inhkpeik7413042.shtml",
+      "summary": "新浪上海",
+      "source": "新浪上海",
+      "time": "",
+      "isNew": true,
+      "score": 0
+    },
+    {
+      "title": "30亿元“春节请客计划”后，千问App宣布独家冠名“四大卫视”春晚",
+      "link": "https://finance.sina.com.cn/tob/2026-02-03/doc-inhkpeii0308855.shtml",
+      "summary": "新浪上海",
+      "source": "新浪上海",
+      "time": "",
+      "isNew": true,
+      "score": 0
+    },
+    {
+      "title": "滴滴宣布与海南航空建立合作伙伴关系，围绕会员体系建设开展深度合作",
+      "link": "https://finance.sina.com.cn/tob/2026-02-03/doc-inhkpeik7407298.shtml",
+      "summary": "新浪上海",
+      "source": "新浪上海",
+      "time": "",
+      "isNew": true,
+      "score": 0
+    },
+    {
+      "title": "寒武纪回应股价大幅下跌：不清楚波动原因，请理性看待波动",
+      "link": "https://finance.sina.com.cn/tob/2026-02-03/doc-inhkpeic6753825.shtml",
+      "summary": "新浪上海",
+      "source": "新浪上海",
+      "time": "",
+      "isNew": true,
+      "score": 0
+    },
+    {
+      "title": "北京人形完成首轮超7亿元市场化融资",
+      "link": "https://finance.sina.com.cn/tob/2026-02-03/doc-inhkpeic6750197.shtml",
+      "summary": "新浪上海",
+      "source": "新浪上海",
+      "time": "",
+      "isNew": true,
+      "score": 0
+    },
+    {
+      "title": "起点读书：《年少有为》原著阅读用户数环比增长20倍",
+      "link": "https://finance.sina.com.cn/tob/2026-02-03/doc-inhkpeic6747307.shtml",
+      "summary": "新浪上海",
+      "source": "新浪上海",
+      "time": "",
+      "isNew": true,
+      "score": 0
+    },
+    {
+      "title": "舜宇智行港股IPO：左手突击“清仓式”分红右手募资补流 毛利率持续下滑 控股股东为最大供应商",
+      "link": "https://finance.sina.com.cn/stock/observe/2026-02-03/doc-inhkpeif3514635.shtml",
+      "summary": "新浪上海",
+      "source": "新浪上海",
+      "time": "",
+      "isNew": true,
+      "score": 0
+    },
+    {
+      "title": "荣耀Power2被指外观模仿苹果？客服回应：成熟设计会趋向共识",
+      "link": "https://finance.sina.com.cn/tob/2026-02-03/doc-inhkpeif3504373.shtml",
+      "summary": "新浪上海",
+      "source": "新浪上海",
+      "time": "",
+      "isNew": true,
+      "score": 0
+    },
+    {
+      "title": "杨元庆在工信部机关刊物发表署名文章：以混合式AI推动AI向实",
+      "link": "https://finance.sina.com.cn/tob/2026-02-03/doc-inhknxzf6781313.shtml",
+      "summary": "新浪上海",
+      "source": "新浪上海",
+      "time": "",
+      "isNew": true,
+      "score": 0
+    },
+    {
+      "title": "腾讯回应元宝红包助力刷屏质疑：无门槛领取与诱导分享不同",
+      "link": "https://finance.sina.com.cn/tech/shenji/2026-02-03/doc-inhknttq7499937.shtml",
+      "summary": "新浪上海",
+      "source": "新浪上海",
+      "time": "",
+      "isNew": true,
+      "score": 0
+    },
+    {
+      "title": "“三变”开新局  新型显示产业迈入“技术大年”",
+      "link": "https://finance.sina.com.cn/roll/2026-02-03/doc-inhknicu7689721.shtml",
+      "summary": "新浪上海",
+      "source": "新浪上海",
+      "time": "",
+      "isNew": true,
+      "score": 0
+    },
+    {
+      "title": "AI太烧钱 马斯克据悉正在就合并SpaceX与xAI进行深入谈判",
+      "link": "https://finance.sina.com.cn/world/2026-02-03/doc-inhknicp7038286.shtml",
+      "summary": "新浪上海",
+      "source": "新浪上海",
+      "time": "",
+      "isNew": true,
+      "score": 0
+    },
+    {
+      "title": "插混界“理财产品”现身 问界M9保值率一骑绝尘 谁还说电车不保值",
+      "link": "https://finance.sina.com.cn/tech/discovery/2026-02-03/doc-inhknavv0666753.shtml",
+      "summary": "新浪上海",
+      "source": "新浪上海",
+      "time": "",
+      "isNew": true,
+      "score": 0
+    },
+    {
+      "title": "华纳兄弟股东据悉或在3月就奈飞交易举行投票",
+      "link": "https://finance.sina.com.cn/stock/usstock/c/2026-02-02/doc-inhkmwpv4022863.shtml",
+      "summary": "新浪上海",
+      "source": "新浪上海",
+      "time": "",
+      "isNew": true,
+      "score": 0
+    },
+    {
+      "title": "纯电动车保值率出炉：问界M9称神 Model 3稳坐轿车第一",
+      "link": "https://finance.sina.com.cn/tech/discovery/2026-02-03/doc-inhkmwpv4021114.shtml",
+      "summary": "新浪上海",
+      "source": "新浪上海",
+      "time": "",
+      "isNew": true,
+      "score": 0
+    },
+    {
+      "title": "独家地位不稳！苹果正考虑台积电以外芯片供应商",
+      "link": "https://finance.sina.com.cn/tech/discovery/2026-02-03/doc-inhkmwpy7876057.shtml",
+      "summary": "新浪上海",
+      "source": "新浪上海",
+      "time": "",
+      "isNew": true,
+      "score": 0
+    },
+    {
+      "title": "智元机器人：正彩排大型机器人晚会“机器人奇妙夜”",
+      "link": "https://finance.sina.com.cn/tech/2026-02-02/doc-inhkmwpt7233101.shtml",
+      "summary": "新浪上海",
+      "source": "新浪上海",
+      "time": "",
+      "isNew": true,
+      "score": 0
+    },
+    {
+      "title": "天津联通与华为合作：5G-A 宽上行样板点峰值速率突破 1Gbps",
+      "link": "https://finance.sina.com.cn/tech/digi/2026-02-03/doc-inhkmwpy7873469.shtml",
+      "summary": "新浪上海",
+      "source": "新浪上海",
+      "time": "",
+      "isNew": true,
+      "score": 0
+    },
+    {
+      "title": "全国首个！华为、联通把5G-A上行速率飚到1Gbps",
+      "link": "https://finance.sina.com.cn/tech/discovery/2026-02-03/doc-inhkmwpy7856206.shtml",
+      "summary": "新浪上海",
+      "source": "新浪上海",
+      "time": "",
+      "isNew": true,
+      "score": 0
+    },
+    {
+      "title": "今年上海20个机关、企事业单位附属空间将对社会开放共享 - thepaper.cn",
+      "link": "https://news.google.com/rss/articles/CBMiYEFVX3lxTFBFNnFVc0t5a1ZvSjNlUVpfWGFPdlg2cDZYakwzXzFFUElUMEtCS2dCeTZwbTV0Qnh6SGwzWmoyX1dyNURZajVWb3BROURiek5qZk9aYzFGc05BODV0T0czVw?oc=5",
+      "summary": "Google News",
+      "source": "Google News",
+      "time": "Tue, 03 Feb 2026",
+      "isNew": true,
+      "score": 0
+    },
+    {
+      "title": "2026年上海市政府工作报告极简版来了 - 新浪网",
+      "link": "https://news.google.com/rss/articles/CBMibkFVX3lxTE1aOW9IM0dGdGxmUUp6ZDQ5WXNDWlBsdlg5UjlCNTB2XzJ6Q1VqamlWX1NKaElrekFqX1lMYVVEamU4WGhqbkVZRlhvVzFkU0drdllNejNtWUZMZ3RNYnNCTnpIWmhFbU1OcTd4dmVn?oc=5",
+      "summary": "Google News",
+      "source": "Google News",
+      "time": "Tue, 03 Feb 2026",
+      "isNew": true,
+      "score": 0
+    },
+    {
+      "title": "销售伪劣二手残疾车，店铺被查！上海警方：涉案人员已被刑拘 - 新浪网",
+      "link": "https://news.google.com/rss/articles/CBMieEFVX3lxTE9ZT1VOV2lSMDNzUW5PREZwX09BXzFHdnFvMDc3b1ZLMTRVV2tPa1FLZnl5alc3Z3J2T3l0cnVHajNJb0dtMWEydGpuOGxFdUZhMDBKWTNzZDVDcWZsZ1lydE1uUkZpX1pHMFN2NC1UNHB4anlFdjQ0RA?oc=5",
+      "summary": "Google News",
+      "source": "Google News",
+      "time": "Tue, 03 Feb 2026",
+      "isNew": true,
+      "score": 0
+    },
+    {
+      "title": "上海推重磅新举措，二手房稳了 - 新浪网",
+      "link": "https://news.google.com/rss/articles/CBMihwFBVV95cUxOMnNqUkgzel8tdVhEU1BUYWNsOEJKVmxBT1V0VkxWemZxZW00STBVeXpOaE9hcGVpZDdhaVNXOUY3Qm5CZnZRWHB5WGxTR3BHWW5rUDN5b3g3MGd5TzA3ZjN2Y3paZjZZRWhyblhUS3dwUEFwSTVYNjY1djVPc3VaWDBYVmdBYTQ?oc=5",
+      "summary": "Google News",
+      "source": "Google News",
+      "time": "Mon, 02 Feb 2026",
+      "isNew": true,
+      "score": 0
+    },
+    {
+      "title": "两会对话｜丁祖昱：今年上海楼市开了个好头，收购二手房作保租房打通市场闭环 - thepaper.cn",
+      "link": "https://news.google.com/rss/articles/CBMiYEFVX3lxTE5GUnh4OUdHc2VYY0lGSEtBQWtVZW9wUzFqSVFCRXVEZjFsc0hnbUdZMEIyMFNQTnlWQ3hGZDRLUnFZakd2dG4zcXJLTzY3bXRjUDd2N1dwUE5Jb2ptdTJOVA?oc=5",
+      "summary": "Google News",
+      "source": "Google News",
+      "time": "Tue, 03 Feb 2026",
+      "isNew": true,
+      "score": 0
+    }
+  ],
+  "stocks": [
+    {
+      "title": "🚀 RKLB Rocket Lab 最新发射任务",
+      "link": "https://www.rocketlabusa.com/news/",
+      "summary": "官方新闻与发射更新",
+      "source": "Rocket Lab",
+      "time": "02-03",
+      "isNew": true
+    },
+    {
+      "title": "⚡ TSLA 特斯拉投资者关系",
+      "link": "https://ir.tesla.com/",
+      "summary": "财报、新闻与公告",
+      "source": "Tesla IR",
+      "time": "02-03",
+      "isNew": true
+    },
+    {
+      "title": "🔋 QS QuantumScape 技术进展",
+      "link": "https://www.quantumscape.com/news/",
+      "summary": "固态电池研发动态",
+      "source": "QuantumScape",
+      "time": "02-03",
+      "isNew": true
+    },
+    {
+      "title": "📊 PLTR Palantir 商业动态",
+      "link": "https://investors.palantir.com/news/",
+      "summary": "政府与企业合同",
+      "source": "Palantir",
+      "time": "02-03",
+      "isNew": true
+    },
+    {
+      "title": "💊 RXRX Recursion AI药物研发",
+      "link": "https://www.recursion.com/news",
+      "summary": "AI驱动的药物发现",
+      "source": "Recursion",
+      "time": "02-03",
+      "isNew": true
+    },
+    {
+      "title": "🪙 BITGO 加密托管动态",
+      "link": "https://www.bitgo.com/news",
+      "summary": "数字资产托管服务",
+      "source": "BitGo",
+      "time": "02-03",
+      "isNew": true
+    }
+  ],
+  "policy": [
+    {
+      "title": "国务院发布关于推动未来产业创新发展的实施意见",
+      "link": "http://www.gov.cn",
+      "summary": "前瞻布局未来产业，重点推进六大方向",
+      "source": "中国政府网",
+      "time": "02-03",
+      "isNew": true
+    },
+    {
+      "title": "工信部：加快制造业数字化转型",
+      "link": "https://www.miit.gov.cn",
+      "summary": "推动制造业高端化、智能化、绿色化发展",
+      "source": "工信部",
+      "time": "02-02",
+      "isNew": false
+    },
+    {
+      "title": "央行宣布降准0.5个百分点",
+      "link": "http://www.pbc.gov.cn",
+      "summary": "释放长期资金约1万亿元",
+      "source": "央行",
+      "time": "02-01",
+      "isNew": false
+    }
+  ],
+  "world": [
+    {
+      "title": "王储妃的儿子在挪威强奸案审判前因涉嫌袭击被捕",
+      "link": "https://www.bbc.com/news/articles/crrn44p9r59o?at_medium=RSS&at_campaign=rss",
+      "summary": "BBC World",
+      "source": "BBC",
+      "time": "Mon, 02 Feb 2026",
+      "isNew": true
+    },
+    {
+      "title": "“敌人”侮辱和质问普京：史蒂夫·罗森伯格在俄罗斯报道中走钢丝",
+      "link": "https://www.bbc.com/news/articles/c20g25w8j0xo?at_medium=RSS&at_campaign=rss",
+      "summary": "BBC World",
+      "source": "BBC",
+      "time": "Mon, 02 Feb 2026",
+      "isNew": false
+    },
+    {
+      "title": "以色列重新开放加沙与埃及的主要拉法过境点",
+      "link": "https://www.bbc.com/news/articles/c99kdjdj9l8o?at_medium=RSS&at_campaign=rss",
+      "summary": "BBC World",
+      "source": "BBC",
+      "time": "Mon, 02 Feb 2026",
+      "isNew": true
+    },
+    {
+      "title": "马斯克限制俄罗斯星链的使用后，乌克兰欢呼“真正的结果”",
+      "link": "https://www.bbc.com/news/articles/cly94qe3yr0o?at_medium=RSS&at_campaign=rss",
+      "summary": "BBC World",
+      "source": "BBC",
+      "time": "Mon, 02 Feb 2026",
+      "isNew": true
+    },
+    {
+      "title": "八十名被绑架的尼日利亚人逃亡后返回家园",
+      "link": "https://www.bbc.com/news/articles/c4g3v4pjwgjo?at_medium=RSS&at_campaign=rss",
+      "summary": "BBC World",
+      "source": "BBC",
+      "time": "Mon, 02 Feb 2026",
+      "isNew": false
+    },
+    {
+      "title": "北京批评达赖喇嘛赢得格莱美奖是“操纵”",
+      "link": "https://www.bbc.com/news/articles/cwy8zqn9571o?at_medium=RSS&at_campaign=rss",
+      "summary": "BBC World",
+      "source": "BBC",
+      "time": "Mon, 02 Feb 2026",
+      "isNew": true
+    },
+    {
+      "title": "特朗普威胁要因爱泼斯坦在格莱美颁奖典礼上开玩笑而起诉特雷弗·诺亚",
+      "link": "https://www.bbc.com/news/articles/c98p02yg4jro?at_medium=RSS&at_campaign=rss",
+      "summary": "BBC World",
+      "source": "BBC",
+      "time": "Mon, 02 Feb 2026",
+      "isNew": false
+    },
+    {
+      "title": "特朗普在莫迪通话后表示，美国和印度达成贸易协议",
+      "link": "https://www.bbc.com/news/articles/c5yve1x9zv0o?at_medium=RSS&at_campaign=rss",
+      "summary": "BBC World",
+      "source": "BBC",
+      "time": "Mon, 02 Feb 2026",
+      "isNew": true
+    }
+  ],
+  "ai": [
+    {
+      "title": "偏差如何随着模型智能和任务复杂性的变化而变化？",
+      "link": "https://alignment.anthropic.com/2026/hot-mess-of-ai/",
+      "summary": "⭐ 129 points",
+      "source": "Hacker News",
+      "time": "02-03 12:37",
+      "isNew": true
+    },
+    {
+      "title": "法典应用程序",
+      "link": "https://openai.com/index/introducing-the-codex-app/",
+      "summary": "⭐ 574 points",
+      "source": "Hacker News",
+      "time": "02-03 12:37",
+      "isNew": true
+    },
+    {
+      "title": "Anki 所有权转移至 AnkiHub",
+      "link": "https://forums.ankiweb.net/t/ankis-growing-up/68610",
+      "summary": "⭐ 284 points",
+      "source": "Hacker News",
+      "time": "02-03 12:37",
+      "isNew": true
+    },
+    {
+      "title": "GitHub 经历了各种部分中断/降级",
+      "link": "https://www.githubstatus.com?todayis=2026-02-02",
+      "summary": "⭐ 168 points",
+      "source": "Hacker News",
+      "time": "02-03 12:37",
+      "isNew": true
+    },
+    {
+      "title": "xAI 加入 SpaceX",
+      "link": "https://www.spacex.com/updates#xai-joins-spacex",
+      "summary": "⭐ 558 points",
+      "source": "Hacker News",
+      "time": "02-03 12:37",
+      "isNew": true
+    },
+    {
+      "title": "Todd C. Miller – Sudo 维护者 30 多年",
+      "link": "https://www.millert.dev/",
+      "summary": "⭐ 334 points",
+      "source": "Hacker News",
+      "time": "02-03 12:37",
+      "isNew": true
+    },
+    {
+      "title": "TSA 新规定 45 美元的无身份证件飞行收费是违法的",
+      "link": "https://www.frommers.com/tips/airfare/the-tsa-new-45-fee-to-fly-without-id-is-illegal-says-regulatory-expert/",
+      "summary": "⭐ 286 points",
+      "source": "Hacker News",
+      "time": "02-03 12:37",
+      "isNew": true
+    },
+    {
+      "title": "问 HN：谁在招聘？ （2026 年 2 月）",
+      "link": "https://news.ycombinator.com/item?id=46857488",
+      "summary": "⭐ 247 points",
+      "source": "Hacker News",
+      "time": "02-03 12:37",
+      "isNew": true
+    },
+    {
+      "title": "卡内基梅隆大学计算机俱乐部 FTP 服务器",
+      "link": "http://128.237.157.9/pub/",
+      "summary": "⭐ 37 points",
+      "source": "Hacker News",
+      "time": "02-03 12:37",
+      "isNew": true
+    }
+  ]
+}

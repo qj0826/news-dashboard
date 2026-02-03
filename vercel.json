@@ -1,0 +1,30 @@
+{
+  "version": 2,
+  "name": "news-aggregator",
+  "builds": [
+    {
+      "src": "api/news.py",
+      "use": "@vercel/python"
+    },
+    {
+      "src": "package.json",
+      "use": "@vercel/static-build"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/api/news",
+      "dest": "/api/news.py"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/frontend/$1"
+    }
+  ],
+  "crons": [
+    {
+      "path": "/api/news",
+      "schedule": "*/5 * * * *"
+    }
+  ]
+}
