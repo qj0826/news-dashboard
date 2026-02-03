@@ -1,0 +1,42 @@
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches: [ main, master ]
+  schedule:
+    - cron: '*/5 * * * *'  # 每5分钟自动更新数据
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+    - uses: actions/checkout@v3
+    
+    - name: Setup Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.10'
+    
+    - name: Install dependencies
+      run: |
+        pip install requests feedparser
+    
+    - name: Fetch news
+      run: |
+        cd backend
+        python fetch_news_realtime.py || echo "Using existing data"
+      env:
+        ALL_PROXY: "${{ secrets.PROXY_URL }}"
+      continue-on-error: true
+    
+    - name: Copy data to frontend
+      run: |
+        cp data/news.json frontend/data.json
+    
+    - name: Deploy to GitHub Pages
+      uses: peaceiris/actions-gh-pages@v3
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: ./frontend
