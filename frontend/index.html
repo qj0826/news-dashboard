@@ -376,6 +376,167 @@
         ::-webkit-scrollbar-thumb:hover {
             background: var(--text-tertiary);
         }
+        
+        /* 预览弹窗 */
+        .preview-modal {
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.6);
+            backdrop-filter: blur(8px);
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        .preview-modal.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .preview-content {
+            background: var(--bg-card);
+            border-radius: 24px;
+            max-width: 600px;
+            width: 100%;
+            max-height: 80vh;
+            overflow-y: auto;
+            position: relative;
+            transform: scale(0.9) translateY(20px);
+            transition: transform 0.3s ease;
+            border: 1px solid var(--border);
+        }
+        
+        .preview-modal.active .preview-content {
+            transform: scale(1) translateY(0);
+        }
+        
+        .preview-header {
+            position: relative;
+            padding: 24px;
+            border-bottom: 1px solid var(--border);
+        }
+        
+        .preview-close {
+            position: absolute;
+            top: 16px;
+            right: 16px;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            border: none;
+            background: var(--bg-primary);
+            color: var(--text-secondary);
+            font-size: 20px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s;
+        }
+        
+        .preview-close:hover {
+            background: var(--accent);
+            color: white;
+        }
+        
+        .preview-body {
+            padding: 24px;
+        }
+        
+        .preview-title {
+            font-size: 22px;
+            font-weight: 600;
+            color: var(--text-primary);
+            line-height: 1.5;
+            margin-bottom: 16px;
+        }
+        
+        .preview-summary {
+            font-size: 16px;
+            color: var(--text-secondary);
+            line-height: 1.8;
+            margin-bottom: 24px;
+            padding: 20px;
+            background: var(--bg-primary);
+            border-radius: 16px;
+            border-left: 4px solid var(--accent);
+        }
+        
+        .preview-meta {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 24px;
+            padding-bottom: 24px;
+            border-bottom: 1px solid var(--border);
+        }
+        
+        .preview-tag {
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 500;
+        }
+        
+        .preview-time {
+            color: var(--text-tertiary);
+            font-size: 14px;
+        }
+        
+        .preview-actions {
+            display: flex;
+            gap: 12px;
+        }
+        
+        .preview-btn {
+            flex: 1;
+            padding: 14px 24px;
+            border-radius: 12px;
+            font-size: 15px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s;
+            text-align: center;
+            text-decoration: none;
+        }
+        
+        .preview-btn-primary {
+            background: var(--accent);
+            color: white;
+            border: none;
+        }
+        
+        .preview-btn-primary:hover {
+            background: var(--accent-hover);
+        }
+        
+        .preview-btn-secondary {
+            background: var(--bg-primary);
+            color: var(--text-secondary);
+            border: 1px solid var(--border);
+        }
+        
+        .preview-btn-secondary:hover {
+            background: var(--border);
+        }
+        
+        /* 卡片摘要预览 */
+        .card-summary-preview {
+            font-size: 13px;
+            color: var(--text-secondary);
+            line-height: 1.6;
+            margin-top: 8px;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            opacity: 0.8;
+        }
     </style>
 </head>
 <body>
@@ -411,6 +572,28 @@
             <p class="text-sm mt-3">加载中...</p>
         </div>
     </main>
+
+    <!-- 预览弹窗 -->
+    <div id="preview-modal" class="preview-modal" onclick="closePreview(event)">
+        <div class="preview-content" onclick="event.stopPropagation()">
+            <div class="preview-header">
+                <button class="preview-close" onclick="closePreview()">×</button>
+                <div id="preview-category" class="preview-tag" style="background: var(--bg-primary); color: var(--text-secondary);"></div>
+            </div>
+            <div class="preview-body">
+                <h2 id="preview-title" class="preview-title"></h2>
+                <div class="preview-meta">
+                    <span id="preview-source" class="preview-tag" style="background: var(--accent); color: white;"></span>
+                    <span id="preview-time" class="preview-time"></span>
+                </div>
+                <div id="preview-summary" class="preview-summary"></div>
+                <div class="preview-actions">
+                    <a id="preview-link" href="#" target="_blank" class="preview-btn preview-btn-primary">阅读原文 →</a>
+                    <button class="preview-btn preview-btn-secondary" onclick="closePreview()">关闭</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <script>
         let allNews = {};
@@ -469,6 +652,9 @@
             }
         }
         
+        // 当前预览的新闻
+        let currentPreviewItem = null;
+        
         // 渲染新闻
         function renderNews() {
             const grid = document.getElementById('news-grid');
@@ -491,25 +677,25 @@
             
             items = items.slice(0, 50);
             
-            grid.innerHTML = items.map(item => createCard(item)).join('');
+            grid.innerHTML = items.map((item, index) => createCard(item, index)).join('');
         }
         
         // 创建卡片
-        function createCard(item) {
+        function createCard(item, index) {
             const config = categoryConfig[item.category] || { icon: '📰', label: '新闻', color: '' };
             const isNew = item.isNew ? '<span class="card-badge">NEW</span>' : '';
             
             // 清理标题中的 emoji
             const cleanTitle = item.title.replace(/^[🏠👥🌸🚀⚡🔋📊💊🪙⭐⬆️💬🇨🇳]\s*/u, '');
             
-            // 摘要（如果有）
-            const summary = item.summary && item.summary !== config.label 
-                ? `<p class="card-summary">${item.summary}</p>` 
+            // 摘要预览（显示前50字）
+            const summaryPreview = item.summary && item.summary !== config.label 
+                ? `<p class="card-summary-preview">${item.summary.substring(0, 50)}${item.summary.length > 50 ? '...' : ''}</p>` 
                 : '';
             
             return `
                 <div class="masonry-item">
-                    <a href="${item.link}" target="_blank" class="xhs-card block">
+                    <div class="xhs-card block" onclick="openPreview(${index})" style="cursor: pointer;">
                         <div class="card-image ${config.color}">
                             <div class="geometric-pattern"></div>
                             <div class="card-icon">${config.icon}</div>
@@ -518,17 +704,71 @@
                         </div>
                         <div class="card-content">
                             <h3 class="card-title">${cleanTitle}</h3>
-                            ${summary}
+                            ${summaryPreview}
                             <div class="card-meta">
                                 <span>${item.source}</span>
                                 <span>·</span>
                                 <span>${item.time || ''}</span>
                             </div>
                         </div>
-                    </a>
+                    </div>
                 </div>
             `;
         }
+        
+        // 打开预览弹窗
+        function openPreview(index) {
+            let items = [];
+            
+            if (currentTab === 'all') {
+                Object.entries(allNews).forEach(([category, news]) => {
+                    if (Array.isArray(news)) {
+                        news.forEach(item => {
+                            items.push({ ...item, category });
+                        });
+                    }
+                });
+            } else {
+                items = (allNews[currentTab] || []).map(item => ({ ...item, category: currentTab }));
+            }
+            
+            const item = items[index];
+            if (!item) return;
+            
+            currentPreviewItem = item;
+            const config = categoryConfig[item.category] || { icon: '📰', label: '新闻', color: '' };
+            
+            // 填充弹窗内容
+            document.getElementById('preview-title').textContent = item.title.replace(/^[🏠👥🌸🚀⚡🔋📊💊🪙⭐⬆️💬🇨🇳]\s*/u, '');
+            document.getElementById('preview-source').textContent = item.source;
+            document.getElementById('preview-time').textContent = item.time || '';
+            document.getElementById('preview-category').textContent = config.label;
+            document.getElementById('preview-link').href = item.link;
+            
+            // 摘要内容
+            const summaryText = item.summary && item.summary !== config.label 
+                ? item.summary 
+                : '暂无摘要，点击阅读原文查看更多详情。';
+            document.getElementById('preview-summary').textContent = summaryText;
+            
+            // 显示弹窗
+            document.getElementById('preview-modal').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+        
+        // 关闭预览弹窗
+        function closePreview(event) {
+            if (!event || event.target === document.getElementById('preview-modal') || event.target.closest('.preview-close') || event.target.classList.contains('preview-btn-secondary')) {
+                document.getElementById('preview-modal').classList.remove('active');
+                document.body.style.overflow = '';
+                currentPreviewItem = null;
+            }
+        }
+        
+        // ESC 键关闭弹窗
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closePreview();
+        });
         
         // 切换标签
         function switchTab(tab, btn) {
