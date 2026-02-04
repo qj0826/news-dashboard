@@ -2,38 +2,43 @@ name: 自动抓取新闻
 
 on:
   schedule:
-    - cron: '0 */1 * * *'  # 每1小时自动运行
-  workflow_dispatch:       # 允许手动点击运行
+    - cron: '0 */1 * * *'
+  workflow_dispatch:
+
+# 👇👇👇 核心修改：把权限放在最顶层，确保绝对生效
+permissions:
+  contents: write
 
 jobs:
   build:
     runs-on: ubuntu-latest
     
-    # 👇👇👇 关键：这里加上了写入权限，机器人才能保存数据！
-    permissions:
-      contents: write
-    
     steps:
-    - name: 下载代码
+    - name: 1. 下载代码
       uses: actions/checkout@v3
       
-    - name: 安装 Python 环境
+    - name: 2. 安装 Python
       uses: actions/setup-python@v4
       with:
         python-version: '3.9'
         
-    - name: 安装依赖工具
+    - name: 3. 安装依赖 (强制安装 requests)
       run: |
         pip install requests
         
-    - name: 开始抓取新闻
-      run: python backend/fetch_news.py
+    - name: 4. 运行抓取脚本
+      run: |
+        # 打印当前目录，确保没找错位置
+        pwd
+        ls -R backend/
+        # 运行脚本
+        python backend/fetch_news.py
       
-    - name: 保存数据
+    - name: 5. 提交并推送
       run: |
         git config --local user.email "action@github.com"
         git config --local user.name "GitHub Action"
         git add data.json
-        # 防止没有新数据时报错
-        git commit -m "Auto update news" || echo "暂无新内容"
+        # 如果有变动才提交，没变动输出提示
+        git commit -m "Auto update news" || echo "⚠️ 暂无新内容，无需提交"
         git push
