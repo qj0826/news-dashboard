@@ -582,9 +582,7 @@
         // 创建卡片
         function createCard(item, index) {
             const config = categoryConfig[item.category] || { icon: '📰', label: '新闻', color: '' };
-            const cleanTitle = item.title.replace(/^[🏠👥🌸🚀⚡🔋📊💊🪙⭐⬆️💬🇨🇳🔥🔬📄🇨🇳📈]
-
-\s*/u, '');
+            const cleanTitle = item.title.replace(/^[🏠👥🌸🚀⚡🔋📊💊🪙⭐⬆️💬🇨🇳🔥🔬📄📈\s]*/u, '');
             
             return `
                 <div class="card" onclick="openModal(${index})">
@@ -654,9 +652,7 @@
             if (!item) return;
             
             document.getElementById('modal-title').textContent = 
-                item.title.replace(/^[🏠👥🌸🚀⚡🔋📊💊🪙⭐⬆️💬🇨🇳🔥🔬📄🇨🇳📈]
-
-\s*/u, '');
+                item.title.replace(/^[🏠👥🌸🚀⚡🔋📊💊🪙⭐⬆️💬🇨🇳🔥🔬📄📈\s]*/u, '');
             document.getElementById('modal-source').textContent = item.source;
             document.getElementById('modal-summary').textContent = item.summary || '暂无摘要';
             document.getElementById('modal-link').href = item.link;
