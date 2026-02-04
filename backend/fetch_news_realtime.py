@@ -500,6 +500,132 @@ def fetch_shanghai_news():
     
     return items
 
+def fetch_us_stock_news():
+    """抓取美股新闻 - 多源聚合"""
+    items = []
+    headers = {'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7)'}
+    
+    # 持仓股票列表
+    portfolio = ['TSLA', 'RKLB', 'QS', 'PLTR', 'RXRX', 'COIN', 'MSTR']
+    
+    # 1. Finnhub 美股新闻（免费API）
+    try:
+        # Finnhub 免费版不需要API key也能获取部分新闻
+        url = "https://finnhub.io/api/v1/news?category=general"
+        response = requests.get(url, headers=headers, timeout=10, proxies=PROXY)
+        
+        if response.status_code == 200:
+            news_list = response.json()
+            for news in news_list[:10]:
+                title = news.get('headline', '')
+                # 检查是否与持仓相关
+                related_symbols = [s for s in portfolio if s in str(news.get('related', ''))]
+                symbol_tag = f"[{','.join(related_symbols)}] " if related_symbols else ""
+                
+                items.append({
+                    "title": f"{symbol_tag}{title}",
+                    "link": news.get('url', ''),
+                    "summary": news.get('source', 'Finnhub'),
+                    "source": "美股快讯",
+                    "time": datetime.fromtimestamp(news.get('datetime', 0)).strftime("%m-%d %H:%M") if news.get('datetime') else datetime.now().strftime("%m-%d"),
+                    "isNew": True
+                })
+            print(f"    ✓ Finnhub: {len(items)} 条")
+    except Exception as e:
+        print(f"    ✗ Finnhub: {str(e)[:40]}")
+    
+    # 2. Yahoo Finance RSS（市场新闻）
+    try:
+        url = "https://rsshub.app/yahoo/news/markets"
+        response = requests.get(url, headers=headers, timeout=10, proxies=PROXY)
+        
+        if response.status_code == 200:
+            feed = feedparser.parse(response.content)
+            count = 0
+            for entry in feed.entries[:8]:
+                title = translate_text(html.unescape(entry.get("title", "")).strip())
+                
+                items.append({
+                    "title": title,
+                    "link": entry.get("link", ""),
+                    "summary": "Yahoo Finance",
+                    "source": "Yahoo财经",
+                    "time": format_time(entry.get("published", "")),
+                    "isNew": is_recent(entry.get("published_parsed"))
+                })
+                count += 1
+            print(f"    ✓ Yahoo Finance: {count} 条")
+    except Exception as e:
+        print(f"    ✗ Yahoo Finance: {str(e)[:40]}")
+    
+    # 3. Seeking Alpha 热门
+    try:
+        url = "https://rsshub.app/seekingalpha/feed/top-news"
+        response = requests.get(url, headers=headers, timeout=10, proxies=PROXY)
+        
+        if response.status_code == 200:
+            feed = feedparser.parse(response.content)
+            count = 0
+            for entry in feed.entries[:6]:
+                title = html.unescape(entry.get("title", "")).strip()
+                # 检查是否与持仓相关
+                related = any(s.lower() in title.lower() for s in portfolio)
+                prefix = "📈 " if related else ""
+                
+                items.append({
+                    "title": f"{prefix}{title}",
+                    "link": entry.get("link", ""),
+                    "summary": "Seeking Alpha",
+                    "source": "Seeking Alpha",
+                    "time": format_time(entry.get("published", "")),
+                    "isNew": is_recent(entry.get("published_parsed"))
+                })
+                count += 1
+            print(f"    ✓ Seeking Alpha: {count} 条")
+    except Exception as e:
+        print(f"    ✗ Seeking Alpha: {str(e)[:40]}")
+    
+    # 4. 如果上面都失败，使用备用静态链接
+    if len(items) < 5:
+        backup_items = [
+            {
+                "title": "🚀 RKLB Rocket Lab 最新发射任务",
+                "link": "https://www.rocketlabusa.com/news/",
+                "summary": "官方新闻与发射更新",
+                "source": "Rocket Lab",
+                "time": datetime.now().strftime("%m-%d"),
+                "isNew": True
+            },
+            {
+                "title": "⚡ TSLA 特斯拉投资者关系",
+                "link": "https://ir.tesla.com/",
+                "summary": "财报、新闻与公告",
+                "source": "Tesla IR",
+                "time": datetime.now().strftime("%m-%d"),
+                "isNew": True
+            },
+            {
+                "title": "📊 PLTR Palantir 商业动态",
+                "link": "https://investors.palantir.com/news/",
+                "summary": "政府与企业合同",
+                "source": "Palantir",
+                "time": datetime.now().strftime("%m-%d"),
+                "isNew": True
+            },
+        ]
+        items.extend(backup_items)
+        print(f"    ⚠️ 使用备用数据: {len(backup_items)} 条")
+    
+    # 去重（基于标题）
+    seen = set()
+    unique_items = []
+    for item in items:
+        if item['title'] not in seen:
+            seen.add(item['title'])
+            unique_items.append(item)
+    
+    return unique_items[:15]  # 最多返回15条
+
 def fetch_tech_news():
     """抓取科技媒体 - TechCrunch"""
     items = []
@@ -641,58 +767,9 @@ def fetch_news():
     github_news = fetch_github_trending()
     news_data["ai"].extend(github_news)
     
-    # 6. 美股新闻
+    # 6. 美股新闻 - 实时抓取多源
     print("\n📈 STOCKS")
-    news_data["stocks"] = [
-        {
-            "title": "🚀 RKLB Rocket Lab 最新发射任务",
-            "link": "https://www.rocketlabusa.com/news/",
-            "summary": "官方新闻与发射更新",
-            "source": "Rocket Lab",
-            "time": datetime.now().strftime("%m-%d"),
-            "isNew": True
-        },
-        {
-            "title": "⚡ TSLA 特斯拉投资者关系",
-            "link": "https://ir.tesla.com/",
-            "summary": "财报、新闻与公告",
-            "source": "Tesla IR",
-            "time": datetime.now().strftime("%m-%d"),
-            "isNew": True
-        },
-        {
-            "title": "🔋 QS QuantumScape 技术进展",
-            "link": "https://www.quantumscape.com/news/",
-            "summary": "固态电池研发动态",
-            "source": "QuantumScape",
-            "time": datetime.now().strftime("%m-%d"),
-            "isNew": True
-        },
-        {
-            "title": "📊 PLTR Palantir 商业动态",
-            "link": "https://investors.palantir.com/news/",
-            "summary": "政府与企业合同",
-            "source": "Palantir",
-            "time": datetime.now().strftime("%m-%d"),
-            "isNew": True
-        },
-        {
-            "title": "💊 RXRX Recursion AI药物研发",
-            "link": "https://www.recursion.com/news",
-            "summary": "AI驱动的药物发现",
-            "source": "Recursion",
-            "time": datetime.now().strftime("%m-%d"),
-            "isNew": True
-        },
-        {
-            "title": "🪙 BITGO 加密托管动态",
-            "link": "https://www.bitgo.com/news",
-            "summary": "数字资产托管服务",
-            "source": "BitGo",
-            "time": datetime.now().strftime("%m-%d"),
-            "isNew": True
-        },
-    ]
+    news_data["stocks"] = fetch_us_stock_news()
     print(f"  ✓ Stocks: {len(news_data['stocks'])} 条")
     
     # 7. 上海新闻 - 澎湃新闻 RSS
