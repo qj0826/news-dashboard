@@ -1,156 +1,229 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
+"""
+新闻抓取脚本 - 专为 News Dashboard 前端设计
+解决：RSS抓取失败、无图片、编码乱码问题
+"""
+
 import feedparser
 import requests
 import json
 import os
 import re
+import random
 from datetime import datetime, timedelta
 from bs4 import BeautifulSoup
 import time
+from urllib.parse import urljoin
 
-# 存放新闻数据的文件夹
-DATA_DIR = os.path.join(os.path.dirname(__file__), '..', 'data')
-os.makedirs(DATA_DIR, exist_ok=True)
+# 配置路径
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+DATA_FILE = os.path.join(BASE_DIR, 'data', 'data.json')  # 注意前端读取的是 data.json
 
-# RSS源配置（你可以在这里添加/修改新闻源）
+# 浏览器伪装头（关键！没这个会被网站拒绝）
+HEADERS = {
+    'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
+    'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
+    'Accept-Language': 'zh-CN,zh;q=0.9,en;q=0.8',
+    'Accept-Encoding': 'gzip, deflate, br',
+    'Connection': 'keep-alive',
+}
+
+# RSS 源配置（匹配你前端的5个分类）
 RSS_SOURCES = {
-    "上海新闻": [
-        {"name": "澎湃新闻", "url": "https://www.thepaper.cn/rss.xml"},
-        {"name": "上观新闻", "url": "https://www.jfdaily.com/rss"},
+    "shanghai": [  # 上海新闻
+        {"name": "界面新闻", "url": "https://a.jiemian.com/rss/"},
+        {"name": "上观新闻", "url": "https://www.shobserver.com/rss.xml"},
+        {"name": "澎湃新闻", "url": "https://www.thepaper.cn/rss.xml"},  # 可能不稳定，有备用
     ],
-    "国内政策": [
-        {"name": "新华社", "url": "http://www.xinhuanet.com/rss/xinhuanet_news.xml"},
+    "policy": [  # 国内政策
+        {"name": "人民网时政", "url": "http://rss.people.com.cn/rss/politics.xml"},
+        {"name": "新华网时政", "url": "http://www.xinhuanet.com/rss/politics.xml"},
     ],
-    "世界新闻": [
+    "world": [  # 国际新闻
         {"name": "BBC中文", "url": "https://feeds.bbci.co.uk/zhongwen/simp/rss.xml"},
-        {"name": "Reuters", "url": "https://www.reuters.com/rssFeed/worldNews"},
+        {"name": "FT中文网", "url": "https://www.ftchinese.com/rss/news"},
+        {"name": "联合早报", "url": "https://www.zaobao.com/rss.xml"},
     ],
-    "AI前沿": [
+    "tech": [  # AI前沿/科技
+        {"name": "Solidot", "url": "https://www.solidot.org/index.rss"},
         {"name": "Hacker News", "url": "https://news.ycombinator.com/rss"},
+        {"name": "TechCrunch中文", "url": "https://techcrunch.cn/rss/"},
+    ],
+    "us_stocks": [  # 美股（先提供财经新闻，如需股价可后续添加）
+        {"name": "新浪财经美股", "url": "https://rss.sina.com.cn/finance/usstock.xml"},
+        {"name": "华尔街日报", "url": "https://cn.wsj.com/zh-hans/rss/markets.xml"},
     ]
 }
 
-# 假装是浏览器访问（这是关键！）
-HEADERS = {
-    'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
-    'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
-    'Accept-Language': 'zh-CN,zh;q=0.9,en;q=0.8',
-}
-
-def fetch_image_from_url(url):
-    """去原网页抓第一张图作为封面"""
-    try:
-        # 只尝试抓，不保证成功，超时10秒放弃
-        resp = requests.get(url, headers=HEADERS, timeout=10)
-        soup = BeautifulSoup(resp.text, 'html.parser')
-        
-        # 先找Open Graph图片（微信、知乎、新闻网站常用）
-        og_img = soup.find('meta', property='og:image')
-        if og_img and og_img.get('content'):
-            return og_img['content']
-        
-        # 再找第一张文章图片
-        img = soup.find('img')
-        if img and img.get('src'):
-            img_url = img['src']
-            # 如果是相对路径（如 /uploads/1.jpg），补全成完整URL
-            if img_url.startswith('/'):
-                from urllib.parse import urljoin
-                img_url = urljoin(url, img_url)
-            return img_url
-            
-    except Exception as e:
-        print(f"抓图片失败 {url}: {e}")
+def extract_image_from_entry(entry, source_url):
+    """
+    从RSS条目中提取图片（多种策略）
+    """
+    # 策略1：检查 media:content (最常见)
+    if 'media_content' in entry and entry.media_content:
+        for media in entry.media_content:
+            if media.get('medium') == 'image' or media.get('type', '').startswith('image'):
+                return media.get('url', '')
     
-    # 默认返回空，前端会显示占位图
+    # 策略2：检查 enclosures
+    if 'enclosures' in entry and entry.enclosures:
+        for enc in entry.enclosures:
+            if enc.get('type', '').startswith('image'):
+                return enc.get('href', '')
+    
+    # 策略3：检查 summary/description 中的 img 标签
+    summary = entry.get('summary', entry.get('description', ''))
+    if summary:
+        img_match = re.search(r'<img[^>]+src=["\'](https?://[^"\']+)["\']', summary)
+        if img_match:
+            return img_match.group(1)
+    
+    # 策略4：访问原网页抓取（比较慢，只抓前几条时可用）
+    # 为了速度，这里暂不实现，如需可开启
     return ""
 
-def parse_rss(source_name, feed_url):
-    """解析单个RSS源"""
+def fetch_rss_feed(source_name, feed_url, limit=8):
+    """
+    抓取单个RSS源
+    """
     news_list = []
     
     try:
-        print(f"正在抓取: {source_name}...")
+        print(f"📡 正在抓取: {source_name}...")
         
-        # 下载RSS内容
-        response = requests.get(feed_url, headers=HEADERS, timeout=15)
-        response.encoding = response.apparent_encoding  # 自动识别中文编码
+        # 下载RSS内容（带重试）
+        for attempt in range(3):
+            try:
+                resp = requests.get(feed_url, headers=HEADERS, timeout=15)
+                resp.encoding = resp.apparent_encoding  # 自动识别中文编码
+                break
+            except Exception as e:
+                if attempt == 2:
+                    print(f"   ❌ {source_name} 请求失败: {e}")
+                    return []
+                time.sleep(1)
         
         # 解析RSS
-        feed = feedparser.parse(response.text)
+        feed = feedparser.parse(resp.text)
         
-        for entry in feed.entries[:10]:  # 只取前10条，避免太多
+        for i, entry in enumerate(feed.entries[:limit]):
             try:
-                # 获取发布时间
-                published = entry.get('published', entry.get('updated', ''))
-                if not published:
+                # 提取发布时间
+                published = ""
+                if hasattr(entry, 'published'):
+                    published = entry.published
+                elif hasattr(entry, 'updated'):
+                    published = entry.updated
+                else:
                     published = datetime.now().strftime("%Y-%m-%d %H:%M")
                 
-                # 获取图片：先检查RSS里有没有，没有去网页抓
-                image_url = ""
-                # 方式1：RSS自带的媒体标签
-                if 'media_content' in entry:
-                    image_url = entry.media_content[0].get('url', '')
-                elif 'enclosures' in entry and entry.enclosures:
-                    image_url = entry.enclosures[0].get('href', '')
+                # 标准化时间格式（前端期望 2024-01-15 12:30 这种格式）
+                try:
+                    if 'T' in published:
+                        # ISO格式 2024-01-15T12:30:00Z
+                        dt = datetime.fromisoformat(published.replace('Z', '+00:00'))
+                        published = dt.strftime("%Y-%m-%d %H:%M")
+                    else:
+                        # 其他格式尝试解析
+                        dt = datetime.strptime(published[:16], "%Y-%m-%d %H:%M")
+                        published = dt.strftime("%Y-%m-%d %H:%M")
+                except:
+                    pass  # 保持原样
                 
-                # 方式2：如果RSS里没有，去原网页抓（慢一些，所以只抓前3条）
-                if not image_url and news_list.index == 0:
-                    image_url = fetch_image_from_url(entry.link)
-                
-                # 清理摘要（去掉HTML标签，限制长度）
+                # 提取摘要（去除HTML标签）
                 summary = entry.get('summary', entry.get('description', ''))
                 if summary:
-                    summary = re.sub(r'<[^>]+>', '', summary)  # 删除HTML标签
-                    summary = summary[:150] + '...' if len(summary) > 150 else summary
+                    # 清理HTML标签
+                    summary = re.sub(r'<[^>]+>', '', summary)
+                    # 清理多余空白
+                    summary = re.sub(r'\s+', ' ', summary).strip()
+                    # 限制长度
+                    if len(summary) > 200:
+                        summary = summary[:200] + "..."
+                else:
+                    summary = "点击查看详情..."
+                
+                # 提取图片
+                image_url = extract_image_from_entry(entry, entry.get('link', ''))
+                
+                # 如果没图，使用默认占位图（可选：你也可以准备几张默认图轮换）
+                if not image_url:
+                    # 使用picsum随机图作为占位，或留空让前端处理
+                    image_url = f"https://picsum.photos/seed/{hash(entry.title) % 1000}/400/300"
                 
                 news_item = {
-                    "title": entry.get('title', '无标题'),
+                    "title": entry.get('title', '无标题').strip(),
                     "link": entry.get('link', ''),
                     "summary": summary,
-                    "published": published,
                     "source": source_name,
-                    "image": image_url
+                    "time": published,
+                    "image": image_url,
+                    "category": ""  # 会在外层填充
                 }
                 
                 news_list.append(news_item)
                 
             except Exception as e:
-                print(f"解析单条新闻出错: {e}")
+                print(f"   ⚠️ 解析单条失败: {e}")
                 continue
-                
-        print(f"✅ {source_name} 成功获取 {len(news_list)} 条")
+        
+        print(f"   ✅ 成功获取 {len(news_list)} 条")
         
     except Exception as e:
-        print(f"❌ {source_name} 抓取失败: {e}")
+        print(f"   ❌ {source_name} 出错: {e}")
     
     return news_list
 
-def main():
-    """主函数：抓取所有新闻并保存"""
-    all_news = {
-        "上海新闻": [],
-        "国内政策": [],
-        "世界新闻": [],
-        "AI前沿": [],
-        "美股持仓": []  # 这个需要另外处理，先留空
+def fetch_all_news():
+    """
+    抓取所有分类新闻
+    """
+    all_data = {
+        "shanghai": [],
+        "policy": [],
+        "world": [],
+        "tech": [],
+        "us_stocks": []
     }
     
-    # 抓取配置好的RSS源
+    # 抓取每个分类
     for category, sources in RSS_SOURCES.items():
+        print(f"\n📂 分类: {category}")
+        category_news = []
+        
         for source in sources:
-            news = parse_rss(source["name"], source["url"])
-            if category in all_news:
-                all_news[category].extend(news)
-            time.sleep(1)  # 礼貌性等待1秒，避免被封
+            news = fetch_rss_feed(source["name"], source["url"], limit=6)
+            # 给每条新闻打上分类标签
+            for item in news:
+                item["category"] = category
+            category_news.extend(news)
+            time.sleep(0.5)  # 礼貌延迟，避免被封
+        
+        # 去重（按标题）
+        seen_titles = set()
+        unique_news = []
+        for item in category_news:
+            if item["title"] not in seen_titles:
+                seen_titles.add(item["title"])
+                unique_news.append(item)
+        
+        all_data[category] = unique_news
     
-    # 保存到JSON文件
-    output_file = os.path.join(DATA_DIR, 'news.json')
-    with open(output_file, 'w', encoding='utf-8') as f:
-        json.dump(all_news, f, ensure_ascii=False, indent=2)
+    # 确保 data 目录存在
+    os.makedirs(os.path.dirname(DATA_FILE), exist_ok=True)
     
-    print(f"\n✅ 全部完成！共保存到 {output_file}")
-    print(f"生成时间: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
+    # 保存为JSON（前端直接读取这个文件）
+    with open(DATA_FILE, 'w', encoding='utf-8') as f:
+        json.dump(all_data, f, ensure_ascii=False, indent=2)
+    
+    print(f"\n💾 数据已保存: {DATA_FILE}")
+    print(f"📊 总计: {sum(len(v) for v in all_data.values())} 条新闻")
+    return all_data
 
-if __name__ == "__
+if __name__ == "__main__":
+    print("🚀 开始抓取新闻...")
+    print("=" * 50)
+    fetch_all_news()
+    print("=" * 50)
+    print("✅ 完成！")
