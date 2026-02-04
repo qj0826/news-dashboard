@@ -14,6 +14,9 @@ import hashlib
 # 代理配置
 PROXY = {'http': 'http://127.0.0.1:1082', 'https': 'http://127.0.0.1:1082'}
 
+# Pollinations.ai API Key
+POLLINATIONS_API_KEY = 'pk_AwoOxyA1F7BjqSCq'
+
 # 分类对应的 AI 生成提示词
 CATEGORY_PROMPTS = {
     'shanghai': '上海城市风光，现代建筑，暖色调，新闻配图风格，简洁大气',
@@ -84,23 +87,24 @@ def validate_image_url(url):
         return False
 
 def generate_ai_image(title, category='general'):
-    """使用 Pollinations.ai 生成封面图片"""
+    """使用 Pollinations.ai 生成封面图片（使用 API Key 获得更快更稳定的服务）"""
     try:
         # 构建提示词
         base_prompt = CATEGORY_PROMPTS.get(category, '新闻配图，专业摄影风格，高质量')
-        
+
         # 简化标题，去除特殊字符
         clean_title = re.sub(r'[^\u4e00-\u9fa5a-zA-Z0-9\s]', '', title)[:30]
-        
+
         # 组合提示词
-        prompt = f"{base_prompt}，主题：{clean_title}，专业摄影，高清，16:9比例"
-        
-        # Pollinations.ai 免费 API
+        prompt = f"{base_prompt}，主题：{clean_title}，专业摄影，高清"
+
         # 使用 seed 确保相同标题生成相同图片（可缓存）
         seed = int(hashlib.md5(title.encode()).hexdigest(), 16) % 10000
-        
-        image_url = f"https://image.pollinations.ai/prompt/{urllib.parse.quote(prompt)}?width=800&height=1000&seed={seed}&nologo=true"
-        
+
+        # Pollinations.ai API（带 key 获得更快生成速度）
+        encoded_prompt = urllib.parse.quote(prompt)
+        image_url = f"https://image.pollinations.ai/prompt/{encoded_prompt}?width=600&height=750&seed={seed}&nologo=true&token={POLLINATIONS_API_KEY}"
+
         return image_url
     except Exception as e:
         return None
