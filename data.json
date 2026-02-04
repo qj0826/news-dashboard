@@ -1,5 +1,15 @@
 {
-  "shanghai": [],
+  "shanghai": [
+    {
+      "title": "正在获取最新资讯...",
+      "link": "#",
+      "time": "刚刚",
+      "source": "系统提示",
+      "image": "https://images.unsplash.com/photo-1474181487882-5abf3f0ba6c2?w=600&q=80",
+      "summary": "该板块的新闻源正在更新中，请稍后刷新页面查看。",
+      "category": "shanghai"
+    }
+  ],
   "tech": [
     {
       "title": "百亿美金蓝海，国产“动力+智控”如何切入价值高地？｜OpenTalk回顾",
@@ -24,7 +34,7 @@
       "link": "https://36kr.com/p/3667709479822213?f=rss",
       "time": "2026-02-04 09:00",
       "source": "36氪",
-      "image": "https://images.unsplash.com/photo-1531297420492-6029d146dc29?w=600&q=80",
+      "image": "https://images.unsplash.com/photo-1518770660439-4636190af475?w=600&q=80",
       "summary": "",
       "category": "tech"
     },
@@ -33,7 +43,7 @@
       "link": "https://36kr.com/p/3660227067945860?f=rss",
       "time": "2026-02-04 08:40",
       "source": "36氪",
-      "image": "https://images.unsplash.com/photo-1531297420492-6029d146dc29?w=600&q=80",
+      "image": "https://images.unsplash.com/photo-1518770660439-4636190af475?w=600&q=80",
       "summary": "",
       "category": "tech"
     },
@@ -51,7 +61,7 @@
       "link": "https://36kr.com/p/3665582095016579?f=rss",
       "time": "2026-02-03 20:27",
       "source": "36氪",
-      "image": "https://images.unsplash.com/photo-1531297420492-6029d146dc29?w=600&q=80",
+      "image": "https://images.unsplash.com/photo-1518770660439-4636190af475?w=600&q=80",
       "summary": "",
       "category": "tech"
     },
@@ -69,7 +79,7 @@
       "link": "https://36kr.com/p/3667359645705090?f=rss",
       "time": "2026-02-03 17:12",
       "source": "36氪",
-      "image": "https://images.unsplash.com/photo-1531297420492-6029d146dc29?w=600&q=80",
+      "image": "https://images.unsplash.com/photo-1518770660439-4636190af475?w=600&q=80",
       "summary": "",
       "category": "tech"
     },
@@ -78,7 +88,7 @@
       "link": "https://36kr.com/p/3667233081221763?f=rss",
       "time": "2026-02-03 15:03",
       "source": "36氪",
-      "image": "https://images.unsplash.com/photo-1531297420492-6029d146dc29?w=600&q=80",
+      "image": "https://images.unsplash.com/photo-1518770660439-4636190af475?w=600&q=80",
       "summary": "",
       "category": "tech"
     },
@@ -87,7 +97,34 @@
       "link": "https://36kr.com/p/3667222616056709?f=rss",
       "time": "2026-02-03 14:53",
       "source": "36氪",
-      "image": "https://images.unsplash.com/photo-1531297420492-6029d146dc29?w=600&q=80",
+      "image": "https://images.unsplash.com/photo-1518770660439-4636190af475?w=600&q=80",
+      "summary": "",
+      "category": "tech"
+    },
+    {
+      "title": "2连板国晟科技：目前未涉及太空光伏业务",
+      "link": "https://36kr.com/newsflashes/3668725784748672?f=rss",
+      "time": "2026-02-04 16:20",
+      "source": "36氪",
+      "image": "https://images.unsplash.com/photo-1518770660439-4636190af475?w=600&q=80",
+      "summary": "",
+      "category": "tech"
+    },
+    {
+      "title": "嘉士伯CEO：考虑将印度业务进行公开上市",
+      "link": "https://36kr.com/newsflashes/3668720350176132?f=rss",
+      "time": "2026-02-04 16:15",
+      "source": "36氪",
+      "image": "https://images.unsplash.com/photo-1518770660439-4636190af475?w=600&q=80",
+      "summary": "",
+      "category": "tech"
+    },
+    {
+      "title": "恒指收涨0.05%，恒生科技指数跌1.84%",
+      "link": "https://36kr.com/newsflashes/3668716291498883?f=rss",
+      "time": "2026-02-04 16:11",
+      "source": "36氪",
+      "image": "https://images.unsplash.com/photo-1518770660439-4636190af475?w=600&q=80",
       "summary": "",
       "category": "tech"
     },
@@ -114,7 +151,7 @@
       "link": "https://36kr.com/newsflashes/3668694901695112?f=rss",
       "time": "2026-02-04 15:49",
       "source": "36氪",
-      "image": "https://images.unsplash.com/photo-1531297420492-6029d146dc29?w=600&q=80",
+      "image": "https://images.unsplash.com/photo-1518770660439-4636190af475?w=600&q=80",
       "summary": "",
       "category": "tech"
     },
@@ -150,34 +187,7 @@
       "link": "https://36kr.com/newsflashes/3668682991411849?f=rss",
       "time": "2026-02-04 15:37",
       "source": "36氪",
-      "image": "https://images.unsplash.com/photo-1531297420492-6029d146dc29?w=600&q=80",
-      "summary": "",
-      "category": "tech"
-    },
-    {
-      "title": "现货白银重回90美元上方",
-      "link": "https://36kr.com/newsflashes/3668672559866499?f=rss",
-      "time": "2026-02-04 15:26",
-      "source": "36氪",
-      "image": "https://images.unsplash.com/photo-1531297420492-6029d146dc29?w=600&q=80",
-      "summary": "",
-      "category": "tech"
-    },
-    {
-      "title": "夸克、乐奇Rokid等首次接入支付宝集福",
-      "link": "https://36kr.com/newsflashes/3668669251117959?f=rss",
-      "time": "2026-02-04 15:23",
-      "source": "36氪",
-      "image": "https://images.unsplash.com/photo-1531297420492-6029d146dc29?w=600&q=80",
-      "summary": "",
-      "category": "tech"
-    },
-    {
-      "title": "英国两家监管机构调查马斯克旗下AI聊天机器人“格罗克”风波",
-      "link": "https://36kr.com/newsflashes/3668668490687105?f=rss",
-      "time": "2026-02-04 15:22",
-      "source": "36氪",
-      "image": "https://images.unsplash.com/photo-1531297420492-6029d146dc29?w=600&q=80",
+      "image": "https://images.unsplash.com/photo-1518770660439-4636190af475?w=600&q=80",
       "summary": "",
       "category": "tech"
     },
@@ -185,8 +195,8 @@
       "title": "不止发红包，AI开始雇人打工了：时薪上千元，2万人抢着给AI当「肉身」",
       "link": "https://www.ifanr.com/1654161?utm_source=rss&utm_medium=rss&utm_campaign=",
       "time": "Wed, 04 Feb 2026",
-      "source": "爱范儿",
-      "image": "https://images.unsplash.com/photo-1531297420492-6029d146dc29?w=600&q=80",
+      "source": "网络新闻",
+      "image": "https://images.unsplash.com/photo-1518770660439-4636190af475?w=600&q=80",
       "summary": "",
       "category": "tech"
     },
@@ -194,7 +204,7 @@
       "title": "Genie 3 引发游戏股暴跌，但游戏的真正灵魂 AI 永远得不到",
       "link": "https://www.ifanr.com/1654197?utm_source=rss&utm_medium=rss&utm_campaign=",
       "time": "Wed, 04 Feb 2026",
-      "source": "爱范儿",
+      "source": "网络新闻",
       "image": "https://images.unsplash.com/photo-1518770660439-4636190af475?w=600&q=80",
       "summary": "",
       "category": "tech"
@@ -203,8 +213,8 @@
       "title": "Kimi K2.5 带来了一个「蜂群时刻」",
       "link": "https://www.ifanr.com/1653557?utm_source=rss&utm_medium=rss&utm_campaign=",
       "time": "Wed, 04 Feb 2026",
-      "source": "爱范儿",
-      "image": "https://images.unsplash.com/photo-1531297420492-6029d146dc29?w=600&q=80",
+      "source": "网络新闻",
+      "image": "https://images.unsplash.com/photo-1518770660439-4636190af475?w=600&q=80",
       "summary": "",
       "category": "tech"
     },
@@ -212,7 +222,7 @@
       "title": "百万网友围观的「作弊 prompt」，能帮我搞定春运买票吗？",
       "link": "https://www.ifanr.com/1652614?utm_source=rss&utm_medium=rss&utm_campaign=",
       "time": "Wed, 04 Feb 2026",
-      "source": "爱范儿",
+      "source": "网络新闻",
       "image": "https://images.unsplash.com/photo-1518770660439-4636190af475?w=600&q=80",
       "summary": "",
       "category": "tech"
@@ -221,7 +231,7 @@
       "title": "玩了一圈元宝派和 moltbook，我发现自己正在失去做「人」的资格",
       "link": "https://www.ifanr.com/1653987?utm_source=rss&utm_medium=rss&utm_campaign=",
       "time": "Wed, 04 Feb 2026",
-      "source": "爱范儿",
+      "source": "网络新闻",
       "image": "https://images.unsplash.com/photo-1518770660439-4636190af475?w=600&q=80",
       "summary": "",
       "category": "tech"
@@ -230,8 +240,8 @@
       "title": "2026 年最「不是人」的一届春晚",
       "link": "https://www.ifanr.com/1654112?utm_source=rss&utm_medium=rss&utm_campaign=",
       "time": "Wed, 04 Feb 2026",
-      "source": "爱范儿",
-      "image": "https://images.unsplash.com/photo-1531297420492-6029d146dc29?w=600&q=80",
+      "source": "网络新闻",
+      "image": "https://images.unsplash.com/photo-1518770660439-4636190af475?w=600&q=80",
       "summary": "",
       "category": "tech"
     },
@@ -239,7 +249,7 @@
       "title": "早报｜曝小米HyperOS 4将成「史上最稳定」版本/零跑年会被指「拉胯」，董事长连夜回应/阿里千问冠名四大卫视春晚",
       "link": "https://www.ifanr.com/1654107?utm_source=rss&utm_medium=rss&utm_campaign=",
       "time": "Wed, 04 Feb 2026",
-      "source": "爱范儿",
+      "source": "网络新闻",
       "image": "https://images.unsplash.com/photo-1518770660439-4636190af475?w=600&q=80",
       "summary": "",
       "category": "tech"
@@ -248,7 +258,7 @@
       "title": "吉利银河 M7 亮相，定位 10 万至 15 万元区间，纯电续航较比亚迪宋 Pro 多 5 km",
       "link": "https://www.ifanr.com/1653992?utm_source=rss&utm_medium=rss&utm_campaign=",
       "time": "Tue, 03 Feb 2026",
-      "source": "爱范儿",
+      "source": "网络新闻",
       "image": "https://images.unsplash.com/photo-1518770660439-4636190af475?w=600&q=80",
       "summary": "",
       "category": "tech"
@@ -257,8 +267,8 @@
       "title": "阶跃Step 3.5 Flash ：春节 AI 混战杀出的黑马，正在 Agent 时代弯道超车",
       "link": "https://www.ifanr.com/1653972?utm_source=rss&utm_medium=rss&utm_campaign=",
       "time": "Tue, 03 Feb 2026",
-      "source": "爱范儿",
-      "image": "https://images.unsplash.com/photo-1531297420492-6029d146dc29?w=600&q=80",
+      "source": "网络新闻",
+      "image": "https://images.unsplash.com/photo-1518770660439-4636190af475?w=600&q=80",
       "summary": "",
       "category": "tech"
     },
@@ -266,8 +276,8 @@
       "title": "比亚迪全新子品牌发布！首发 4 款车型，主打超高性价比",
       "link": "https://www.ifanr.com/1653958?utm_source=rss&utm_medium=rss&utm_campaign=",
       "time": "Tue, 03 Feb 2026",
-      "source": "爱范儿",
-      "image": "https://images.unsplash.com/photo-1531297420492-6029d146dc29?w=600&q=80",
+      "source": "网络新闻",
+      "image": "https://images.unsplash.com/photo-1518770660439-4636190af475?w=600&q=80",
       "summary": "",
       "category": "tech"
     },
@@ -275,7 +285,7 @@
       "title": "早报｜黄仁勋：从未承诺向OpenAI投资1000亿美元/腾讯元宝回应红包助力刷屏质疑/曝苹果封堵「隔空投送」版Final Cut Pro",
       "link": "https://www.ifanr.com/1653951?utm_source=rss&utm_medium=rss&utm_campaign=",
       "time": "Tue, 03 Feb 2026",
-      "source": "爱范儿",
+      "source": "网络新闻",
       "image": "https://images.unsplash.com/photo-1518770660439-4636190af475?w=600&q=80",
       "summary": "",
       "category": "tech"
@@ -284,8 +294,8 @@
       "title": "Moltbook 上 150 万 AI 狂欢真相曝光：以为是硅基文明来了，结果全是复读机",
       "link": "https://www.ifanr.com/1653918?utm_source=rss&utm_medium=rss&utm_campaign=",
       "time": "Mon, 02 Feb 2026",
-      "source": "爱范儿",
-      "image": "https://images.unsplash.com/photo-1531297420492-6029d146dc29?w=600&q=80",
+      "source": "网络新闻",
+      "image": "https://images.unsplash.com/photo-1518770660439-4636190af475?w=600&q=80",
       "summary": "",
       "category": "tech"
     },
@@ -293,7 +303,7 @@
       "title": "解密 iPhone 小折叠，这只是苹果折叠产品的开始",
       "link": "https://www.ifanr.com/1653880?utm_source=rss&utm_medium=rss&utm_campaign=",
       "time": "Mon, 02 Feb 2026",
-      "source": "爱范儿",
+      "source": "网络新闻",
       "image": "https://images.unsplash.com/photo-1518770660439-4636190af475?w=600&q=80",
       "summary": "",
       "category": "tech"
@@ -302,7 +312,7 @@
       "title": "最懂 iPhone 相机的人，回到苹果了",
       "link": "https://www.ifanr.com/1653501?utm_source=rss&utm_medium=rss&utm_campaign=",
       "time": "Mon, 02 Feb 2026",
-      "source": "爱范儿",
+      "source": "网络新闻",
       "image": "https://images.unsplash.com/photo-1518770660439-4636190af475?w=600&q=80",
       "summary": "",
       "category": "tech"
@@ -311,7 +321,7 @@
       "title": "早报｜小米YU9实车谍照疑曝光/消息称苹果正计划开发方形折叠手机/何小鹏回应机器人「原地摔」",
       "link": "https://www.ifanr.com/1653854?utm_source=rss&utm_medium=rss&utm_campaign=",
       "time": "Mon, 02 Feb 2026",
-      "source": "爱范儿",
+      "source": "网络新闻",
       "image": "https://images.unsplash.com/photo-1518770660439-4636190af475?w=600&q=80",
       "summary": "",
       "category": "tech"
@@ -320,8 +330,8 @@
       "title": "15万个AI建了个朋友圈吐槽人类，100万人围观Moltbook后傻眼了：原来我们对AI一无所知",
       "link": "https://www.ifanr.com/1653813?utm_source=rss&utm_medium=rss&utm_campaign=",
       "time": "Sat, 31 Jan 2026",
-      "source": "爱范儿",
-      "image": "https://images.unsplash.com/photo-1531297420492-6029d146dc29?w=600&q=80",
+      "source": "网络新闻",
+      "image": "https://images.unsplash.com/photo-1518770660439-4636190af475?w=600&q=80",
       "summary": "",
       "category": "tech"
     },
@@ -329,7 +339,7 @@
       "title": "苹果史上第二大收购案，目标却不是手机｜硬哲学",
       "link": "https://www.ifanr.com/1653790?utm_source=rss&utm_medium=rss&utm_campaign=",
       "time": "Sat, 31 Jan 2026",
-      "source": "爱范儿",
+      "source": "网络新闻",
       "image": "https://images.unsplash.com/photo-1518770660439-4636190af475?w=600&q=80",
       "summary": "",
       "category": "tech"
@@ -338,7 +348,7 @@
       "title": "早报｜苹果发布2026新春影片/三星S26系列发布时间曝光：2月25日亮相/Clawdbot再改名",
       "link": "https://www.ifanr.com/1653810?utm_source=rss&utm_medium=rss&utm_campaign=",
       "time": "Sat, 31 Jan 2026",
-      "source": "爱范儿",
+      "source": "网络新闻",
       "image": "https://images.unsplash.com/photo-1518770660439-4636190af475?w=600&q=80",
       "summary": "",
       "category": "tech"
@@ -347,8 +357,8 @@
       "title": "2026 年，手机厂商是时候拥抱公有快充协议了",
       "link": "https://www.ifanr.com/1653774?utm_source=rss&utm_medium=rss&utm_campaign=",
       "time": "Fri, 30 Jan 2026",
-      "source": "爱范儿",
-      "image": "https://images.unsplash.com/photo-1531297420492-6029d146dc29?w=600&q=80",
+      "source": "网络新闻",
+      "image": "https://images.unsplash.com/photo-1518770660439-4636190af475?w=600&q=80",
       "summary": "",
       "category": "tech"
     },
@@ -356,13 +366,49 @@
       "title": "马斯克真没吹牛！世界模型 Genie 3 一键打造 GTA6 不是梦",
       "link": "https://www.ifanr.com/1653730?utm_source=rss&utm_medium=rss&utm_campaign=",
       "time": "Fri, 30 Jan 2026",
-      "source": "爱范儿",
-      "image": "https://images.unsplash.com/photo-1531297420492-6029d146dc29?w=600&q=80",
+      "source": "网络新闻",
+      "image": "https://images.unsplash.com/photo-1518770660439-4636190af475?w=600&q=80",
       "summary": "",
       "category": "tech"
     }
   ],
   "us_stocks": [
+    {
+      "title": "繁荣背后的“流动性幻觉”：加拿大新规与澳洲加息共震，2026流动性并非单边宽松",
+      "link": "https://wallstreetcn.com/articles/3764925",
+      "time": "Wed, 04 Feb 2026",
+      "source": "华尔街见闻",
+      "image": "https://images.unsplash.com/photo-1611974765270-ca1258822981?w=600&q=80",
+      "summary": "",
+      "category": "us_stocks"
+    },
+    {
+      "title": "伯恩斯坦：看空原油的理由有一个，但看多的理由有十个",
+      "link": "https://wallstreetcn.com/articles/3764931",
+      "time": "Wed, 04 Feb 2026",
+      "source": "华尔街见闻",
+      "image": "https://images.unsplash.com/photo-1611974765270-ca1258822981?w=600&q=80",
+      "summary": "",
+      "category": "us_stocks"
+    },
+    {
+      "title": "地方两会收官：GDP目标之外的信号",
+      "link": "https://wallstreetcn.com/articles/3764937",
+      "time": "Wed, 04 Feb 2026",
+      "source": "华尔街见闻",
+      "image": "https://images.unsplash.com/photo-1611974765270-ca1258822981?w=600&q=80",
+      "summary": "",
+      "category": "us_stocks"
+    },
+    {
+      "title": "苹果 Xcode 终于引入 AI，「Agentic Coding」攻入「果系」开发者大本营",
+      "link": "https://wallstreetcn.com/articles/3764936",
+      "time": "Wed, 04 Feb 2026",
+      "source": "华尔街见闻",
+      "image": "https://images.unsplash.com/photo-1611974765270-ca1258822981?w=600&q=80",
+      "summary": "",
+      "category": "us_stocks"
+    },
     {
       "title": "央行：着力支持扩大内需、科技创新、中小微企业等重点领域",
       "link": "https://wallstreetcn.com/articles/3764938",
@@ -386,7 +432,7 @@
       "link": "https://wallstreetcn.com/articles/3764934",
       "time": "Wed, 04 Feb 2026",
       "source": "华尔街见闻",
-      "image": "https://images.unsplash.com/photo-1590283603385-17ffb3a7f29f?w=600&q=80",
+      "image": "https://images.unsplash.com/photo-1611974765270-ca1258822981?w=600&q=80",
       "summary": "",
       "category": "us_stocks"
     },
@@ -395,7 +441,7 @@
       "link": "https://wallstreetcn.com/articles/3764924",
       "time": "Wed, 04 Feb 2026",
       "source": "华尔街见闻",
-      "image": "https://images.unsplash.com/photo-1590283603385-17ffb3a7f29f?w=600&q=80",
+      "image": "https://images.unsplash.com/photo-1611974765270-ca1258822981?w=600&q=80",
       "summary": "",
       "category": "us_stocks"
     },
@@ -413,7 +459,7 @@
       "link": "https://wallstreetcn.com/articles/3764927",
       "time": "Wed, 04 Feb 2026",
       "source": "华尔街见闻",
-      "image": "https://images.unsplash.com/photo-1590283603385-17ffb3a7f29f?w=600&q=80",
+      "image": "https://images.unsplash.com/photo-1611974765270-ca1258822981?w=600&q=80",
       "summary": "",
       "category": "us_stocks"
     },
@@ -458,7 +504,7 @@
       "link": "https://wallstreetcn.com/articles/3764920",
       "time": "Wed, 04 Feb 2026",
       "source": "华尔街见闻",
-      "image": "https://images.unsplash.com/photo-1590283603385-17ffb3a7f29f?w=600&q=80",
+      "image": "https://images.unsplash.com/photo-1611974765270-ca1258822981?w=600&q=80",
       "summary": "",
       "category": "us_stocks"
     },
@@ -467,7 +513,7 @@
       "link": "https://wallstreetcn.com/articles/3764921",
       "time": "Wed, 04 Feb 2026",
       "source": "华尔街见闻",
-      "image": "https://images.unsplash.com/photo-1590283603385-17ffb3a7f29f?w=600&q=80",
+      "image": "https://images.unsplash.com/photo-1611974765270-ca1258822981?w=600&q=80",
       "summary": "",
       "category": "us_stocks"
     },
@@ -476,7 +522,7 @@
       "link": "https://wallstreetcn.com/articles/3764905",
       "time": "Wed, 04 Feb 2026",
       "source": "华尔街见闻",
-      "image": "https://images.unsplash.com/photo-1590283603385-17ffb3a7f29f?w=600&q=80",
+      "image": "https://images.unsplash.com/photo-1611974765270-ca1258822981?w=600&q=80",
       "summary": "",
       "category": "us_stocks"
     },
@@ -503,46 +549,20 @@
       "link": "https://wallstreetcn.com/charts/41958543",
       "time": "Wed, 04 Feb 2026",
       "source": "华尔街见闻",
-      "image": "https://images.unsplash.com/photo-1590283603385-17ffb3a7f29f?w=600&q=80",
-      "summary": "",
-      "category": "us_stocks"
-    },
-    {
-      "title": "Citadel经济学家谈沃什：美联储可能未来一年都不再降息，美元熊市暂停",
-      "link": "https://wallstreetcn.com/articles/3764912",
-      "time": "Wed, 04 Feb 2026",
-      "source": "华尔街见闻",
-      "image": "https://images.unsplash.com/photo-1590283603385-17ffb3a7f29f?w=600&q=80",
-      "summary": "",
-      "category": "us_stocks"
-    },
-    {
-      "title": "53.1，日本综合PMI创32个月新高",
-      "link": "https://wallstreetcn.com/articles/3764909",
-      "time": "Wed, 04 Feb 2026",
-      "source": "华尔街见闻",
-      "image": "https://images.unsplash.com/photo-1590283603385-17ffb3a7f29f?w=600&q=80",
-      "summary": "",
-      "category": "us_stocks"
-    },
-    {
-      "title": "英特尔进军GPU！",
-      "link": "https://wallstreetcn.com/articles/3764904",
-      "time": "Wed, 04 Feb 2026",
-      "source": "华尔街见闻",
       "image": "https://images.unsplash.com/photo-1611974765270-ca1258822981?w=600&q=80",
-      "summary": "",
-      "category": "us_stocks"
-    },
-    {
-      "title": "估值3500亿美元！Anthropic向员工回购股票",
-      "link": "https://wallstreetcn.com/articles/3764906",
-      "time": "Wed, 04 Feb 2026",
-      "source": "华尔街见闻",
-      "image": "https://images.unsplash.com/photo-1590283603385-17ffb3a7f29f?w=600&q=80",
       "summary": "",
       "category": "us_stocks"
     }
   ],
-  "policy": []
+  "policy": [
+    {
+      "title": "正在获取最新资讯...",
+      "link": "#",
+      "time": "刚刚",
+      "source": "系统提示",
+      "image": "https://images.unsplash.com/photo-1532375810709-75b1da00537c?w=600&q=80",
+      "summary": "该板块的新闻源正在更新中，请稍后刷新页面查看。",
+      "category": "policy"
+    }
+  ]
 }
