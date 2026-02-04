@@ -2,12 +2,16 @@ name: 自动抓取新闻
 
 on:
   schedule:
-    - cron: '0 */1 * * *'  # 每1小时运行一次
-  workflow_dispatch:       # 允许手动点击按钮运行
+    - cron: '0 */1 * * *'  # 每1小时自动运行
+  workflow_dispatch:       # 允许手动点击运行
 
 jobs:
   build:
     runs-on: ubuntu-latest
+    
+    # 👇👇👇 关键：这里加上了写入权限，机器人才能保存数据！
+    permissions:
+      contents: write
     
     steps:
     - name: 下载代码
@@ -30,5 +34,6 @@ jobs:
         git config --local user.email "action@github.com"
         git config --local user.name "GitHub Action"
         git add data.json
-        git commit -m "Auto update news" || echo "没有新新闻，跳过更新"
+        # 防止没有新数据时报错
+        git commit -m "Auto update news" || echo "暂无新内容"
         git push
