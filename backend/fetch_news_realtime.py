@@ -144,43 +144,44 @@ def is_shanghai_relevant(title, summary=""):
     }
 
 def fetch_shanghai_news():
-    """抓取上海新闻 - 多源聚合"""
+    """抓取上海新闻 - 使用稳定源"""
     items = []
     headers = {'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7)'}
     
-    # 1. 澎湃新闻 - 使用 RSSHub 实时源
-    print("\n📰 澎湃新闻")
+    # 1. 新浪上海新闻 (最稳定的源)
+    print("\n📰 新浪上海")
     try:
-        url = "https://rsshub.app/thepaper/featured"
+        url = "https://feed.mix.sina.com.cn/api/roll/get?pageid=153&lid=2515&k=&num=30&r=0.123"
         response = requests.get(url, headers=headers, timeout=15, proxies=PROXY)
         
         if response.status_code == 200:
-            feed = feedparser.parse(response.content)
-            count = 0
-            for entry in feed.entries[:15]:
-                title = html.unescape(entry.get("title", "")).strip()
-                relevance = is_shanghai_relevant(title)
-                
-                # 构建标签
-                tags = []
-                if relevance['jiading']: tags.append('🏠')
-                if relevance['season']: tags.append('🌸')
-                if relevance['community']: tags.append('👥')
-                
-                items.append({
-                    "title": f"{' '.join(tags)} {title}" if tags else title,
-                    "link": entry.get("link", ""),
-                    "summary": f"澎湃新闻 · 相关度:{relevance['score']}" if relevance['score'] > 0 else "澎湃新闻",
-                    "source": "澎湃新闻",
-                    "time": format_time(entry.get("published", "")),
-                    "isNew": is_recent(entry.get("published_parsed")),
-                    "score": relevance['score']
-                })
-                count += 1
-            
-            print(f"  ✓ 澎湃新闻: {count} 条")
+            data = response.json()
+            if data.get('result') and data['result'].get('data'):
+                news_list = data['result']['data']
+                for item in news_list:
+                    title = item.get('title', '').strip()
+                    url = item.get('url', '')
+                    time_str = item.get('time', '')
+                    
+                    # 检查相关性
+                    relevance = is_shanghai_relevant(title)
+                    tags = []
+                    if relevance['jiading']: tags.append('🏠')
+                    if relevance['season']: tags.append('🌸')
+                    if relevance['community']: tags.append('👥')
+                    
+                    items.append({
+                        "title": f"{' '.join(tags)} {title}" if tags else title,
+                        "link": url,
+                        "summary": f"新浪上海 · 相关度:{relevance['score']}" if relevance['score'] > 0 else "新浪上海",
+                        "source": "新浪上海",
+                        "time": time_str[5:16] if len(time_str) > 16 else time_str,
+                        "isNew": True,
+                        "score": relevance['score']
+                    })
+                print(f"  ✓ 新浪上海: {len(news_list)} 条")
     except Exception as e:
-        print(f"  ✗ 澎湃新闻: {str(e)[:50]}")
+        print(f"  ✗ 新浪上海: {str(e)[:50]}")
     
     # 2. 手动维护 - 嘉定精选新闻
     print("\n🏠 嘉定精选")
