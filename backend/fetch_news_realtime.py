@@ -260,31 +260,113 @@ def fetch_shanghai_news():
     except Exception as e:
         print(f"  ✗ 新浪上海: {str(e)[:50]}")
     
-    # 4. 尝试 Google News 上海
-    print("\n🔍 Google News 上海")
+    # 4. 上观新闻 (解放日报)
+    print("\n📰 上观新闻")
     try:
-        url = "https://news.google.com/rss/search?q=上海&hl=zh-CN&gl=CN&ceid=CN:zh-Hans"
+        url = "https://rsshub.app/jfdaily/reconstruction"
         response = requests.get(url, headers=headers, timeout=15, proxies=PROXY)
         
         if response.status_code == 200:
             feed = feedparser.parse(response.content)
             count = 0
-            for entry in feed.entries[:5]:
+            for entry in feed.entries[:10]:
                 title = html.unescape(entry.get("title", "")).strip()
-                if '上海' in title:
-                    items.append({
-                        "title": title,
-                        "link": entry.get("link", ""),
-                        "summary": "Google News",
-                        "source": "Google News",
-                        "time": format_time(entry.get("published", "")),
-                        "isNew": is_recent(entry.get("published_parsed")),
-                        "score": 0
-                    })
-                    count += 1
-            print(f"  ✓ Google News: {count} 条")
+                relevance = is_shanghai_relevant(title)
+                
+                items.append({
+                    "title": title,
+                    "link": entry.get("link", ""),
+                    "summary": f"上观新闻 · 相关度:{relevance['score']}" if relevance['score'] > 0 else "上观新闻",
+                    "source": "上观新闻",
+                    "time": format_time(entry.get("published", "")),
+                    "isNew": is_recent(entry.get("published_parsed")),
+                    "score": relevance['score']
+                })
+                count += 1
+            print(f"  ✓ 上观新闻: {count} 条")
     except Exception as e:
-        print(f"  ✗ Google News: {str(e)[:50]}")
+        print(f"  ✗ 上观新闻: {str(e)[:50]}")
+    
+    # 5. 文汇报
+    print("\n📰 文汇报")
+    try:
+        url = "https://rsshub.app/whb/bihui"
+        response = requests.get(url, headers=headers, timeout=15, proxies=PROXY)
+        
+        if response.status_code == 200:
+            feed = feedparser.parse(response.content)
+            count = 0
+            for entry in feed.entries[:8]:
+                title = html.unescape(entry.get("title", "")).strip()
+                relevance = is_shanghai_relevant(title)
+                
+                items.append({
+                    "title": title,
+                    "link": entry.get("link", ""),
+                    "summary": f"文汇报 · 相关度:{relevance['score']}" if relevance['score'] > 0 else "文汇报",
+                    "source": "文汇报",
+                    "time": format_time(entry.get("published", "")),
+                    "isNew": is_recent(entry.get("published_parsed")),
+                    "score": relevance['score']
+                })
+                count += 1
+            print(f"  ✓ 文汇报: {count} 条")
+    except Exception as e:
+        print(f"  ✗ 文汇报: {str(e)[:50]}")
+    
+    # 6. 新民晚报
+    print("\n📰 新民晚报")
+    try:
+        url = "https://rsshub.app/xinmin/daily"
+        response = requests.get(url, headers=headers, timeout=15, proxies=PROXY)
+        
+        if response.status_code == 200:
+            feed = feedparser.parse(response.content)
+            count = 0
+            for entry in feed.entries[:8]:
+                title = html.unescape(entry.get("title", "")).strip()
+                relevance = is_shanghai_relevant(title)
+                
+                items.append({
+                    "title": title,
+                    "link": entry.get("link", ""),
+                    "summary": f"新民晚报 · 相关度:{relevance['score']}" if relevance['score'] > 0 else "新民晚报",
+                    "source": "新民晚报",
+                    "time": format_time(entry.get("published", "")),
+                    "isNew": is_recent(entry.get("published_parsed")),
+                    "score": relevance['score']
+                })
+                count += 1
+            print(f"  ✓ 新民晚报: {count} 条")
+    except Exception as e:
+        print(f"  ✗ 新民晚报: {str(e)[:50]}")
+    
+    # 7. 东方网
+    print("\n📰 东方网")
+    try:
+        url = "https://rsshub.app/eastday/sh"
+        response = requests.get(url, headers=headers, timeout=15, proxies=PROXY)
+        
+        if response.status_code == 200:
+            feed = feedparser.parse(response.content)
+            count = 0
+            for entry in feed.entries[:8]:
+                title = html.unescape(entry.get("title", "")).strip()
+                relevance = is_shanghai_relevant(title)
+                
+                items.append({
+                    "title": title,
+                    "link": entry.get("link", ""),
+                    "summary": f"东方网 · 相关度:{relevance['score']}" if relevance['score'] > 0 else "东方网",
+                    "source": "东方网",
+                    "time": format_time(entry.get("published", "")),
+                    "isNew": is_recent(entry.get("published_parsed")),
+                    "score": relevance['score']
+                })
+                count += 1
+            print(f"  ✓ 东方网: {count} 条")
+    except Exception as e:
+        print(f"  ✗ 东方网: {str(e)[:50]}")
     
     # 按相关度排序
     items.sort(key=lambda x: x.get('score', 0), reverse=True)
