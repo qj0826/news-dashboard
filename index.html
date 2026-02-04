@@ -90,13 +90,15 @@
             }
         }
         
-        /* 图片区域 - 更紧凑 */
+        /* 封面区域 - 渐变背景 + 大图标 */
         .card-image {
             width: 100%;
             aspect-ratio: 1/1;
             position: relative;
             overflow: hidden;
-            background: var(--bg-primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
         
         @media (min-width: 768px) {
@@ -105,35 +107,57 @@
             }
         }
         
-        .card-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.4s ease;
-            display: block;
-            position: relative;
-            z-index: 1;
+        /* 分类渐变背景 */
+        .card-image.shanghai { 
+            background: linear-gradient(135deg, #e6ddd4 0%, #d4c9bd 50%, #c9b8a8 100%);
+        }
+        .card-image.world { 
+            background: linear-gradient(135deg, #d4dde6 0%, #c9d4e0 50%, #a8b5c9 100%);
+        }
+        .card-image.ai { 
+            background: linear-gradient(135deg, #e6d4e0 0%, #e0c9d8 50%, #c9a8c2 100%);
+        }
+        .card-image.stocks { 
+            background: linear-gradient(135deg, #d4e6d8 0%, #c9e0d0 50%, #a8c9b0 100%);
+        }
+        .card-image.policy { 
+            background: linear-gradient(135deg, #e6e0d4 0%, #e0d8c9 50%, #c9c2a8 100%);
         }
         
-        .xhs-card:hover .card-image img {
-            transform: scale(1.05);
+        /* 深色模式 */
+        [data-theme="dark"] .card-image.shanghai { 
+            background: linear-gradient(135deg, #5a4d42 0%, #4a3d32 50%, #3d2d22 100%);
+        }
+        [data-theme="dark"] .card-image.world { 
+            background: linear-gradient(135deg, #3a4a5a 0%, #2a3a4a 50%, #1a2a3a 100%);
+        }
+        [data-theme="dark"] .card-image.ai { 
+            background: linear-gradient(135deg, #5a3a52 0%, #4a2a42 50%, #3a1a32 100%);
+        }
+        [data-theme="dark"] .card-image.stocks { 
+            background: linear-gradient(135deg, #3a5a42 0%, #2a4a32 50%, #1a3a22 100%);
+        }
+        [data-theme="dark"] .card-image.policy { 
+            background: linear-gradient(135deg, #5a523a 0%, #4a422a 50%, #3a321a 100%);
         }
         
-        /* 默认渐变背景（无图时使用） */
-        .card-image::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            opacity: 1;
-            z-index: 0;
+        /* 大图标 */
+        .big-icon {
+            font-size: 64px;
+            opacity: 0.6;
+            filter: grayscale(0.3);
+            transition: all 0.3s ease;
         }
         
-        .card-image.has-image {
-            background: transparent;
+        .xhs-card:hover .big-icon {
+            transform: scale(1.1);
+            opacity: 0.8;
         }
         
-        .card-image.has-image::before {
-            display: none;
+        @media (min-width: 768px) {
+            .big-icon {
+                font-size: 80px;
+            }
         }
         
         .card-image.shanghai::before { 
@@ -178,32 +202,10 @@
             animation: shimmer 1.5s infinite;
         }
         
-        /* AI 生成标识 */
-        .ai-badge {
-            position: absolute;
-            top: 8px;
-            right: 8px;
-            padding: 2px 6px;
-            background: rgba(0,0,0,0.6);
-            color: white;
-            font-size: 8px;
-            border-radius: 8px;
-            z-index: 3;
-            backdrop-filter: blur(4px);
-        }
+        /* 原标题样式保留 */
         
-        @media (min-width: 768px) {
-            .ai-badge {
-                top: 10px;
-                right: 10px;
-                padding: 3px 8px;
-                font-size: 9px;
-                border-radius: 10px;
-            }
-        }
-        
-        /* 图标 - 手机端更小 */
-        .card-icon {
+        /* 小图标 - 手机端更小 */
+        .card-icon-small {
             position: absolute;
             top: 8px;
             left: 8px;
@@ -221,7 +223,7 @@
         }
         
         @media (min-width: 768px) {
-            .card-icon {
+            .card-icon-small {
                 top: 12px;
                 left: 12px;
                 width: 36px;
@@ -231,7 +233,7 @@
             }
         }
         
-        [data-theme="dark"] .card-icon {
+        [data-theme="dark"] .card-icon-small {
             background: rgba(45,44,42,0.95);
         }
         
@@ -804,26 +806,16 @@
                 ? `<p class="card-summary-preview">${item.summary.substring(0, 50)}${item.summary.length > 50 ? '...' : ''}</p>` 
                 : '';
             
-            // 处理图片
-            let imageHtml = '';
-            let hasImageClass = '';
-            let aiBadge = '';
-            
-            if (item.image) {
-                // 有图片，显示真实图片或AI生成图片
-                hasImageClass = 'has-image';
-                aiBadge = item.imageType === 'ai' ? '<span class="ai-badge">🎨 AI</span>' : '';
-                imageHtml = `<img src="${item.image}" alt="${cleanTitle}" loading="lazy" onload="this.style.opacity=1" onerror="this.style.display='none'; this.parentElement.classList.remove('has-image');" style="opacity:0; transition:opacity 0.3s;">`;
-            }
+            // 使用emoji大图标作为封面（简单可靠）
+            const bigIcon = config.icon;
             
             return `
                 <div class="masonry-item">
                     <div class="xhs-card block" onclick="openPreview(${index})" style="cursor: pointer;">
-                        <div class="card-image ${config.color} ${hasImageClass}">
-                            ${imageHtml}
-                            <div class="card-icon">${config.icon}</div>
+                        <div class="card-image ${config.color}">
+                            <div class="big-icon">${bigIcon}</div>
+                            <div class="card-icon-small">${config.icon}</div>
                             ${isNew}
-                            ${aiBadge}
                             <span class="category-tag">${config.label}</span>
                         </div>
                         <div class="card-content">
