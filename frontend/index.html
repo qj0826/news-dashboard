@@ -761,30 +761,31 @@
         
         // 当前预览的新闻
         let currentPreviewItem = null;
+        let currentItems = []; // 保存当前显示的 items，确保预览时索引一致
         
         // 渲染新闻
         function renderNews() {
             const grid = document.getElementById('news-grid');
             grid.innerHTML = '';
             
-            let items = [];
+            currentItems = [];
             
             if (currentTab === 'all') {
                 Object.entries(allNews).forEach(([category, news]) => {
                     if (Array.isArray(news)) {
                         news.forEach(item => {
-                            items.push({ ...item, category });
+                            currentItems.push({ ...item, category });
                         });
                     }
                 });
-                items = items.sort(() => Math.random() - 0.5);
+                currentItems = currentItems.sort(() => Math.random() - 0.5);
             } else {
-                items = (allNews[currentTab] || []).map(item => ({ ...item, category: currentTab }));
+                currentItems = (allNews[currentTab] || []).map(item => ({ ...item, category: currentTab }));
             }
             
-            items = items.slice(0, 50);
+            currentItems = currentItems.slice(0, 50);
             
-            grid.innerHTML = items.map((item, index) => createCard(item, index)).join('');
+            grid.innerHTML = currentItems.map((item, index) => createCard(item, index)).join('');
         }
         
         // 创建卡片
@@ -838,21 +839,8 @@
         
         // 打开预览弹窗
         function openPreview(index) {
-            let items = [];
-            
-            if (currentTab === 'all') {
-                Object.entries(allNews).forEach(([category, news]) => {
-                    if (Array.isArray(news)) {
-                        news.forEach(item => {
-                            items.push({ ...item, category });
-                        });
-                    }
-                });
-            } else {
-                items = (allNews[currentTab] || []).map(item => ({ ...item, category: currentTab }));
-            }
-            
-            const item = items[index];
+            // 使用 currentItems 确保和渲染时的顺序一致
+            const item = currentItems[index];
             if (!item) return;
             
             currentPreviewItem = item;
