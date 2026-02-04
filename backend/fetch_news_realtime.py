@@ -341,32 +341,78 @@ def fetch_shanghai_news():
     except Exception as e:
         print(f"  ✗ 新民晚报: {str(e)[:50]}")
     
-    # 7. 东方网
+    # 7. 东方网 - 使用备用 API
     print("\n📰 东方网")
     try:
-        url = "https://rsshub.app/eastday/sh"
+        # 尝试多个东方网数据源
+        urls_to_try = [
+            "https://rsshub.app/eastday/sh",
+            "https://rsshub.app/eastday/china",
+        ]
+        
+        for url in urls_to_try:
+            try:
+                response = requests.get(url, headers=headers, timeout=10, proxies=PROXY)
+                if response.status_code == 200:
+                    feed = feedparser.parse(response.content)
+                    count = 0
+                    for entry in feed.entries[:8]:
+                        title = html.unescape(entry.get("title", "")).strip()
+                        relevance = is_shanghai_relevant(title)
+                        
+                        items.append({
+                            "title": title,
+                            "link": entry.get("link", ""),
+                            "summary": f"东方网 · 相关度:{relevance['score']}" if relevance['score'] > 0 else "东方网",
+                            "source": "东方网",
+                            "time": format_time(entry.get("published", "")),
+                            "isNew": is_recent(entry.get("published_parsed")),
+                            "score": relevance['score']
+                        })
+                        count += 1
+                    print(f"  ✓ 东方网: {count} 条")
+                    break
+            except:
+                continue
+    except Exception as e:
+        print(f"  ✗ 东方网: {str(e)[:50]}")
+    
+    # 8. 看看新闻 - 直接抓取网页
+    print("\n📺 看看新闻")
+    try:
+        url = "https://www.kankanews.com/"
         response = requests.get(url, headers=headers, timeout=15, proxies=PROXY)
         
         if response.status_code == 200:
-            feed = feedparser.parse(response.content)
+            # 提取新闻链接和标题
+            import re
+            # 匹配看看新闻的链接模式 /a/YYYY-MM-DD/xxxxx.shtml
+            news_pattern = r'href="(/a/\d{4}-\d{2}-\d{2}/\d+\.shtml)"[^>]*>([^<]+)</a>'
+            matches = re.findall(news_pattern, response.text)
+            
+            seen = set()
             count = 0
-            for entry in feed.entries[:8]:
-                title = html.unescape(entry.get("title", "")).strip()
-                relevance = is_shanghai_relevant(title)
-                
-                items.append({
-                    "title": title,
-                    "link": entry.get("link", ""),
-                    "summary": f"东方网 · 相关度:{relevance['score']}" if relevance['score'] > 0 else "东方网",
-                    "source": "东方网",
-                    "time": format_time(entry.get("published", "")),
-                    "isNew": is_recent(entry.get("published_parsed")),
-                    "score": relevance['score']
-                })
-                count += 1
-            print(f"  ✓ 东方网: {count} 条")
+            for link, title in matches[:10]:
+                if link not in seen and title.strip():
+                    seen.add(link)
+                    full_link = f"https://www.kankanews.com{link}" if link.startswith('/') else link
+                    title_clean = html.unescape(title.strip())
+                    relevance = is_shanghai_relevant(title_clean)
+                    
+                    items.append({
+                        "title": title_clean,
+                        "link": full_link,
+                        "summary": f"看看新闻 · 相关度:{relevance['score']}" if relevance['score'] > 0 else "看看新闻",
+                        "source": "看看新闻",
+                        "time": datetime.now().strftime("%m-%d"),
+                        "isNew": True,
+                        "score": relevance['score']
+                    })
+                    count += 1
+            
+            print(f"  ✓ 看看新闻: {count} 条")
     except Exception as e:
-        print(f"  ✗ 东方网: {str(e)[:50]}")
+        print(f"  ✗ 看看新闻: {str(e)[:50]}")
     
     # 按相关度排序
     items.sort(key=lambda x: x.get('score', 0), reverse=True)
