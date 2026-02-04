@@ -148,15 +148,16 @@ def fetch_shanghai_news():
     items = []
     headers = {'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7)'}
     
-    # 1. 澎湃新闻 RSS
+    # 1. 澎湃新闻 - 使用 RSSHub 实时源
+    print("\n📰 澎湃新闻")
     try:
-        url = "https://feedx.net/rss/thepaper.xml"
+        url = "https://rsshub.app/thepaper/featured"
         response = requests.get(url, headers=headers, timeout=15, proxies=PROXY)
         
         if response.status_code == 200:
             feed = feedparser.parse(response.content)
-            
-            for entry in feed.entries:
+            count = 0
+            for entry in feed.entries[:15]:
                 title = html.unescape(entry.get("title", "")).strip()
                 relevance = is_shanghai_relevant(title)
                 
@@ -166,19 +167,18 @@ def fetch_shanghai_news():
                 if relevance['season']: tags.append('🌸')
                 if relevance['community']: tags.append('👥')
                 
-                # 优先添加相关新闻
-                if relevance['score'] > 0 or len(items) < 20:
-                    items.append({
-                        "title": f"{' '.join(tags)} {title}" if tags else title,
-                        "link": entry.get("link", ""),
-                        "summary": f"澎湃新闻 · 相关度:{relevance['score']}" if relevance['score'] > 0 else "澎湃新闻 · 上海",
-                        "source": "澎湃新闻",
-                        "time": format_time(entry.get("published", "")),
-                        "isNew": is_recent(entry.get("published_parsed")),
-                        "score": relevance['score']
-                    })
+                items.append({
+                    "title": f"{' '.join(tags)} {title}" if tags else title,
+                    "link": entry.get("link", ""),
+                    "summary": f"澎湃新闻 · 相关度:{relevance['score']}" if relevance['score'] > 0 else "澎湃新闻",
+                    "source": "澎湃新闻",
+                    "time": format_time(entry.get("published", "")),
+                    "isNew": is_recent(entry.get("published_parsed")),
+                    "score": relevance['score']
+                })
+                count += 1
             
-            print(f"  ✓ 澎湃新闻: {len(items)} 条")
+            print(f"  ✓ 澎湃新闻: {count} 条")
     except Exception as e:
         print(f"  ✗ 澎湃新闻: {str(e)[:50]}")
     
