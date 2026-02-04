@@ -414,6 +414,87 @@ def fetch_shanghai_news():
     except Exception as e:
         print(f"  ✗ 看看新闻: {str(e)[:50]}")
     
+    # 9. 新闻晨报
+    print("\n📰 新闻晨报")
+    try:
+        url = "https://rsshub.app/shxwcb"
+        response = requests.get(url, headers=headers, timeout=15, proxies=PROXY)
+        
+        if response.status_code == 200:
+            feed = feedparser.parse(response.content)
+            count = 0
+            for entry in feed.entries[:8]:
+                title = html.unescape(entry.get("title", "")).strip()
+                relevance = is_shanghai_relevant(title)
+                
+                items.append({
+                    "title": title,
+                    "link": entry.get("link", ""),
+                    "summary": f"新闻晨报 · 相关度:{relevance['score']}" if relevance['score'] > 0 else "新闻晨报",
+                    "source": "新闻晨报",
+                    "time": format_time(entry.get("published", "")),
+                    "isNew": is_recent(entry.get("published_parsed")),
+                    "score": relevance['score']
+                })
+                count += 1
+            print(f"  ✓ 新闻晨报: {count} 条")
+    except Exception as e:
+        print(f"  ✗ 新闻晨报: {str(e)[:50]}")
+    
+    # 10. 青年报
+    print("\n📰 青年报")
+    try:
+        url = "https://rsshub.app/qnb"
+        response = requests.get(url, headers=headers, timeout=15, proxies=PROXY)
+        
+        if response.status_code == 200:
+            feed = feedparser.parse(response.content)
+            count = 0
+            for entry in feed.entries[:8]:
+                title = html.unescape(entry.get("title", "")).strip()
+                relevance = is_shanghai_relevant(title)
+                
+                items.append({
+                    "title": title,
+                    "link": entry.get("link", ""),
+                    "summary": f"青年报 · 相关度:{relevance['score']}" if relevance['score'] > 0 else "青年报",
+                    "source": "青年报",
+                    "time": format_time(entry.get("published", "")),
+                    "isNew": is_recent(entry.get("published_parsed")),
+                    "score": relevance['score']
+                })
+                count += 1
+            print(f"  ✓ 青年报: {count} 条")
+    except Exception as e:
+        print(f"  ✗ 青年报: {str(e)[:50]}")
+    
+    # 11. 劳动报
+    print("\n📰 劳动报")
+    try:
+        url = "https://rsshub.app/ldrb"
+        response = requests.get(url, headers=headers, timeout=15, proxies=PROXY)
+        
+        if response.status_code == 200:
+            feed = feedparser.parse(response.content)
+            count = 0
+            for entry in feed.entries[:8]:
+                title = html.unescape(entry.get("title", "")).strip()
+                relevance = is_shanghai_relevant(title)
+                
+                items.append({
+                    "title": title,
+                    "link": entry.get("link", ""),
+                    "summary": f"劳动报 · 相关度:{relevance['score']}" if relevance['score'] > 0 else "劳动报",
+                    "source": "劳动报",
+                    "time": format_time(entry.get("published", "")),
+                    "isNew": is_recent(entry.get("published_parsed")),
+                    "score": relevance['score']
+                })
+                count += 1
+            print(f"  ✓ 劳动报: {count} 条")
+    except Exception as e:
+        print(f"  ✗ 劳动报: {str(e)[:50]}")
+    
     # 按相关度排序
     items.sort(key=lambda x: x.get('score', 0), reverse=True)
     
