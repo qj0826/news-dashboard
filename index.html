@@ -433,11 +433,11 @@
                 <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
                 国际视野
             </div>
-            <div class="nav-item" onclick="switchTab('ai', this)">
+            <div class="nav-item" onclick="switchTab('tech', this)">
                 <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
                 前沿科技
             </div>
-            <div class="nav-item" onclick="switchTab('stocks', this)">
+            <div class="nav-item" onclick="switchTab('us_stocks', this)">
                 <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 12l3-3 3 3 4-4M8 21l4-4 4 4M3 4h18M4 4h16v12a1 1 0 01-1 1H5a1 1 0 01-1-1V4z"></path></svg>
                 金融市场
             </div>
@@ -471,8 +471,8 @@
             <div class="tab-pill active" onclick="filterCategory('all', this)">全部</div>
             <div class="tab-pill" onclick="filterCategory('shanghai', this)">🏙️ 上海</div>
             <div class="tab-pill" onclick="filterCategory('world', this)">🌍 国际</div>
-            <div class="tab-pill" onclick="filterCategory('ai', this)">🤖 科技</div>
-            <div class="tab-pill" onclick="filterCategory('stocks', this)">📈 财经</div>
+            <div class="tab-pill" onclick="filterCategory('tech', this)">🤖 科技</div>
+            <div class="tab-pill" onclick="filterCategory('us_stocks', this)">📈 美股</div>
             <div class="tab-pill" onclick="filterCategory('policy', this)">🇨🇳 政策</div>
         </div>
 
@@ -498,8 +498,10 @@
         const categoryMap = {
             shanghai: { label: '上海', color: 'bg-gradient-1' },
             world: { label: '国际', color: 'bg-gradient-2' },
-            ai: { label: 'AI', color: 'bg-gradient-3' },
-            stocks: { label: '财经', color: 'bg-gradient-1' },
+            // 修改5：配置表 key 改为 tech
+            tech: { label: '科技', color: 'bg-gradient-3' },
+            // 修改6：配置表 key 改为 us_stocks
+            us_stocks: { label: '美股', color: 'bg-gradient-1' },
             policy: { label: '政策', color: 'bg-gradient-2' },
             all: { label: '热点', color: 'bg-gradient-3' }
         };
