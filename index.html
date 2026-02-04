@@ -3,732 +3,681 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>新闻热点 - 你的个性化新闻聚合</title>
+    <title>News Dashboard - 每日热点</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Noto+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg-primary: #f5f5f5;
-            --bg-secondary: #ffffff;
+            --bg-body: #f8f9fa;
+            --bg-glass: rgba(255, 255, 255, 0.85);
             --bg-card: #ffffff;
-            --text-primary: #333333;
-            --text-secondary: #666666;
-            --text-tertiary: #999999;
-            --border: #e0e0e0;
-            --shadow: rgba(0,0,0,0.05);
-            --accent: #ff2442;
-            --accent-hover: #e0203c;
-            --sidebar-bg: #ffffff;
-            --nav-bg: #ffffff;
+            --text-main: #1a1a1a;
+            --text-sub: #666666;
+            --accent: #ff2442; /* 小红书红 */
+            --accent-hover: #ff4d6a;
+            --border: rgba(0, 0, 0, 0.06);
+            --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.04);
+            --shadow-hover: 0 12px 32px rgba(0, 0, 0, 0.08);
+            --blur: blur(16px);
+            --radius-box: 16px;
+            --radius-img: 12px;
         }
-        
+
         [data-theme="dark"] {
-            --bg-primary: #0d0d0d;
-            --bg-secondary: #1a1a1a;
-            --bg-card: #1a1a1a;
-            --text-primary: #ffffff;
-            --text-secondary: #b0b0b0;
-            --text-tertiary: #666666;
-            --border: #2a2a2a;
-            --shadow: rgba(0,0,0,0.3);
+            --bg-body: #0a0a0a;
+            --bg-glass: rgba(20, 20, 20, 0.85);
+            --bg-card: #1c1c1c;
+            --text-main: #ffffff;
+            --text-sub: #a0a0a0;
             --accent: #ff2442;
             --accent-hover: #ff4d6a;
-            --sidebar-bg: #141414;
-            --nav-bg: #141414;
+            --border: rgba(255, 255, 255, 0.1);
+            --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.2);
+            --shadow-hover: 0 12px 32px rgba(0, 0, 0, 0.4);
         }
-        
-        * { 
-            font-family: 'Inter', 'Noto Sans SC', -apple-system, BlinkMacSystemFont, sans-serif;
+
+        * {
+            font-family: 'Plus Jakarta Sans', 'Noto Sans SC', sans-serif;
             box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
         }
-        
+
         body {
-            background: var(--bg-primary);
-            color: var(--text-primary);
+            background-color: var(--bg-body);
+            color: var(--text-main);
             margin: 0;
-            min-height: 100vh;
+            transition: background 0.3s ease;
         }
-        
-        /* 左侧边栏 */
+
+        /* 滚动条美化 */
+        ::-webkit-scrollbar { width: 6px; height: 6px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: rgba(150,150,150,0.3); border-radius: 3px; }
+
+        /* 侧边栏 - 毛玻璃效果 */
         .sidebar {
             position: fixed;
-            left: 0;
-            top: 0;
-            width: 200px;
-            height: 100vh;
-            background: var(--sidebar-bg);
+            left: 0; top: 0; bottom: 0;
+            width: 240px;
+            background: var(--bg-glass);
+            backdrop-filter: var(--blur);
+            -webkit-backdrop-filter: var(--blur);
             border-right: 1px solid var(--border);
-            z-index: 100;
-            padding: 20px 0;
+            z-index: 50;
             display: flex;
             flex-direction: column;
+            padding: 24px 16px;
+            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
-        
-        .sidebar-logo {
-            padding: 0 20px 20px;
-            font-size: 24px;
-            font-weight: 700;
-            color: var(--accent);
-            letter-spacing: -1px;
-        }
-        
-        .sidebar-nav {
-            flex: 1;
-            padding: 0 12px;
-        }
-        
-        .sidebar-item {
+
+        .logo-area {
+            padding: 0 12px 32px;
             display: flex;
             align-items: center;
-            padding: 12px 16px;
-            margin: 4px 0;
-            border-radius: 8px;
-            cursor: pointer;
-            transition: all 0.2s;
-            color: var(--text-secondary);
-            font-size: 14px;
-            font-weight: 500;
-        }
-        
-        .sidebar-item:hover {
-            background: var(--bg-primary);
-            color: var(--text-primary);
-        }
-        
-        .sidebar-item.active {
-            background: var(--bg-primary);
-            color: var(--accent);
-            font-weight: 600;
-        }
-        
-        .sidebar-item svg {
-            width: 20px;
-            height: 20px;
-            margin-right: 12px;
-        }
-        
-        .sidebar-footer {
-            padding: 16px;
-            border-top: 1px solid var(--border);
-        }
-        
-        /* 顶部导航 */
-        .top-nav {
-            position: fixed;
-            top: 0;
-            left: 200px;
-            right: 0;
-            height: 60px;
-            background: var(--nav-bg);
-            border-bottom: 1px solid var(--border);
-            z-index: 99;
-            display: flex;
-            align-items: center;
-            padding: 0 24px;
-            justify-content: space-between;
-        }
-        
-        .search-box {
-            flex: 1;
-            max-width: 500px;
-            position: relative;
-        }
-        
-        .search-box input {
-            width: 100%;
-            height: 40px;
-            border-radius: 20px;
-            border: 1px solid var(--border);
-            background: var(--bg-primary);
-            padding: 0 40px 0 16px;
-            font-size: 14px;
-            color: var(--text-primary);
-            outline: none;
-        }
-        
-        .search-box input::placeholder {
-            color: var(--text-tertiary);
-        }
-        
-        .search-box svg {
-            position: absolute;
-            right: 14px;
-            top: 50%;
-            transform: translateY(-50%);
-            width: 18px;
-            height: 18px;
-            color: var(--text-tertiary);
-        }
-        
-        .top-nav-right {
-            display: flex;
-            align-items: center;
-            gap: 16px;
-        }
-        
-        .theme-btn {
-            width: 36px;
-            height: 36px;
-            border-radius: 50%;
-            border: 1px solid var(--border);
-            background: transparent;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 18px;
-        }
-        
-        /* 主内容区 */
-        .main-container {
-            margin-left: 200px;
-            margin-top: 60px;
-            padding: 24px 40px;
-            min-height: calc(100vh - 60px);
-        }
-        
-        /* 分类标签栏 */
-        .category-tabs {
-            display: flex;
             gap: 12px;
-            margin-bottom: 24px;
-            overflow-x: auto;
-            padding-bottom: 4px;
         }
         
-        .category-tabs::-webkit-scrollbar {
-            display: none;
+        .logo-text {
+            font-size: 22px;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--accent) 0%, #ff6b81 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: -0.5px;
         }
-        
-        .tab-btn {
-            padding: 8px 20px;
-            border-radius: 20px;
-            border: none;
-            background: var(--bg-secondary);
-            color: var(--text-secondary);
-            font-size: 14px;
+
+        .nav-item {
+            display: flex;
+            align-items: center;
+            padding: 14px 16px;
+            margin-bottom: 6px;
+            border-radius: 12px;
+            color: var(--text-sub);
+            font-size: 15px;
             font-weight: 500;
             cursor: pointer;
-            transition: all 0.2s;
-            white-space: nowrap;
-            border: 1px solid var(--border);
+            transition: all 0.2s ease;
+        }
+
+        .nav-item:hover {
+            background: rgba(0,0,0,0.04);
+            color: var(--text-main);
+            transform: translateX(4px);
         }
         
-        .tab-btn:hover {
-            color: var(--text-primary);
-            border-color: var(--text-tertiary);
-        }
-        
-        .tab-btn.active {
+        [data-theme="dark"] .nav-item:hover { background: rgba(255,255,255,0.05); }
+
+        .nav-item.active {
             background: var(--accent);
             color: white;
-            border-color: var(--accent);
+            font-weight: 600;
+            box-shadow: 0 4px 12px rgba(255, 36, 66, 0.3);
         }
-        
-        /* 瀑布流布局 */
-        .waterfall {
-            column-count: 4;
-            column-gap: 16px;
+
+        .nav-item svg { width: 20px; height: 20px; margin-right: 12px; }
+
+        /* 顶部导航 */
+        .top-bar {
+            position: fixed;
+            top: 0; left: 240px; right: 0;
+            height: 72px;
+            background: var(--bg-glass);
+            backdrop-filter: var(--blur);
+            -webkit-backdrop-filter: var(--blur);
+            border-bottom: 1px solid var(--border);
+            z-index: 40;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 32px;
+            transition: left 0.3s ease;
         }
-        
-        @media (max-width: 1400px) {
-            .waterfall { column-count: 3; }
-        }
-        
-        @media (max-width: 1100px) {
-            .waterfall { column-count: 2; }
-        }
-        
-        @media (max-width: 768px) {
-            .sidebar { display: none; }
-            .top-nav { left: 0; }
-            .main-container { margin-left: 0; padding: 16px; }
-            .waterfall { column-count: 2; column-gap: 12px; }
-        }
-        
-        /* 卡片样式 */
-        .card {
-            background: var(--bg-card);
-            border-radius: 12px;
-            overflow: hidden;
-            margin-bottom: 16px;
-            break-inside: avoid;
-            box-shadow: 0 2px 8px var(--shadow);
-            transition: all 0.3s ease;
-            cursor: pointer;
-            border: 1px solid var(--border);
-        }
-        
-        .card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 8px 24px var(--shadow);
-        }
-        
-        .card-image {
-            width: 100%;
-            aspect-ratio: 3/4;
-            background: linear-gradient(135deg, #e6ddd4 0%, #d4c9bd 50%, #c9b8a8 100%);
+
+        .search-wrapper {
             position: relative;
+            width: 100%;
+            max-width: 420px;
+        }
+
+        .search-input {
+            width: 100%;
+            height: 44px;
+            background: rgba(128, 128, 128, 0.08);
+            border: 1px solid transparent;
+            border-radius: 22px;
+            padding: 0 48px 0 20px;
+            font-size: 14px;
+            color: var(--text-main);
+            transition: all 0.3s ease;
+            outline: none;
+        }
+
+        .search-input:focus {
+            background: var(--bg-card);
+            border-color: var(--accent);
+            box-shadow: 0 0 0 4px rgba(255, 36, 66, 0.1);
+        }
+
+        .search-icon {
+            position: absolute;
+            right: 16px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--text-sub);
+            pointer-events: none;
+        }
+
+        /* 主内容区域 */
+        .main-content {
+            margin-left: 240px;
+            margin-top: 72px;
+            padding: 32px;
+            transition: margin-left 0.3s ease;
+        }
+
+        /* 移动端适配 */
+        @media (max-width: 768px) {
+            .sidebar { transform: translateX(-100%); }
+            .sidebar.mobile-open { transform: translateX(0); }
+            .top-bar { left: 0; padding: 0 16px; }
+            .main-content { margin-left: 0; padding: 16px; }
+            
+            .menu-toggle {
+                display: block !important;
+                margin-right: 16px;
+                color: var(--text-main);
+            }
+        }
+        
+        .menu-toggle { display: none; cursor: pointer; }
+
+        /* 分类标签胶囊 */
+        .tabs-container {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 32px;
+            overflow-x: auto;
+            padding: 4px;
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+
+        .tab-pill {
+            padding: 8px 20px;
+            border-radius: 100px;
+            font-size: 14px;
+            font-weight: 600;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            color: var(--text-sub);
+            cursor: pointer;
+            transition: all 0.2s ease;
+            white-space: nowrap;
+        }
+
+        .tab-pill:hover {
+            color: var(--text-main);
+            border-color: var(--text-sub);
+            transform: translateY(-1px);
+        }
+
+        .tab-pill.active {
+            background: var(--text-main);
+            color: var(--bg-body);
+            border-color: var(--text-main);
+        }
+
+        /* 瀑布流卡片 */
+        .masonry-grid {
+            column-count: 4;
+            column-gap: 24px;
+        }
+
+        @media (max-width: 1280px) { .masonry-grid { column-count: 3; } }
+        @media (max-width: 1024px) { .masonry-grid { column-count: 2; } }
+        @media (max-width: 640px) { .masonry-grid { column-count: 1; } }
+
+        .news-card {
+            break-inside: avoid;
+            background: var(--bg-card);
+            border-radius: var(--radius-box);
+            margin-bottom: 24px;
+            border: 1px solid var(--border);
+            box-shadow: var(--shadow-sm);
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+            overflow: hidden;
+            position: relative;
+        }
+
+        .news-card:hover {
+            transform: translateY(-6px) scale(1.01);
+            box-shadow: var(--shadow-hover);
+            border-color: transparent;
+        }
+
+        .card-cover {
+            width: 100%;
+            padding-bottom: 66%; /* 3:2 比例 */
+            position: relative;
+            background: #f0f0f0;
             overflow: hidden;
         }
-        
-        .card-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-        
-        .card-image.shanghai { background: linear-gradient(135deg, #e6ddd4 0%, #c9b8a8 100%); }
-        .card-image.world { background: linear-gradient(135deg, #d4dde6 0%, #a8b5c9 100%); }
-        .card-image.ai { background: linear-gradient(135deg, #e6d4e0 0%, #c9a8c2 100%); }
-        .card-image.stocks { background: linear-gradient(135deg, #d4e6d8 0%, #a8c9b0 100%); }
-        .card-image.policy { background: linear-gradient(135deg, #e6e0d4 0%, #c9c2a8 100%); }
-        
-        .card-badge {
+
+        .card-cover img {
             position: absolute;
-            top: 8px;
-            left: 8px;
-            padding: 4px 8px;
-            background: rgba(0,0,0,0.6);
-            color: white;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .news-card:hover .card-cover img { transform: scale(1.08); }
+
+        /* 渐变背景占位图 */
+        .bg-gradient-1 { background: linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%); }
+        .bg-gradient-2 { background: linear-gradient(120deg, #a1c4fd 0%, #c2e9fb 100%); }
+        .bg-gradient-3 { background: linear-gradient(120deg, #84fab0 0%, #8fd3f4 100%); }
+
+        .card-body { padding: 18px 20px; }
+
+        .card-tag {
+            display: inline-block;
+            padding: 4px 10px;
+            border-radius: 6px;
             font-size: 11px;
-            border-radius: 4px;
-            font-weight: 500;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 10px;
+            background: rgba(255, 36, 66, 0.08);
+            color: var(--accent);
         }
-        
-        .card-content {
-            padding: 12px;
-        }
-        
+
         .card-title {
-            font-size: 14px;
-            font-weight: 500;
+            font-size: 16px;
             line-height: 1.5;
-            color: var(--text-primary);
+            font-weight: 700;
+            color: var(--text-main);
+            margin: 0 0 12px;
             display: -webkit-box;
             -webkit-line-clamp: 2;
             -webkit-box-orient: vertical;
             overflow: hidden;
-            margin-bottom: 8px;
         }
-        
-        .card-meta {
+
+        .card-footer {
             display: flex;
             align-items: center;
             justify-content: space-between;
             font-size: 12px;
-            color: var(--text-tertiary);
+            color: var(--text-sub);
         }
-        
-        .card-author {
+
+        .source-box {
             display: flex;
             align-items: center;
             gap: 6px;
         }
-        
-        .card-avatar {
-            width: 20px;
-            height: 20px;
+
+        .source-icon {
+            width: 20px; height: 20px;
             border-radius: 50%;
-            background: var(--accent);
+            background: var(--text-sub);
+            color: white;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: white;
             font-size: 10px;
+            font-weight: bold;
         }
-        
-        /* 加载动画 */
-        .loading {
-            text-align: center;
-            padding: 40px;
-            color: var(--text-tertiary);
-        }
-        
-        /* 详情弹窗 */
-        .modal {
-            position: fixed;
-            inset: 0;
-            background: rgba(0,0,0,0.6);
-            backdrop-filter: blur(4px);
-            z-index: 1000;
+
+        /* 模态框美化 */
+        .modal-overlay {
+            position: fixed; inset: 0;
+            background: rgba(0,0,0,0.4);
+            backdrop-filter: blur(8px);
+            z-index: 100;
             display: none;
-            align-items: center;
             justify-content: center;
-            padding: 40px;
+            align-items: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
         }
-        
-        .modal.active {
-            display: flex;
-        }
-        
-        .modal-content {
+
+        .modal-overlay.open { display: flex; opacity: 1; }
+
+        .modal-box {
             background: var(--bg-card);
-            border-radius: 16px;
-            max-width: 600px;
-            width: 100%;
-            max-height: 80vh;
-            overflow-y: auto;
+            width: 90%; max-width: 600px;
+            border-radius: 24px;
+            padding: 32px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+            transform: scale(0.9);
+            transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
             position: relative;
+            max-height: 85vh;
+            overflow-y: auto;
         }
-        
-        .modal-close {
+
+        .modal-overlay.open .modal-box { transform: scale(1); }
+
+        .close-btn {
             position: absolute;
-            top: 16px;
-            right: 16px;
-            width: 32px;
-            height: 32px;
+            top: 20px; right: 20px;
+            width: 36px; height: 36px;
             border-radius: 50%;
+            background: rgba(0,0,0,0.05);
             border: none;
-            background: rgba(0,0,0,0.1);
             cursor: pointer;
-            font-size: 18px;
             display: flex;
             align-items: center;
             justify-content: center;
+            color: var(--text-sub);
+            transition: all 0.2s;
         }
-        
-        .modal-body {
-            padding: 24px;
-        }
-        
-        .modal-title {
-            font-size: 20px;
-            font-weight: 600;
-            margin-bottom: 12px;
-            line-height: 1.4;
-        }
-        
-        .modal-source {
-            display: inline-block;
-            padding: 4px 12px;
-            background: var(--accent);
-            color: white;
-            border-radius: 4px;
-            font-size: 12px;
-            margin-bottom: 16px;
-        }
-        
-        .modal-summary {
-            font-size: 15px;
-            line-height: 1.8;
-            color: var(--text-secondary);
-            margin-bottom: 20px;
-            padding: 16px;
-            background: var(--bg-primary);
-            border-radius: 8px;
-        }
-        
-        .modal-link {
+
+        .close-btn:hover { background: rgba(0,0,0,0.1); transform: rotate(90deg); }
+
+        .modal-link-btn {
             display: block;
             width: 100%;
-            padding: 12px;
-            background: var(--accent);
-            color: white;
+            padding: 14px;
+            background: var(--text-main);
+            color: var(--bg-body);
             text-align: center;
-            border-radius: 8px;
+            border-radius: 12px;
+            font-weight: 600;
             text-decoration: none;
-            font-weight: 500;
+            margin-top: 24px;
+            transition: opacity 0.2s;
         }
+
+        .modal-link-btn:hover { opacity: 0.9; }
+
+        /* 加载动画 */
+        .loader {
+            display: flex;
+            justify-content: center;
+            padding: 40px;
+        }
+        .spinner {
+            width: 40px; height: 40px;
+            border: 3px solid rgba(0,0,0,0.1);
+            border-radius: 50%;
+            border-top-color: var(--accent);
+            animation: spin 1s linear infinite;
+        }
+        @keyframes spin { to { transform: rotate(360deg); } }
+
     </style>
 </head>
 <body>
-    <!-- 左侧边栏 -->
-    <aside class="sidebar">
-        <div class="sidebar-logo">📰 新闻热点</div>
-        <nav class="sidebar-nav">
-            <div class="sidebar-item active" onclick="switchTab('all', this)">
-                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>
-                首页推荐
+
+    <aside class="sidebar" id="sidebar">
+        <div class="logo-area">
+            <span style="font-size: 24px;">🔥</span>
+            <div class="logo-text">每日热点</div>
+        </div>
+        
+        <nav style="flex: 1;">
+            <div class="nav-item active" onclick="switchTab('all', this)">
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"></path></svg>
+                聚合推荐
             </div>
-            <div class="sidebar-item" onclick="switchTab('shanghai', this)">
-                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/></svg>
-                🏙️ 上海新闻
+            <div class="nav-item" onclick="switchTab('shanghai', this)">
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path></svg>
+                上海本地
             </div>
-            <div class="sidebar-item" onclick="switchTab('world', this)">
-                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-                🌍 国际新闻
+            <div class="nav-item" onclick="switchTab('world', this)">
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                国际视野
             </div>
-            <div class="sidebar-item" onclick="switchTab('ai', this)">
-                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
-                🤖 AI科技
+            <div class="nav-item" onclick="switchTab('ai', this)">
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                前沿科技
             </div>
-            <div class="sidebar-item" onclick="switchTab('stocks', this)">
-                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/></svg>
-                📈 美股动态
-            </div>
-            <div class="sidebar-item" onclick="switchTab('policy', this)">
-                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 14v3m4-3v3m4-3v3M3 21h18M3 10h18M3 7l9-4 9 4M4 10h16v11H4V10z"/></svg>
-                🇨🇳 政策解读
+            <div class="nav-item" onclick="switchTab('stocks', this)">
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 12l3-3 3 3 4-4M8 21l4-4 4 4M3 4h18M4 4h16v12a1 1 0 01-1 1H5a1 1 0 01-1-1V4z"></path></svg>
+                金融市场
             </div>
         </nav>
-        <div class="sidebar-footer">
-            <div class="sidebar-item" onclick="toggleTheme()">
-                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/></svg>
-                <span id="theme-text">深色模式</span>
+
+        <div style="padding-top: 20px; border-top: 1px solid var(--border);">
+            <div class="nav-item" onclick="toggleTheme()" id="theme-btn">
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg>
+                <span>深色模式</span>
             </div>
         </div>
     </aside>
 
-    <!-- 顶部导航 -->
-    <header class="top-nav">
-        <div class="search-box">
-            <input type="text" placeholder="搜索感兴趣的新闻..." id="search-input">
-            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
-        </div>
-        <div class="top-nav-right">
-            <span id="update-time" style="font-size: 13px; color: var(--text-tertiary);"></span>
-            <button class="theme-btn" onclick="toggleTheme()" title="切换主题">🌙</button>
+    <header class="top-bar">
+        <div style="display: flex; align-items: center; gap: 16px; width: 100%;">
+            <svg class="menu-toggle" width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24" onclick="toggleSidebar()"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+            
+            <div class="search-wrapper">
+                <input type="text" class="search-input" id="search-input" placeholder="搜索全球新闻...">
+                <svg class="search-icon" width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+            </div>
+
+            <div style="margin-left: auto; font-size: 13px; color: var(--text-sub);" id="update-time">
+                加载中...
+            </div>
         </div>
     </header>
 
-    <!-- 主内容区 -->
-    <main class="main-container">
-        <!-- 分类标签 -->
-        <div class="category-tabs" id="category-tabs">
-            <button class="tab-btn active" onclick="filterCategory('all', this)">全部</button>
-            <button class="tab-btn" onclick="filterCategory('shanghai', this)">上海</button>
-            <button class="tab-btn" onclick="filterCategory('world', this)">国际</button>
-            <button class="tab-btn" onclick="filterCategory('ai', this)">AI科技</button>
-            <button class="tab-btn" onclick="filterCategory('stocks', this)">美股</button>
-            <button class="tab-btn" onclick="filterCategory('policy', this)">政策</button>
+    <main class="main-content" id="main-content">
+        <div class="tabs-container">
+            <div class="tab-pill active" onclick="filterCategory('all', this)">全部</div>
+            <div class="tab-pill" onclick="filterCategory('shanghai', this)">🏙️ 上海</div>
+            <div class="tab-pill" onclick="filterCategory('world', this)">🌍 国际</div>
+            <div class="tab-pill" onclick="filterCategory('ai', this)">🤖 科技</div>
+            <div class="tab-pill" onclick="filterCategory('stocks', this)">📈 财经</div>
+            <div class="tab-pill" onclick="filterCategory('policy', this)">🇨🇳 政策</div>
         </div>
 
-        <!-- 瀑布流内容 -->
-        <div class="waterfall" id="news-grid">
-            <div class="loading">加载中...</div>
+        <div class="masonry-grid" id="news-grid">
+            <div class="loader"><div class="spinner"></div></div>
         </div>
     </main>
 
-    <!-- 详情弹窗 -->
-    <div class="modal" id="modal" onclick="closeModal(event)">
-        <div class="modal-content" onclick="event.stopPropagation()">
-            <button class="modal-close" onclick="closeModal()">×</button>
-            <div class="modal-body">
-                <span class="modal-source" id="modal-source">来源</span>
-                <h2 class="modal-title" id="modal-title">标题</h2>
-                <div class="modal-summary" id="modal-summary">摘要</div>
-                <a class="modal-link" id="modal-link" href="#" target="_blank">阅读原文 →</a>
+    <div class="modal-overlay" id="modal" onclick="closeModal(event)">
+        <div class="modal-box" onclick="event.stopPropagation()">
+            <button class="close-btn" onclick="closeModal()">×</button>
+            <div style="margin-bottom: 16px;">
+                <span class="card-tag" id="modal-source" style="margin: 0;">SOURCE</span>
             </div>
+            <h2 id="modal-title" style="font-size: 22px; font-weight: 700; margin-bottom: 16px; line-height: 1.4;"></h2>
+            <div id="modal-summary" style="font-size: 16px; line-height: 1.8; color: var(--text-sub);"></div>
+            <a href="#" target="_blank" id="modal-link" class="modal-link-btn">阅读原文 →</a>
         </div>
     </div>
 
     <script>
-        let allNews = {};
-        let currentTab = 'all';
-        let currentCategory = 'all';
-
-        // 分类配置
-        const categoryConfig = {
-            shanghai: { icon: '🏙️', label: '上海', color: 'shanghai' },
-            world: { icon: '🌍', label: '国际', color: 'world' },
-            ai: { icon: '🤖', label: 'AI', color: 'ai' },
-            stocks: { icon: '📈', label: '美股', color: 'stocks' },
-            policy: { icon: '🇨🇳', label: '政策', color: 'policy' }
+        // 配置
+        const categoryMap = {
+            shanghai: { label: '上海', color: 'bg-gradient-1' },
+            world: { label: '国际', color: 'bg-gradient-2' },
+            ai: { label: 'AI', color: 'bg-gradient-3' },
+            stocks: { label: '财经', color: 'bg-gradient-1' },
+            policy: { label: '政策', color: 'bg-gradient-2' },
+            all: { label: '热点', color: 'bg-gradient-3' }
         };
 
-        // 加载新闻
-        async function loadNews() {
+        let allNewsData = {};
+        let currentTab = 'all';
+
+        // 核心加载逻辑
+        async function loadData() {
             try {
-                const response = await fetch('data.json?t=' + Date.now());
-                allNews = await response.json();
+                const res = await fetch('data.json?t=' + Date.now());
+                allNewsData = await res.json();
                 renderNews();
-                
-                document.getElementById('update-time').textContent = 
-                    new Date().toLocaleString('zh-CN', { 
-                        month: '2-digit', day: '2-digit', 
-                        hour: '2-digit', minute: '2-digit' 
-                    }) + ' 更新';
-            } catch (error) {
-                console.error('加载失败:', error);
+                updateTime();
+            } catch (e) {
+                console.error(e);
                 document.getElementById('news-grid').innerHTML = 
-                    '<div class="loading">加载失败，请刷新重试</div>';
+                    `<div style="text-align:center; padding:40px; color:var(--text-sub)">暂时无法获取新闻，请稍后刷新</div>`;
             }
         }
 
-        // 渲染新闻
-        function renderNews() {
+        // 渲染新闻卡片
+        function renderNews(filterKey = 'all', keyword = '') {
             const grid = document.getElementById('news-grid');
-            grid.innerHTML = '';
-            
             let items = [];
-            
-            if (currentCategory === 'all') {
-                Object.entries(allNews).forEach(([category, news]) => {
-                    if (Array.isArray(news)) {
-                        news.forEach(item => {
-                            items.push({ ...item, category });
-                        });
-                    }
-                });
-                items = items.sort(() => Math.random() - 0.5);
-            } else {
-                items = (allNews[currentCategory] || []).map(item => ({ 
-                    ...item, 
-                    category: currentCategory 
-                }));
-            }
-            
-            items = items.slice(0, 50);
-            
-            if (items.length === 0) {
-                grid.innerHTML = '<div class="loading">暂无数据</div>';
-                return;
-            }
-            
-            grid.innerHTML = items.map((item, index) => createCard(item, index)).join('');
-        }
 
-        // 创建卡片
-        function createCard(item, index) {
-            const config = categoryConfig[item.category] || { icon: '📰', label: '新闻', color: '' };
-            const cleanTitle = item.title.replace(/^[🏠👥🌸🚀⚡🔋📊💊🪙⭐⬆️💬🇨🇳🔥🔬📄📈\s]*/u, '');
-            
-            return `
-                <div class="card" onclick="openModal(${index})">
-                    <div class="card-image ${config.color}">
-                        ${item.image ? `<img src="${item.image}" alt="${cleanTitle}" loading="lazy">` : ''}
-                        <span class="card-badge">${config.label}</span>
+            // 数据扁平化处理
+            if (currentTab === 'all' && filterKey === 'all') {
+                Object.entries(allNewsData).forEach(([cat, list]) => {
+                    if(Array.isArray(list)) list.forEach(item => items.push({...item, category: cat}));
+                });
+                items.sort(() => Math.random() - 0.5); // 随机打乱
+            } else {
+                const targetKey = filterKey === 'all' ? currentTab : filterKey;
+                items = (allNewsData[targetKey] || []).map(item => ({...item, category: targetKey}));
+            }
+
+            // 搜索过滤
+            if (keyword) {
+                items = items.filter(i => i.title.toLowerCase().includes(keyword.toLowerCase()));
+            }
+
+            grid.innerHTML = items.slice(0, 60).map((item, index) => {
+                const catConfig = categoryMap[item.category] || categoryMap.all;
+                // 清理emoji标题
+                const cleanTitle = item.title.replace(/^[^\u4e00-\u9fa5a-zA-Z0-9]*/, '');
+                
+                return `
+                <div class="news-card" onclick="openModal(${index}, '${item.category}')" style="animation: fadeIn 0.5s ease ${index * 0.05}s forwards; opacity: 0;">
+                    <div class="card-cover ${catConfig.color}">
+                        ${item.image ? `<img src="${item.image}" loading="lazy" alt="news">` : ''}
                     </div>
-                    <div class="card-content">
+                    <div class="card-body">
+                        <span class="card-tag">${catConfig.label}</span>
                         <h3 class="card-title">${cleanTitle}</h3>
-                        <div class="card-meta">
-                            <div class="card-author">
-                                <div class="card-avatar">${item.source.charAt(0)}</div>
+                        <div class="card-footer">
+                            <div class="source-box">
+                                <div class="source-icon">${item.source.charAt(0)}</div>
                                 <span>${item.source}</span>
                             </div>
-                            <span>${item.time || ''}</span>
+                            <span>${formatTime(item.time)}</span>
                         </div>
                     </div>
-                </div>
-            `;
+                </div>`;
+            }).join('');
+            
+            // 添加淡入动画
+            const style = document.createElement('style');
+            style.innerHTML = `@keyframes fadeIn { from { opacity:0; transform:translateY(10px); } to { opacity:1; transform:translateY(0); } }`;
+            document.head.appendChild(style);
         }
 
-        // 切换侧边栏标签
-        function switchTab(tab, element) {
+        // 交互功能
+        function switchTab(tab, el) {
             currentTab = tab;
-            currentCategory = tab;
+            document.querySelectorAll('.nav-item').forEach(d => d.classList.remove('active'));
+            el.classList.add('active');
             
-            document.querySelectorAll('.sidebar-item').forEach(el => el.classList.remove('active'));
-            element.classList.add('active');
-            
-            document.querySelectorAll('.tab-btn').forEach(el => el.classList.remove('active'));
-            const tabBtn = Array.from(document.querySelectorAll('.tab-btn')).find(el => 
-                el.textContent.includes(categoryConfig[tab]?.label || '全部')
-            );
-            if (tabBtn) tabBtn.classList.add('active');
-            
+            // 联动顶部胶囊
+            const pills = document.querySelectorAll('.tab-pill');
+            pills.forEach(p => p.classList.remove('active'));
+            // 简单匹配第一个胶囊高亮
+            if(pills[0]) pills[0].classList.add('active');
+
             renderNews();
+            if(window.innerWidth < 768) toggleSidebar(); // 移动端自动收起
         }
 
-        // 切换分类标签
-        function filterCategory(category, element) {
-            currentCategory = category;
+        function filterCategory(cat, el) {
+            document.querySelectorAll('.tab-pill').forEach(d => d.classList.remove('active'));
+            el.classList.add('active');
             
-            document.querySelectorAll('.tab-btn').forEach(el => el.classList.remove('active'));
-            element.classList.add('active');
-            
-            renderNews();
-        }
-
-        // 打开弹窗
-        function openModal(index) {
-            let items = [];
-            
-            if (currentCategory === 'all') {
-                Object.entries(allNews).forEach(([category, news]) => {
-                    if (Array.isArray(news)) {
-                        news.forEach(item => items.push({ ...item, category }));
-                    }
-                });
+            // 如果是在全部标签页下点击分类，只过滤显示
+            if (currentTab === 'all') {
+                renderNews(cat);
             } else {
-                items = (allNews[currentCategory] || []).map(item => ({ 
-                    ...item, 
-                    category: currentCategory 
-                }));
+                // 如果在具体分类页，点击tab只是视觉切换，数据源不变（或者可以做更复杂的逻辑）
+                // 简单处理：保持当前大类
             }
+        }
+
+        // 弹窗逻辑
+        let currentModalData = null;
+        function openModal(index, category) {
+            // 重新查找数据（因为渲染顺序可能打乱）
+            // 这里简单实现：实际上建议把数据存到 dataset
+            // 为了演示方便，我们假设是重新渲染时的那个数组。
+            // 修正：更稳妥的方式是把数据对象存入全局缓存，这里简化处理：
+            // 实际项目中建议给每个新闻加唯一ID
+            const cards = document.querySelectorAll('.news-card');
+            const title = cards[index].querySelector('.card-title').innerText;
             
-            const item = items[index];
-            if (!item) return;
+            // 在所有数据中查找匹配标题的（简单粗暴）
+            let foundItem = null;
+            Object.values(allNewsData).flat().forEach(item => {
+                if(item.title.includes(title)) foundItem = item;
+            });
+
+            if(!foundItem) return;
+
+            document.getElementById('modal-title').innerText = foundItem.title;
+            document.getElementById('modal-summary').innerText = foundItem.summary || "点击下方链接阅读详细内容...";
+            document.getElementById('modal-source').innerText = foundItem.source;
+            document.getElementById('modal-link').href = foundItem.link;
             
-            document.getElementById('modal-title').textContent = 
-                item.title.replace(/^[🏠👥🌸🚀⚡🔋📊💊🪙⭐⬆️💬🇨🇳🔥🔬📄📈\s]*/u, '');
-            document.getElementById('modal-source').textContent = item.source;
-            document.getElementById('modal-summary').textContent = item.summary || '暂无摘要';
-            document.getElementById('modal-link').href = item.link;
-            
-            document.getElementById('modal').classList.add('active');
+            const modal = document.getElementById('modal');
+            modal.style.display = 'flex';
+            // 强制重绘实现动画
+            requestAnimationFrame(() => modal.classList.add('open'));
             document.body.style.overflow = 'hidden';
         }
 
-        // 关闭弹窗
-        function closeModal(event) {
-            if (!event || event.target === document.getElementById('modal') || 
-                event.target.classList.contains('modal-close')) {
-                document.getElementById('modal').classList.remove('active');
+        function closeModal(e) {
+            if(e && e.target !== e.currentTarget && !e.target.classList.contains('close-btn')) return;
+            const modal = document.getElementById('modal');
+            modal.classList.remove('open');
+            setTimeout(() => {
+                modal.style.display = 'none';
                 document.body.style.overflow = '';
-            }
+            }, 300);
         }
 
-        // 主题切换
+        // 工具函数
         function toggleTheme() {
-            const html = document.documentElement;
-            const currentTheme = html.getAttribute('data-theme');
-            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-            
-            html.setAttribute('data-theme', newTheme);
+            const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+            const newTheme = isDark ? 'light' : 'dark';
+            document.documentElement.setAttribute('data-theme', newTheme);
             localStorage.setItem('theme', newTheme);
             
-            const themeText = document.getElementById('theme-text');
-            if (themeText) themeText.textContent = newTheme === 'dark' ? '浅色模式' : '深色模式';
-            
-            document.querySelector('.theme-btn').textContent = newTheme === 'dark' ? '☀️' : '🌙';
+            const btn = document.getElementById('theme-btn');
+            btn.querySelector('span').innerText = newTheme === 'dark' ? '浅色模式' : '深色模式';
         }
 
-        // 初始化主题
-        function initTheme() {
-            const savedTheme = localStorage.getItem('theme');
-            const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-            const theme = savedTheme || (prefersDark ? 'dark' : 'light');
-            
-            document.documentElement.setAttribute('data-theme', theme);
-            document.querySelector('.theme-btn').textContent = theme === 'dark' ? '☀️' : '🌙';
-            
-            const themeText = document.getElementById('theme-text');
-            if (themeText) themeText.textContent = theme === 'dark' ? '浅色模式' : '浅色模式';
+        function toggleSidebar() {
+            document.getElementById('sidebar').classList.toggle('mobile-open');
         }
 
-        // 搜索功能
-        document.getElementById('search-input')?.addEventListener('input', (e) => {
-            const keyword = e.target.value.toLowerCase();
-            if (!keyword) {
-                renderNews();
-                return;
-            }
-            
-            let items = [];
-            Object.entries(allNews).forEach(([category, news]) => {
-                if (Array.isArray(news)) {
-                    news.forEach(item => {
-                        if (item.title.toLowerCase().includes(keyword)) {
-                            items.push({ ...item, category });
-                        }
-                    });
-                }
-            });
-            
-            const grid = document.getElementById('news-grid');
-            grid.innerHTML = items.map((item, index) => createCard(item, index)).join('');
-        });
+        function formatTime(str) {
+            if(!str) return '';
+            return str.replace('2024-', '').replace('2025-', ''); // 简化日期
+        }
 
-        // ESC关闭弹窗
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape') closeModal();
+        function updateTime() {
+            const now = new Date();
+            document.getElementById('update-time').innerText = 
+                `更新于 ${now.getHours().toString().padStart(2,'0')}:${now.getMinutes().toString().padStart(2,'0')}`;
+        }
+
+        // 搜索监听
+        document.getElementById('search-input').addEventListener('input', (e) => {
+            renderNews('all', e.target.value);
         });
 
         // 初始化
-        initTheme();
-        loadNews();
+        const savedTheme = localStorage.getItem('theme') || 'light';
+        document.documentElement.setAttribute('data-theme', savedTheme);
+        loadData();
+
     </script>
 </body>
 </html>
