@@ -78,7 +78,7 @@
             box-shadow: 0 12px 32px var(--shadow);
         }
         
-        /* 图片区域 - 抽象渐变 */
+        /* 图片区域 */
         .card-image {
             width: 100%;
             aspect-ratio: 4/5;
@@ -86,11 +86,28 @@
             overflow: hidden;
         }
         
+        .card-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.4s ease;
+        }
+        
+        .xhs-card:hover .card-image img {
+            transform: scale(1.05);
+        }
+        
+        /* 默认渐变背景（无图时使用） */
         .card-image::before {
             content: '';
             position: absolute;
             inset: 0;
             opacity: 0.9;
+            z-index: 1;
+        }
+        
+        .card-image.has-image::before {
+            display: none;
         }
         
         .card-image.shanghai::before { 
@@ -126,33 +143,27 @@
             background: linear-gradient(135deg, #5a523a 0%, #4a422a 50%, #3a321a 100%);
         }
         
-        /* 抽象几何图案 */
-        .geometric-pattern {
+        /* 图片加载失败时的骨架屏 */
+        .card-image .skeleton {
             position: absolute;
             inset: 0;
-            opacity: 0.3;
+            background: linear-gradient(90deg, var(--bg-primary) 25%, var(--border) 50%, var(--bg-primary) 75%);
+            background-size: 200% 100%;
+            animation: shimmer 1.5s infinite;
         }
         
-        .geometric-pattern::before,
-        .geometric-pattern::after {
-            content: '';
+        /* AI 生成标识 */
+        .ai-badge {
             position: absolute;
-            border-radius: 50%;
-            background: rgba(255,255,255,0.2);
-        }
-        
-        .geometric-pattern::before {
-            width: 60%;
-            height: 60%;
-            top: -20%;
-            right: -20%;
-        }
-        
-        .geometric-pattern::after {
-            width: 40%;
-            height: 40%;
-            bottom: 10%;
-            left: 10%;
+            top: 8px;
+            right: 8px;
+            padding: 4px 8px;
+            background: rgba(0,0,0,0.6);
+            color: white;
+            font-size: 10px;
+            border-radius: 12px;
+            z-index: 3;
+            backdrop-filter: blur(4px);
         }
         
         /* 图标 */
@@ -693,13 +704,26 @@
                 ? `<p class="card-summary-preview">${item.summary.substring(0, 50)}${item.summary.length > 50 ? '...' : ''}</p>` 
                 : '';
             
+            // 处理图片
+            let imageHtml = '';
+            let hasImageClass = '';
+            let aiBadge = '';
+            
+            if (item.image) {
+                // 有图片，显示真实图片或AI生成图片
+                hasImageClass = 'has-image';
+                aiBadge = item.imageType === 'ai' ? '<span class="ai-badge">🎨 AI</span>' : '';
+                imageHtml = `<img src="${item.image}" alt="${cleanTitle}" loading="lazy" onerror="this.style.display='none'; this.parentElement.classList.remove('has-image');">`;
+            }
+            
             return `
                 <div class="masonry-item">
                     <div class="xhs-card block" onclick="openPreview(${index})" style="cursor: pointer;">
-                        <div class="card-image ${config.color}">
-                            <div class="geometric-pattern"></div>
+                        <div class="card-image ${config.color} ${hasImageClass}">
+                            ${imageHtml}
                             <div class="card-icon">${config.icon}</div>
                             ${isNew}
+                            ${aiBadge}
                             <span class="category-tag">${config.label}</span>
                         </div>
                         <div class="card-content">

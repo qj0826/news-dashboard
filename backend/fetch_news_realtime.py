@@ -11,6 +11,11 @@ from datetime import datetime, timedelta
 from pathlib import Path
 import html
 import urllib.parse
+import sys
+
+# 导入图片处理模块
+sys.path.insert(0, str(Path(__file__).parent))
+from image_handler import get_news_image
 
 DATA_DIR = Path(__file__).parent.parent / "data"
 DATA_DIR.mkdir(exist_ok=True)
@@ -515,6 +520,29 @@ def fetch_news():
     ]
     print(f"  ✓ Policy: {len(news_data['policy'])} 条")
     
+    # 9. 为新闻添加封面图片（只处理前3条，避免太慢）
+    print("\n🖼️ 获取封面图片...")
+    for category, items in news_data.items():
+        print(f"   {category}: ", end="", flush=True)
+        for i, item in enumerate(items[:3]):  # 只处理前3条
+            try:
+                image_result = get_news_image(
+                    title=item['title'],
+                    url=item.get('link', ''),
+                    category=category,
+                    prefer_real=True
+                )
+                if image_result:
+                    item['image'] = image_result['url']
+                    item['imageType'] = image_result['type']  # 'real' 或 'ai'
+                else:
+                    item['image'] = None
+                    item['imageType'] = None
+            except Exception as e:
+                item['image'] = None
+                item['imageType'] = None
+        print(f"✓")
+    
     # 保存
     output_file = DATA_DIR / "news.json"
     with open(output_file, "w", encoding="utf-8") as f:
@@ -523,6 +551,7 @@ def fetch_news():
     # 同时复制到前端目录
     import shutil
     shutil.copy(output_file, DATA_DIR.parent / "frontend" / "data.json")
+    shutil.copy(output_file, DATA_DIR.parent / "data.json")
     
     print("\n" + "="*50)
     print(f"✅ 更新完成! 总计: {sum(len(v) for v in news_data.values())} 条")
