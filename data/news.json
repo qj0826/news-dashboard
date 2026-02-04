@@ -5,7 +5,7 @@
       "link": "https://www.jiading.gov.cn/",
       "summary": "嘉定区推动新城建设，聚焦科技创新",
       "source": "嘉定发布",
-      "time": "02-04 12:15",
+      "time": "02-04",
       "isNew": true,
       "score": 3,
       "image": null,
@@ -16,7 +16,7 @@
       "link": "https://www.jiading.gov.cn/",
       "summary": "南翔镇推进老旧小区加装电梯",
       "source": "南翔镇",
-      "time": "02-04 12:15",
+      "time": "02-04",
       "isNew": true,
       "score": 3,
       "image": null,
@@ -27,8 +27,8 @@
       "link": "https://www.jiading.gov.cn/",
       "summary": "州桥老街春节期间民俗文化活动",
       "source": "嘉定文旅",
-      "time": "02-04 12:15",
-      "isNew": true,
+      "time": "02-01",
+      "isNew": false,
       "score": 2,
       "image": null,
       "imageType": null
@@ -41,6 +41,15 @@
       "time": "02-04",
       "isNew": true,
       "score": 2
+    },
+    {
+      "title": "腾讯元宝红包分享方式修改：已变更为口令红包",
+      "link": "https://finance.sina.com.cn/chanjing/wddc/2026-02-04/doc-inhkrpqr3749004.shtml",
+      "summary": "新浪上海",
+      "source": "新浪上海",
+      "time": "",
+      "isNew": true,
+      "score": 0
     },
     {
       "title": "京东科技“鲸诉通”上线半年承接超10万起案件",
@@ -212,15 +221,6 @@
       "time": "",
       "isNew": true,
       "score": 0
-    },
-    {
-      "title": "家里千兆宽带为啥还是掉线卡顿 余承东分享提升Wi-Fi信号实用技巧",
-      "link": "https://finance.sina.com.cn/tech/discovery/2026-02-03/doc-inhkpzpi4275831.shtml",
-      "summary": "新浪上海",
-      "source": "新浪上海",
-      "time": "",
-      "isNew": true,
-      "score": 0
     }
   ],
   "stocks": [
@@ -229,7 +229,7 @@
       "link": "https://www.rocketlabusa.com/news/",
       "summary": "官方新闻与发射更新",
       "source": "Rocket Lab",
-      "time": "02-04 12:15",
+      "time": "02-04",
       "isNew": true,
       "image": null,
       "imageType": null
@@ -239,7 +239,7 @@
       "link": "https://ir.tesla.com/",
       "summary": "财报、新闻与公告",
       "source": "Tesla IR",
-      "time": "02-04 12:15",
+      "time": "02-04",
       "isNew": true,
       "image": null,
       "imageType": null
@@ -249,7 +249,7 @@
       "link": "https://investors.palantir.com/news/",
       "summary": "政府与企业合同",
       "source": "Palantir",
-      "time": "02-04 12:15",
+      "time": "02-04",
       "isNew": true,
       "image": null,
       "imageType": null
@@ -258,11 +258,21 @@
   "policy": [],
   "world": [
     {
+      "title": "乌克兰能源部长称基辅发电厂严重受损",
+      "link": "https://reddit.com/r/worldnews/comments/1qvev12/ukrainian_energy_minister_says_kyiv_power_plant/",
+      "summary": "⬆️ 1 | 💬 0",
+      "source": "Reddit 国际新闻",
+      "time": "02-04 12:31",
+      "isNew": true,
+      "image": null,
+      "imageType": null
+    },
+    {
       "title": "/r/WorldNews 直播主题：俄罗斯入侵乌克兰 1441 年，第 1 部分（主题#1588）",
       "link": "https://reddit.com/r/worldnews/comments/1qve8y7/rworldnews_live_thread_russian_invasion_of/",
-      "summary": "⬆️ 7 | 💬 1",
+      "summary": "⬆️ 24 | 💬 3",
       "source": "Reddit 国际新闻",
-      "time": "02-04 12:15",
+      "time": "02-04 12:02",
       "isNew": true,
       "image": null,
       "imageType": null
@@ -270,9 +280,9 @@
     {
       "title": "“我的名单上的下一个是 VPN”——法国将在 15 岁以下青少年使用社交媒体禁令后评估 VPN 使用情况",
       "link": "https://reddit.com/r/worldnews/comments/1qvdrz9/vpns_are_next_on_my_list_france_set_to_evaluate/",
-      "summary": "⬆️ 25 | 💬 4",
+      "summary": "⬆️ 63 | 💬 12",
       "source": "Reddit 国际新闻",
-      "time": "02-04 12:15",
+      "time": "02-04 11:41",
       "isNew": true,
       "image": null,
       "imageType": null
@@ -280,17 +290,15 @@
     {
       "title": "特朗普表示印度将停止进口俄罗斯石油，莫迪政府保持沉默",
       "link": "https://reddit.com/r/worldnews/comments/1qvdm6v/trump_says_india_will_halt_russian_oil_imports/",
-      "summary": "⬆️ 21 | 💬 6",
+      "summary": "⬆️ 29 | 💬 8",
       "source": "Reddit 国际新闻",
-      "time": "02-04 12:15",
-      "isNew": true,
-      "image": null,
-      "imageType": null
+      "time": "02-04 11:33",
+      "isNew": true
     },
     {
       "title": "3名印度教兄弟用铁锹将19岁的姐姐和丈夫打死 - 荣誉杀人",
       "link": "https://reddit.com/r/worldnews/comments/1qvddv6/3_hindu_brothers_beat_19hyr_old_sister_and/",
-      "summary": "⬆️ 0 | 💬 9",
+      "summary": "⬆️ 0 | 💬 12",
       "source": "Reddit 国际新闻",
       "time": "02-04 11:23",
       "isNew": true
@@ -298,7 +306,7 @@
     {
       "title": "霍乱细菌毒素可以抑制结直肠癌的生长而不损害健康组织 - 瑞典于默奥大学",
       "link": "https://reddit.com/r/worldnews/comments/1qvddqg/a_cholera_bacterial_toxin_can_counteract/",
-      "summary": "⬆️ 108 | 💬 4",
+      "summary": "⬆️ 136 | 💬 4",
       "source": "Reddit 国际新闻",
       "time": "02-04 11:22",
       "isNew": true
@@ -306,7 +314,7 @@
     {
       "title": "印度俄罗斯石油：克里姆林宫否认在特朗普声称后停止生产",
       "link": "https://reddit.com/r/worldnews/comments/1qvd3jd/india_russia_oil_kremlin_denies_halt_after_trump/",
-      "summary": "⬆️ 36 | 💬 6",
+      "summary": "⬆️ 38 | 💬 6",
       "source": "Reddit 国际新闻",
       "time": "02-04 11:10",
       "isNew": true
@@ -314,7 +322,7 @@
     {
       "title": "台陆委会主任批评国共论坛",
       "link": "https://reddit.com/r/worldnews/comments/1qvcvk4/taiwan_mainland_affairs_council_minister/",
-      "summary": "⬆️ 6 | 💬 1",
+      "summary": "⬆️ 7 | 💬 1",
       "source": "Reddit 国际新闻",
       "time": "02-04 11:00",
       "isNew": true
@@ -322,7 +330,7 @@
     {
       "title": "中东紧张局势升级，伊朗要求阿曼作为美国会谈场地",
       "link": "https://reddit.com/r/worldnews/comments/1qvcs3e/iran_demands_oman_venue_for_us_talks_as_tensions/",
-      "summary": "⬆️ 15 | 💬 6",
+      "summary": "⬆️ 17 | 💬 8",
       "source": "Reddit 国际新闻",
       "time": "02-04 10:56",
       "isNew": true
@@ -330,17 +338,9 @@
     {
       "title": "埃隆·马斯克称佩德罗·桑切斯是“西班牙人民的暴君和叛徒”",
       "link": "https://reddit.com/r/worldnews/comments/1qvc9oy/elon_musk_calls_pedro_sánchez_a_tyrant_and/",
-      "summary": "⬆️ 303 | 💬 144",
+      "summary": "⬆️ 388 | 💬 177",
       "source": "Reddit 国际新闻",
       "time": "02-04 10:33",
-      "isNew": true
-    },
-    {
-      "title": "母亲说让 13 岁的儿子游四个小时以拯救家人是“有史以来最艰难的决定之一”",
-      "link": "https://reddit.com/r/worldnews/comments/1qvc7dg/mother_says_asking_13yearold_son_to_swim_four/",
-      "summary": "⬆️ 3917 | 💬 258",
-      "source": "Reddit 国际新闻",
-      "time": "02-04 10:30",
       "isNew": true
     },
     {
