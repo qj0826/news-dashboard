@@ -626,31 +626,144 @@ def fetch_us_stock_news():
     
     return unique_items[:15]  # 最多返回15条
 
-def fetch_tech_news():
-    """抓取科技媒体 - TechCrunch"""
+def fetch_ai_news():
+    """抓取AI/Tech新闻 - 多源聚合"""
     items = []
+    headers = {'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7)'}
+    
+    # 1. TechCrunch AI/科技新闻
+    print("\n💻 TECHCRUNCH")
     try:
-        # TechCrunch RSS via RSSHub
         url = "https://rsshub.app/techcrunch"
-        headers = {'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7)'}
         response = requests.get(url, headers=headers, timeout=15, proxies=PROXY)
         
         if response.status_code == 200:
             feed = feedparser.parse(response.content)
-            for entry in feed.entries[:8]:
+            count = 0
+            for entry in feed.entries[:6]:
                 title = translate_text(html.unescape(entry.get("title", "")).strip())
                 items.append({
-                    "title": title,
+                    "title": f"🚀 {title}",
                     "link": entry.get("link", ""),
                     "summary": "TechCrunch",
                     "source": "TechCrunch",
                     "time": format_time(entry.get("published", "")),
                     "isNew": is_recent(entry.get("published_parsed"))
                 })
-        print(f"  ✓ TechCrunch: {len(items)} 条")
+                count += 1
+            print(f"  ✓ TechCrunch: {count} 条")
     except Exception as e:
         print(f"  ✗ TechCrunch: {str(e)[:50]}")
-    return items
+    
+    # 2. OpenAI 博客
+    print("\n🤖 OPENAI")
+    try:
+        url = "https://rsshub.app/openai/blog"
+        response = requests.get(url, headers=headers, timeout=10, proxies=PROXY)
+        
+        if response.status_code == 200:
+            feed = feedparser.parse(response.content)
+            count = 0
+            for entry in feed.entries[:5]:
+                title = html.unescape(entry.get("title", "")).strip()
+                items.append({
+                    "title": f"🔥 {title}",
+                    "link": entry.get("link", ""),
+                    "summary": "OpenAI 官方",
+                    "source": "OpenAI",
+                    "time": format_time(entry.get("published", "")),
+                    "isNew": is_recent(entry.get("published_parsed"))
+                })
+                count += 1
+            print(f"  ✓ OpenAI: {count} 条")
+    except Exception as e:
+        print(f"  ✗ OpenAI: {str(e)[:50]}")
+    
+    # 3. Google AI 博客
+    print("\n🧠 GOOGLE AI")
+    try:
+        url = "https://rsshub.app/google/research"
+        response = requests.get(url, headers=headers, timeout=10, proxies=PROXY)
+        
+        if response.status_code == 200:
+            feed = feedparser.parse(response.content)
+            count = 0
+            for entry in feed.entries[:5]:
+                title = html.unescape(entry.get("title", "")).strip()
+                items.append({
+                    "title": f"🔬 {title}",
+                    "link": entry.get("link", ""),
+                    "summary": "Google Research",
+                    "source": "Google AI",
+                    "time": format_time(entry.get("published", "")),
+                    "isNew": is_recent(entry.get("published_parsed"))
+                })
+                count += 1
+            print(f"  ✓ Google AI: {count} 条")
+    except Exception as e:
+        print(f"  ✗ Google AI: {str(e)[:50]}")
+    
+    # 4. Papers With Code 最新论文
+    print("\n📄 PAPERS WITH CODE")
+    try:
+        url = "https://rsshub.app/papers/arxiv/CS.AI"
+        response = requests.get(url, headers=headers, timeout=10, proxies=PROXY)
+        
+        if response.status_code == 200:
+            feed = feedparser.parse(response.content)
+            count = 0
+            for entry in feed.entries[:5]:
+                title = html.unescape(entry.get("title", "")).strip()
+                items.append({
+                    "title": f"📄 {title[:60]}...",
+                    "link": entry.get("link", ""),
+                    "summary": "arXiv AI",
+                    "source": "arXiv",
+                    "time": format_time(entry.get("published", "")),
+                    "isNew": is_recent(entry.get("published_parsed"))
+                })
+                count += 1
+            print(f"  ✓ arXiv AI: {count} 条")
+    except Exception as e:
+        print(f"  ✗ arXiv: {str(e)[:50]}")
+    
+    # 5. GitHub Trending
+    print("\n🐙 GITHUB TRENDING")
+    try:
+        url = "https://rsshub.app/github/trending/daily/python"
+        response = requests.get(url, headers=headers, timeout=10, proxies=PROXY)
+        
+        if response.status_code == 200:
+            feed = feedparser.parse(response.content)
+            count = 0
+            for entry in feed.entries[:5]:
+                title = html.unescape(entry.get("title", "")).strip()
+                items.append({
+                    "title": f"⭐ {title}",
+                    "link": entry.get("link", ""),
+                    "summary": "GitHub 今日热门",
+                    "source": "GitHub",
+                    "time": "今日",
+                    "isNew": True
+                })
+                count += 1
+            print(f"  ✓ GitHub: {count} 条")
+    except Exception as e:
+        print(f"  ✗ GitHub: {str(e)[:50]}")
+    
+    # 去重
+    seen = set()
+    unique_items = []
+    for item in items:
+        if item['title'] not in seen:
+            seen.add(item['title'])
+            unique_items.append(item)
+    
+    return unique_items[:20]
+
+def fetch_tech_news():
+    """兼容旧函数 - 调用新的AI抓取"""
+    return fetch_ai_news()
 
 def fetch_github_trending():
     """抓取 GitHub Trending"""
@@ -757,15 +870,10 @@ def fetch_news():
     except Exception as e:
         print(f"  ✗ HN: {str(e)[:40]}")
     
-    # 4. TechCrunch
-    print("\n💻 TECHCRUNCH")
-    tech_news = fetch_tech_news()
-    news_data["ai"].extend(tech_news)
-    
-    # 5. GitHub Trending
-    print("\n🐙 GITHUB")
-    github_news = fetch_github_trending()
-    news_data["ai"].extend(github_news)
+    # 4. AI/Tech 综合新闻
+    print("\n🤖 AI/TECH 综合")
+    ai_news = fetch_ai_news()
+    news_data["ai"] = ai_news
     
     # 6. 美股新闻 - 实时抓取多源
     print("\n📈 STOCKS")
