@@ -93,14 +93,15 @@
         /* 图片区域 - 更紧凑 */
         .card-image {
             width: 100%;
-            aspect-ratio: 1/1;  /* 改为正方形，更紧凑 */
+            aspect-ratio: 1/1;
             position: relative;
             overflow: hidden;
+            background: var(--bg-primary);
         }
         
         @media (min-width: 768px) {
             .card-image {
-                aspect-ratio: 4/5;  /* 桌面端保持原比例 */
+                aspect-ratio: 4/5;
             }
         }
         
@@ -109,6 +110,9 @@
             height: 100%;
             object-fit: cover;
             transition: transform 0.4s ease;
+            display: block;
+            position: relative;
+            z-index: 1;
         }
         
         .xhs-card:hover .card-image img {
@@ -120,8 +124,12 @@
             content: '';
             position: absolute;
             inset: 0;
-            opacity: 0.9;
-            z-index: 1;
+            opacity: 1;
+            z-index: 0;
+        }
+        
+        .card-image.has-image {
+            background: transparent;
         }
         
         .card-image.has-image::before {
@@ -801,7 +809,7 @@
                 // 有图片，显示真实图片或AI生成图片
                 hasImageClass = 'has-image';
                 aiBadge = item.imageType === 'ai' ? '<span class="ai-badge">🎨 AI</span>' : '';
-                imageHtml = `<img src="${item.image}" alt="${cleanTitle}" loading="lazy" onerror="this.style.display='none'; this.parentElement.classList.remove('has-image');">`;
+                imageHtml = `<img src="${item.image}" alt="${cleanTitle}" loading="lazy" onload="this.style.opacity=1" onerror="this.style.display='none'; this.parentElement.classList.remove('has-image');" style="opacity:0; transition:opacity 0.3s;">`;
             }
             
             return `
