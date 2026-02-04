@@ -90,15 +90,13 @@
             }
         }
         
-        /* 封面区域 - 渐变背景 + 大图标 */
+        /* 封面区域 - 支持图片或渐变背景 */
         .card-image {
             width: 100%;
             aspect-ratio: 1/1;
             position: relative;
             overflow: hidden;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            background: var(--bg-primary);
         }
         
         @media (min-width: 768px) {
@@ -107,57 +105,67 @@
             }
         }
         
-        /* 分类渐变背景 */
-        .card-image.shanghai { 
+        .card-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.4s ease;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .xhs-card:hover .card-image img {
+            transform: scale(1.05);
+        }
+        
+        /* 分类渐变背景（无图时使用） */
+        .card-image::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            opacity: 1;
+            z-index: 0;
+        }
+        
+        .card-image.has-image {
+            background: transparent;
+        }
+        
+        .card-image.has-image::before {
+            display: none;
+        }
+        
+        .card-image.shanghai::before { 
             background: linear-gradient(135deg, #e6ddd4 0%, #d4c9bd 50%, #c9b8a8 100%);
         }
-        .card-image.world { 
+        .card-image.world::before { 
             background: linear-gradient(135deg, #d4dde6 0%, #c9d4e0 50%, #a8b5c9 100%);
         }
-        .card-image.ai { 
+        .card-image.ai::before { 
             background: linear-gradient(135deg, #e6d4e0 0%, #e0c9d8 50%, #c9a8c2 100%);
         }
-        .card-image.stocks { 
+        .card-image.stocks::before { 
             background: linear-gradient(135deg, #d4e6d8 0%, #c9e0d0 50%, #a8c9b0 100%);
         }
-        .card-image.policy { 
+        .card-image.policy::before { 
             background: linear-gradient(135deg, #e6e0d4 0%, #e0d8c9 50%, #c9c2a8 100%);
         }
         
         /* 深色模式 */
-        [data-theme="dark"] .card-image.shanghai { 
+        [data-theme="dark"] .card-image.shanghai::before { 
             background: linear-gradient(135deg, #5a4d42 0%, #4a3d32 50%, #3d2d22 100%);
         }
-        [data-theme="dark"] .card-image.world { 
+        [data-theme="dark"] .card-image.world::before { 
             background: linear-gradient(135deg, #3a4a5a 0%, #2a3a4a 50%, #1a2a3a 100%);
         }
-        [data-theme="dark"] .card-image.ai { 
+        [data-theme="dark"] .card-image.ai::before { 
             background: linear-gradient(135deg, #5a3a52 0%, #4a2a42 50%, #3a1a32 100%);
         }
-        [data-theme="dark"] .card-image.stocks { 
+        [data-theme="dark"] .card-image.stocks::before { 
             background: linear-gradient(135deg, #3a5a42 0%, #2a4a32 50%, #1a3a22 100%);
         }
-        [data-theme="dark"] .card-image.policy { 
+        [data-theme="dark"] .card-image.policy::before { 
             background: linear-gradient(135deg, #5a523a 0%, #4a422a 50%, #3a321a 100%);
-        }
-        
-        /* 大图标 */
-        .big-icon {
-            font-size: 64px;
-            opacity: 0.6;
-            filter: grayscale(0.3);
-            transition: all 0.3s ease;
-        }
-        
-        .xhs-card:hover .big-icon {
-            transform: scale(1.1);
-            opacity: 0.8;
-        }
-        
-        @media (min-width: 768px) {
-            .big-icon {
-                font-size: 80px;
-            }
         }
         
         .card-image.shanghai::before { 
@@ -806,14 +814,19 @@
                 ? `<p class="card-summary-preview">${item.summary.substring(0, 50)}${item.summary.length > 50 ? '...' : ''}</p>` 
                 : '';
             
-            // 使用emoji大图标作为封面（简单可靠）
-            const bigIcon = config.icon;
+            // 处理图片
+            let imageHtml = '';
+            let hasImageClass = item.image ? 'has-image' : '';
+            
+            if (item.image) {
+                imageHtml = `<img src="${item.image}" alt="${cleanTitle}" loading="lazy" onload="this.style.opacity=1" onerror="this.style.display='none'; this.parentElement.classList.remove('has-image');" style="opacity:0; transition:opacity 0.3s;">`;
+            }
             
             return `
                 <div class="masonry-item">
                     <div class="xhs-card block" onclick="openPreview(${index})" style="cursor: pointer;">
-                        <div class="card-image ${config.color}">
-                            <div class="big-icon">${bigIcon}</div>
+                        <div class="card-image ${config.color} ${hasImageClass}">
+                            ${imageHtml}
                             <div class="card-icon-small">${config.icon}</div>
                             ${isNew}
                             <span class="category-tag">${config.label}</span>
