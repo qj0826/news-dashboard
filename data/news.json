@@ -425,38 +425,14 @@
       "imageType": null
     },
     {
-      "title": "🔋 QS QuantumScape 技术进展",
-      "link": "https://www.quantumscape.com/news/",
-      "summary": "固态电池研发动态",
-      "source": "QuantumScape",
-      "time": "02-04",
-      "isNew": true,
-      "image": null,
-      "imageType": null
-    },
-    {
       "title": "📊 PLTR Palantir 商业动态",
       "link": "https://investors.palantir.com/news/",
       "summary": "政府与企业合同",
       "source": "Palantir",
       "time": "02-04",
-      "isNew": true
-    },
-    {
-      "title": "💊 RXRX Recursion AI药物研发",
-      "link": "https://www.recursion.com/news",
-      "summary": "AI驱动的药物发现",
-      "source": "Recursion",
-      "time": "02-04",
-      "isNew": true
-    },
-    {
-      "title": "🪙 BITGO 加密托管动态",
-      "link": "https://www.bitgo.com/news",
-      "summary": "数字资产托管服务",
-      "source": "BitGo",
-      "time": "02-04",
-      "isNew": true
+      "isNew": true,
+      "image": null,
+      "imageType": null
     }
   ],
   "policy": [
@@ -495,7 +471,7 @@
     {
       "title": "“我的名单上的下一个是 VPN”——法国将在 15 岁以下青少年使用社交媒体禁令后评估 VPN 使用情况",
       "link": "https://reddit.com/r/worldnews/comments/1qvdrz9/vpns_are_next_on_my_list_france_set_to_evaluate/",
-      "summary": "⬆️ 7 | 💬 2",
+      "summary": "⬆️ 16 | 💬 2",
       "source": "Reddit 国际新闻",
       "time": "02-04 11:41",
       "isNew": true,
@@ -505,7 +481,7 @@
     {
       "title": "特朗普表示印度将停止进口俄罗斯石油，莫迪政府保持沉默",
       "link": "https://reddit.com/r/worldnews/comments/1qvdm6v/trump_says_india_will_halt_russian_oil_imports/",
-      "summary": "⬆️ 13 | 💬 4",
+      "summary": "⬆️ 16 | 💬 6",
       "source": "Reddit 国际新闻",
       "time": "02-04 11:33",
       "isNew": true,
@@ -525,7 +501,7 @@
     {
       "title": "霍乱细菌毒素可以抑制结直肠癌的生长而不损害健康组织 - 瑞典于默奥大学",
       "link": "https://reddit.com/r/worldnews/comments/1qvddqg/a_cholera_bacterial_toxin_can_counteract/",
-      "summary": "⬆️ 82 | 💬 3",
+      "summary": "⬆️ 91 | 💬 4",
       "source": "Reddit 国际新闻",
       "time": "02-04 11:22",
       "isNew": true
@@ -533,7 +509,7 @@
     {
       "title": "印度俄罗斯石油：克里姆林宫否认在特朗普声称后停止生产",
       "link": "https://reddit.com/r/worldnews/comments/1qvd3jd/india_russia_oil_kremlin_denies_halt_after_trump/",
-      "summary": "⬆️ 27 | 💬 6",
+      "summary": "⬆️ 30 | 💬 6",
       "source": "Reddit 国际新闻",
       "time": "02-04 11:10",
       "isNew": true
@@ -541,7 +517,7 @@
     {
       "title": "台陆委会主任批评国共论坛",
       "link": "https://reddit.com/r/worldnews/comments/1qvcvk4/taiwan_mainland_affairs_council_minister/",
-      "summary": "⬆️ 4 | 💬 1",
+      "summary": "⬆️ 6 | 💬 1",
       "source": "Reddit 国际新闻",
       "time": "02-04 11:00",
       "isNew": true
@@ -549,7 +525,7 @@
     {
       "title": "中东紧张局势升级，伊朗要求阿曼作为美国会谈场地",
       "link": "https://reddit.com/r/worldnews/comments/1qvcs3e/iran_demands_oman_venue_for_us_talks_as_tensions/",
-      "summary": "⬆️ 14 | 💬 5",
+      "summary": "⬆️ 15 | 💬 5",
       "source": "Reddit 国际新闻",
       "time": "02-04 10:56",
       "isNew": true
@@ -557,7 +533,7 @@
     {
       "title": "埃隆·马斯克称佩德罗·桑切斯是“西班牙人民的暴君和叛徒”",
       "link": "https://reddit.com/r/worldnews/comments/1qvc9oy/elon_musk_calls_pedro_sánchez_a_tyrant_and/",
-      "summary": "⬆️ 225 | 💬 117",
+      "summary": "⬆️ 246 | 💬 121",
       "source": "Reddit 国际新闻",
       "time": "02-04 10:33",
       "isNew": true
@@ -565,7 +541,7 @@
     {
       "title": "母亲说让 13 岁的儿子游四个小时以拯救家人是“有史以来最艰难的决定之一”",
       "link": "https://reddit.com/r/worldnews/comments/1qvc7dg/mother_says_asking_13yearold_son_to_swim_four/",
-      "summary": "⬆️ 3000 | 💬 214",
+      "summary": "⬆️ 3310 | 💬 229",
       "source": "Reddit 国际新闻",
       "time": "02-04 10:30",
       "isNew": true
@@ -573,7 +549,7 @@
     {
       "title": "出于碰撞安全考虑，中国禁止所有电动汽车使用隐藏式车门把手",
       "link": "https://reddit.com/r/worldnews/comments/1qvc6e7/china_to_ban_hidden_car_door_handles_on_all_evs/",
-      "summary": "⬆️ 50 | 💬 15",
+      "summary": "⬆️ 58 | 💬 17",
       "source": "Reddit 国际新闻",
       "time": "02-04 10:29",
       "isNew": true
@@ -603,7 +579,7 @@
       "isNew": true
     },
     {
-      "title": "Saif al-Islam Gaddafi, son of ex-Libyan leader, reportedly shot dead",
+      "title": "据报道，利比亚前领导人之子赛义夫·伊斯兰·卡扎菲被枪杀",
       "link": "https://www.bbc.com/news/articles/cp37g4xgkxdo?at_medium=RSS&at_campaign=rss",
       "summary": "BBC World",
       "source": "BBC",
@@ -647,9 +623,9 @@
     {
       "title": "运送 500 件我的第一个硬件产品时获得的经验教训",
       "link": "https://www.simonberens.com/p/lessons-learned-shipping-500-units",
-      "summary": "⭐ 395 points",
+      "summary": "⭐ 400 points",
       "source": "Hacker News",
-      "time": "02-04 11:54",
+      "time": "02-04 12:00",
       "isNew": true,
       "image": null,
       "imageType": null
@@ -657,9 +633,9 @@
     {
       "title": "太空数据中心毫无意义",
       "link": "https://civai.org/blog/space-data-centers",
-      "summary": "⭐ 320 points",
+      "summary": "⭐ 323 points",
       "source": "Hacker News",
-      "time": "02-04 11:55",
+      "time": "02-04 12:00",
       "isNew": true,
       "image": null,
       "imageType": null
@@ -667,9 +643,9 @@
     {
       "title": "Show HN：Craftplan – 我为我妻子的面包店打造了一个生产管理工具",
       "link": "https://github.com/puemos/craftplan",
-      "summary": "⭐ 141 points",
+      "summary": "⭐ 143 points",
       "source": "Hacker News",
-      "time": "02-04 11:55",
+      "time": "02-04 12:00",
       "isNew": true,
       "image": null,
       "imageType": null
@@ -677,41 +653,41 @@
     {
       "title": "最大的拉链领带近 4 英尺长，售价 75 美元",
       "link": "https://www.thedrive.com/news/youll-have-that-on-those-big-jobs-the-worlds-largest-zip-tie-is-nearly-4-feet-long-and-75",
-      "summary": "⭐ 28 points",
+      "summary": "⭐ 30 points",
       "source": "Hacker News",
-      "time": "02-04 11:55",
+      "time": "02-04 12:00",
       "isNew": true
     },
     {
       "title": "德诺沙箱",
       "link": "https://deno.com/blog/introducing-deno-sandbox",
-      "summary": "⭐ 352 points",
+      "summary": "⭐ 353 points",
       "source": "Hacker News",
-      "time": "02-04 11:55",
+      "time": "02-04 12:00",
       "isNew": true
     },
     {
       "title": "复活 Crimsonland – 反编译并保存 2003 年的经典游戏",
       "link": "https://banteg.xyz/posts/crimsonland/",
-      "summary": "⭐ 54 points",
+      "summary": "⭐ 55 points",
       "source": "Hacker News",
-      "time": "02-04 11:55",
+      "time": "02-04 12:01",
       "isNew": true
     },
     {
       "title": "Xcode 26.3 – 开发人员可以直接在 Xcode 中利用编码代理",
       "link": "https://www.apple.com/newsroom/2026/02/xcode-26-point-3-unlocks-the-power-of-agentic-coding/",
-      "summary": "⭐ 255 points",
+      "summary": "⭐ 256 points",
       "source": "Hacker News",
-      "time": "02-04 11:55",
+      "time": "02-04 12:01",
       "isNew": true
     },
     {
       "title": "代理技巧",
       "link": "https://agentskills.io/home",
-      "summary": "⭐ 393 points",
+      "summary": "⭐ 394 points",
       "source": "Hacker News",
-      "time": "02-04 11:55",
+      "time": "02-04 12:01",
       "isNew": true
     },
     {
@@ -719,15 +695,15 @@
       "link": "https://github.com/alibaba/AliSQL",
       "summary": "⭐ 160 points",
       "source": "Hacker News",
-      "time": "02-04 11:55",
+      "time": "02-04 12:01",
       "isNew": true
     },
     {
       "title": "纽约的预算法案将要求所有 3D 打印机采用“区块技术”",
       "link": "https://blog.adafruit.com/2026/02/03/new-york-wants-to-ctrlaltdelete-your-3d-printer/",
-      "summary": "⭐ 273 points",
+      "summary": "⭐ 282 points",
       "source": "Hacker News",
-      "time": "02-04 11:55",
+      "time": "02-04 12:01",
       "isNew": true
     }
   ]

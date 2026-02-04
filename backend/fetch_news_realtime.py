@@ -765,6 +765,165 @@ def fetch_tech_news():
     """兼容旧函数 - 调用新的AI抓取"""
     return fetch_ai_news()
 
+def fetch_policy_news():
+    """抓取政策新闻 - 国务院、各部委、上海市政府"""
+    items = []
+    headers = {'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7)'}
+    
+    # 1. 中国政府网 - 国务院政策
+    print("\n🏛️ 中国政府网")
+    try:
+        url = "https://rsshub.app/gov/zhengce/zuixin"
+        response = requests.get(url, headers=headers, timeout=15, proxies=PROXY)
+        
+        if response.status_code == 200:
+            feed = feedparser.parse(response.content)
+            count = 0
+            for entry in feed.entries[:8]:
+                title = html.unescape(entry.get("title", "")).strip()
+                items.append({
+                    "title": f"🇨🇳 {title}",
+                    "link": entry.get("link", ""),
+                    "summary": "国务院政策",
+                    "source": "国务院",
+                    "time": format_time(entry.get("published", "")),
+                    "isNew": is_recent(entry.get("published_parsed"))
+                })
+                count += 1
+            print(f"  ✓ 国务院: {count} 条")
+    except Exception as e:
+        print(f"  ✗ 国务院: {str(e)[:50]}")
+    
+    # 2. 国家发改委
+    print("\n📊 国家发改委")
+    try:
+        url = "https://rsshub.app/gov/ndrc/zwxxgk"
+        response = requests.get(url, headers=headers, timeout=10, proxies=PROXY)
+        
+        if response.status_code == 200:
+            feed = feedparser.parse(response.content)
+            count = 0
+            for entry in feed.entries[:5]:
+                title = html.unescape(entry.get("title", "")).strip()
+                items.append({
+                    "title": f"📈 {title}",
+                    "link": entry.get("link", ""),
+                    "summary": "国家发改委",
+                    "source": "发改委",
+                    "time": format_time(entry.get("published", "")),
+                    "isNew": is_recent(entry.get("published_parsed"))
+                })
+                count += 1
+            print(f"  ✓ 发改委: {count} 条")
+    except Exception as e:
+        print(f"  ✗ 发改委: {str(e)[:50]}")
+    
+    # 3. 工信部
+    print("\n🔧 工信部")
+    try:
+        url = "https://rsshub.app/gov/miit/zcwj"
+        response = requests.get(url, headers=headers, timeout=10, proxies=PROXY)
+        
+        if response.status_code == 200:
+            feed = feedparser.parse(response.content)
+            count = 0
+            for entry in feed.entries[:5]:
+                title = html.unescape(entry.get("title", "")).strip()
+                items.append({
+                    "title": f"🔧 {title}",
+                    "link": entry.get("link", ""),
+                    "summary": "工信部政策",
+                    "source": "工信部",
+                    "time": format_time(entry.get("published", "")),
+                    "isNew": is_recent(entry.get("published_parsed"))
+                })
+                count += 1
+            print(f"  ✓ 工信部: {count} 条")
+    except Exception as e:
+        print(f"  ✗ 工信部: {str(e)[:50]}")
+    
+    # 4. 央行
+    print("\n🏦 央行")
+    try:
+        url = "https://rsshub.app/gov/pbc/zcyj"
+        response = requests.get(url, headers=headers, timeout=10, proxies=PROXY)
+        
+        if response.status_code == 200:
+            feed = feedparser.parse(response.content)
+            count = 0
+            for entry in feed.entries[:5]:
+                title = html.unescape(entry.get("title", "")).strip()
+                items.append({
+                    "title": f"💰 {title}",
+                    "link": entry.get("link", ""),
+                    "summary": "央行政策研究",
+                    "source": "央行",
+                    "time": format_time(entry.get("published", "")),
+                    "isNew": is_recent(entry.get("published_parsed"))
+                })
+                count += 1
+            print(f"  ✓ 央行: {count} 条")
+    except Exception as e:
+        print(f"  ✗ 央行: {str(e)[:50]}")
+    
+    # 5. 上海市政府
+    print("\n🏙️ 上海市政府")
+    try:
+        url = "https://rsshub.app/gov/shanghai/zhengce"
+        response = requests.get(url, headers=headers, timeout=10, proxies=PROXY)
+        
+        if response.status_code == 200:
+            feed = feedparser.parse(response.content)
+            count = 0
+            for entry in feed.entries[:5]:
+                title = html.unescape(entry.get("title", "")).strip()
+                items.append({
+                    "title": f"🏙️ {title}",
+                    "link": entry.get("link", ""),
+                    "summary": "上海市政府",
+                    "source": "上海市政府",
+                    "time": format_time(entry.get("published", "")),
+                    "isNew": is_recent(entry.get("published_parsed"))
+                })
+                count += 1
+            print(f"  ✓ 上海市政府: {count} 条")
+    except Exception as e:
+        print(f"  ✗ 上海市政府: {str(e)[:50]}")
+    
+    # 6. 商务部
+    print("\n🌐 商务部")
+    try:
+        url = "https://rsshub.app/gov/mofcom/swgat"
+        response = requests.get(url, headers=headers, timeout=10, proxies=PROXY)
+        
+        if response.status_code == 200:
+            feed = feedparser.parse(response.content)
+            count = 0
+            for entry in feed.entries[:5]:
+                title = html.unescape(entry.get("title", "")).strip()
+                items.append({
+                    "title": f"🌐 {title}",
+                    "link": entry.get("link", ""),
+                    "summary": "商务部",
+                    "source": "商务部",
+                    "time": format_time(entry.get("published", "")),
+                    "isNew": is_recent(entry.get("published_parsed"))
+                })
+                count += 1
+            print(f"  ✓ 商务部: {count} 条")
+    except Exception as e:
+        print(f"  ✗ 商务部: {str(e)[:50]}")
+    
+    # 去重
+    seen = set()
+    unique_items = []
+    for item in items:
+        if item['title'] not in seen:
+            seen.add(item['title'])
+            unique_items.append(item)
+    
+    return unique_items[:20]
+
 def fetch_github_trending():
     """抓取 GitHub Trending"""
     items = []
@@ -884,34 +1043,9 @@ def fetch_news():
     print("\n🏙️ SHANGHAI")
     news_data["shanghai"] = fetch_shanghai_news()
     
-    # 8. 国内政策
+    # 8. 国内政策 - 多源实时抓取
     print("\n🇨🇳 POLICY")
-    news_data["policy"] = [
-        {
-            "title": "国务院发布关于推动未来产业创新发展的实施意见",
-            "link": "http://www.gov.cn",
-            "summary": "前瞻布局未来产业，重点推进六大方向",
-            "source": "中国政府网",
-            "time": "02-03",
-            "isNew": True
-        },
-        {
-            "title": "工信部：加快制造业数字化转型",
-            "link": "https://www.miit.gov.cn",
-            "summary": "推动制造业高端化、智能化、绿色化发展",
-            "source": "工信部",
-            "time": "02-02",
-            "isNew": False
-        },
-        {
-            "title": "央行宣布降准0.5个百分点",
-            "link": "http://www.pbc.gov.cn",
-            "summary": "释放长期资金约1万亿元",
-            "source": "央行",
-            "time": "02-01",
-            "isNew": False
-        },
-    ]
+    news_data["policy"] = fetch_policy_news()
     print(f"  ✓ Policy: {len(news_data['policy'])} 条")
     
     # 9. 为新闻添加封面图片（只处理前3条，避免太慢）
