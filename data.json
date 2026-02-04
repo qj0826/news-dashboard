@@ -1,411 +1,548 @@
 {
-  "shanghai": [
+  "shanghai": [],
+  "tech": [
     {
-      "title": "🏠 嘉定新城建设提速，多个重大项目集中开工",
-      "link": "https://www.jiading.gov.cn/",
-      "summary": "嘉定发布",
-      "source": "嘉定发布",
-      "time": "02-04",
-      "isNew": true,
-      "score": 3
+      "title": "百亿美金蓝海，国产“动力+智控”如何切入价值高地？｜OpenTalk回顾",
+      "link": "https://36kr.com/p/3668551333995401?f=rss",
+      "time": "2026-02-04 13:33",
+      "source": "36氪",
+      "image": "https://images.unsplash.com/photo-1518770660439-4636190af475?w=600&q=80",
+      "summary": "",
+      "category": "tech"
     },
     {
-      "title": "👥 南翔镇加装电梯工程又有新进展",
-      "link": "https://www.jiading.gov.cn/",
-      "summary": "南翔镇",
-      "source": "南翔镇",
-      "time": "02-04",
-      "isNew": true,
-      "score": 3
+      "title": "自断主营业务、营收砍半，一家老牌OEM扫地机器人公司的转型豪赌｜Insight全球",
+      "link": "https://36kr.com/p/3668313691480966?f=rss",
+      "time": "2026-02-04 09:22",
+      "source": "36氪",
+      "image": "https://images.unsplash.com/photo-1518770660439-4636190af475?w=600&q=80",
+      "summary": "",
+      "category": "tech"
     },
     {
-      "title": "腾讯元宝红包分享方式修改：已变更为口令红包",
-      "link": "https://finance.sina.com.cn/chanjing/wddc/2026-02-04/doc-inhkrpqr3749004.shtml",
-      "summary": "新浪上海",
-      "source": "新浪上海",
-      "time": "02-04",
-      "isNew": true,
-      "score": 0
+      "title": "鸣鸣很忙超900亿IPO背后：在冬天捕到大鱼的人",
+      "link": "https://36kr.com/p/3667709479822213?f=rss",
+      "time": "2026-02-04 09:00",
+      "source": "36氪",
+      "image": "https://images.unsplash.com/photo-1531297420492-6029d146dc29?w=600&q=80",
+      "summary": "",
+      "category": "tech"
     },
     {
-      "title": "京东科技“鲸诉通”上线半年承接超10万起案件",
-      "link": "https://finance.sina.com.cn/tob/2026-02-04/doc-inhkrihp9873071.shtml",
-      "summary": "新浪上海",
-      "source": "新浪上海",
-      "time": "02-04",
-      "isNew": true,
-      "score": 0
+      "title": "姚颂再“创业”",
+      "link": "https://36kr.com/p/3660227067945860?f=rss",
+      "time": "2026-02-04 08:40",
+      "source": "36氪",
+      "image": "https://images.unsplash.com/photo-1518770660439-4636190af475?w=600&q=80",
+      "summary": "",
+      "category": "tech"
     },
     {
-      "title": "“智源学者”计划再升级，2025年度入选名单揭晓",
-      "link": "https://finance.sina.com.cn/tob/2026-02-04/doc-inhkriht3809117.shtml",
-      "summary": "新浪上海",
-      "source": "新浪上海",
-      "time": "02-04",
-      "isNew": true,
-      "score": 0
+      "title": "8点1氪丨周生生再发声明，回应足金挂坠检测出含铁银钯；大润发母公司辟谣CEO被警方带走；极氪8X信息遭提前泄露",
+      "link": "https://36kr.com/p/3668241626784640?f=rss",
+      "time": "2026-02-04 08:11",
+      "source": "36氪",
+      "image": "https://images.unsplash.com/photo-1518770660439-4636190af475?w=600&q=80",
+      "summary": "",
+      "category": "tech"
     },
     {
-      "title": "含金量还在提升 工银瑞信12位投研战将Cue年度投资重点",
-      "link": "https://finance.sina.com.cn/tob/2026-02-04/doc-inhkrihp9866516.shtml",
-      "summary": "新浪上海",
-      "source": "新浪上海",
-      "time": "02-04",
-      "isNew": true,
-      "score": 0
+      "title": "氪星晚报｜北京2026年首场土拍揽金85.6亿元，字节跳动28亿拿下海淀地块；全球最快人形机器人发布；2025年我国有色金属主要产品产量再创新高",
+      "link": "https://36kr.com/p/3665582095016579?f=rss",
+      "time": "2026-02-03 20:27",
+      "source": "36氪",
+      "image": "https://images.unsplash.com/photo-1518770660439-4636190af475?w=600&q=80",
+      "summary": "",
+      "category": "tech"
     },
     {
-      "title": "腾讯元宝回应“抢红包”活动被微信屏蔽",
-      "link": "https://finance.sina.com.cn/tob/2026-02-04/doc-inhkrihr6698731.shtml",
-      "summary": "新浪上海",
-      "source": "新浪上海",
-      "time": "02-04",
-      "isNew": true,
-      "score": 0
+      "title": "机器人扎堆上春晚，花一亿元，抢行业“卡位赛”",
+      "link": "https://36kr.com/p/3667482319987334?f=rss",
+      "time": "2026-02-03 19:20",
+      "source": "36氪",
+      "image": "https://images.unsplash.com/photo-1531297420492-6029d146dc29?w=600&q=80",
+      "summary": "",
+      "category": "tech"
     },
     {
-      "title": "vivo沈炜：要将“用户导向型创新”落实到每一款产品，逐步迈向生态型科技平台企业",
-      "link": "https://finance.sina.com.cn/tob/2026-02-04/doc-inhkriht3795042.shtml",
-      "summary": "新浪上海",
-      "source": "新浪上海",
-      "time": "02-04",
-      "isNew": true,
-      "score": 0
+      "title": "年轻人，疯抢「健康福」",
+      "link": "https://36kr.com/p/3667359645705090?f=rss",
+      "time": "2026-02-03 17:12",
+      "source": "36氪",
+      "image": "https://images.unsplash.com/photo-1531297420492-6029d146dc29?w=600&q=80",
+      "summary": "",
+      "category": "tech"
     },
     {
-      "title": "张小龙对元宝红包说不！微信官方回应“封杀元宝红包”：属于诱导分享违规",
-      "link": "https://finance.sina.com.cn/tob/2026-02-04/doc-inhkrihn3075680.shtml",
-      "summary": "新浪上海",
-      "source": "新浪上海",
-      "time": "02-04",
-      "isNew": true,
-      "score": 0
+      "title": "最前线｜「天顿数据」获福田资本8亿元战略投资，粤港湾控股加速转型AI智算",
+      "link": "https://36kr.com/p/3667233081221763?f=rss",
+      "time": "2026-02-03 15:03",
+      "source": "36氪",
+      "image": "https://images.unsplash.com/photo-1531297420492-6029d146dc29?w=600&q=80",
+      "summary": "",
+      "category": "tech"
     },
     {
-      "title": "微信封杀元宝？ 元宝红包链接微信内无法正常打开，页面提示“内容包含诱导分享”",
-      "link": "https://finance.sina.com.cn/tob/2026-02-04/doc-inhkrihr6682407.shtml",
-      "summary": "新浪上海",
-      "source": "新浪上海",
-      "time": "02-04",
-      "isNew": true,
-      "score": 0
+      "title": "磁悬浮输送线第一梯队，FRT无线供电技术行业领先，这家公司完成首轮千万元融资",
+      "link": "https://36kr.com/p/3667222616056709?f=rss",
+      "time": "2026-02-03 14:53",
+      "source": "36氪",
+      "image": "https://images.unsplash.com/photo-1518770660439-4636190af475?w=600&q=80",
+      "summary": "",
+      "category": "tech"
     },
     {
-      "title": "MOGOX与LG电子达成战略合作，共同开启韩国市场",
-      "link": "https://finance.sina.com.cn/tob/2026-02-04/doc-inhkrihr6675406.shtml",
-      "summary": "新浪上海",
-      "source": "新浪上海",
-      "time": "02-04",
-      "isNew": true,
-      "score": 0
+      "title": "OpenClaw调用量Kimi K2.5冲上第一",
+      "link": "https://36kr.com/newsflashes/3668705978950534?f=rss",
+      "time": "2026-02-04 16:00",
+      "source": "36氪",
+      "image": "https://images.unsplash.com/photo-1518770660439-4636190af475?w=600&q=80",
+      "summary": "",
+      "category": "tech"
     },
     {
-      "title": "追星拍摄指南：用OPPO长焦拍遍郭富城演唱会名场面",
-      "link": "https://finance.sina.com.cn/tech/mobile/n/c/2026-02-04/doc-inhkpkqz6668217.shtml",
-      "summary": "新浪上海",
-      "source": "新浪上海",
-      "time": "02-04",
-      "isNew": true,
-      "score": 0
+      "title": "松下新设首席人工智能官",
+      "link": "https://36kr.com/newsflashes/3668702899676035?f=rss",
+      "time": "2026-02-04 15:57",
+      "source": "36氪",
+      "image": "https://images.unsplash.com/photo-1531297420492-6029d146dc29?w=600&q=80",
+      "summary": "",
+      "category": "tech"
     },
     {
-      "title": "xAI牵手SpaceX获“续命加速”！OpenAI、Anthropic迎来劲敌",
-      "link": "https://finance.sina.com.cn/stock/hkstock/ggscyd/2026-02-04/doc-inhkrihr6648970.shtml",
-      "summary": "新浪上海",
-      "source": "新浪上海",
-      "time": "02-04",
-      "isNew": true,
-      "score": 0
+      "title": "多家中小银行宣布上调存款利率",
+      "link": "https://36kr.com/newsflashes/3668694901695112?f=rss",
+      "time": "2026-02-04 15:49",
+      "source": "36氪",
+      "image": "https://images.unsplash.com/photo-1518770660439-4636190af475?w=600&q=80",
+      "summary": "",
+      "category": "tech"
     },
     {
-      "title": "高鑫零售：暂时无法与李卫平女士取得联系，相关工作已由华裕能代管",
-      "link": "https://finance.sina.com.cn/tob/2026-02-04/doc-inhkrayv3828714.shtml",
-      "summary": "新浪上海",
-      "source": "新浪上海",
-      "time": "02-04",
-      "isNew": true,
-      "score": 0
+      "title": "中谷物流：拟投资建造2艘6000TEU集装箱船舶 合同总金额不超11.6亿人民币",
+      "link": "https://36kr.com/newsflashes/3668689053754248?f=rss",
+      "time": "2026-02-04 15:43",
+      "source": "36氪",
+      "image": "https://images.unsplash.com/photo-1518770660439-4636190af475?w=600&q=80",
+      "summary": "",
+      "category": "tech"
     },
     {
-      "title": "“科技年货”走俏",
-      "link": "https://finance.sina.com.cn/tech/2026-02-04/doc-inhkrayr9884179.shtml",
-      "summary": "新浪上海",
-      "source": "新浪上海",
-      "time": "02-04",
-      "isNew": true,
-      "score": 0
+      "title": "土耳其反垄断监管机构对谷歌启动调查",
+      "link": "https://36kr.com/newsflashes/3668687673516932?f=rss",
+      "time": "2026-02-04 15:42",
+      "source": "36氪",
+      "image": "https://images.unsplash.com/photo-1531297420492-6029d146dc29?w=600&q=80",
+      "summary": "",
+      "category": "tech"
     },
     {
-      "title": "国产大模型密集发布 开源生态加速完善",
-      "link": "https://finance.sina.com.cn/jjxw/2026-02-04/doc-inhkqwsx3920261.shtml",
-      "summary": "新浪上海",
-      "source": "新浪上海",
-      "time": "02-04",
-      "isNew": true,
-      "score": 0
+      "title": "重庆啤酒：2025年度归母净利润12.31亿元，同比增长10.43%",
+      "link": "https://36kr.com/newsflashes/3668683799290753?f=rss",
+      "time": "2026-02-04 15:38",
+      "source": "36氪",
+      "image": "https://images.unsplash.com/photo-1531297420492-6029d146dc29?w=600&q=80",
+      "summary": "",
+      "category": "tech"
     },
     {
-      "title": "苹果为旗下编程工具接入Anthropic和OpenAI智能体功能",
-      "link": "https://finance.sina.com.cn/world/2026-02-04/doc-inhkqwsx3914310.shtml",
-      "summary": "新浪上海",
-      "source": "新浪上海",
-      "time": "02-04",
-      "isNew": true,
-      "score": 0
+      "title": "南向资金净买入额达100亿港元",
+      "link": "https://36kr.com/newsflashes/3668682991411849?f=rss",
+      "time": "2026-02-04 15:37",
+      "source": "36氪",
+      "image": "https://images.unsplash.com/photo-1518770660439-4636190af475?w=600&q=80",
+      "summary": "",
+      "category": "tech"
     },
     {
-      "title": "英特尔CEO：布局GPU市场 存储芯片短缺要到2028年才会缓解",
-      "link": "https://finance.sina.com.cn/world/2026-02-04/doc-inhkqwsx3907334.shtml",
-      "summary": "新浪上海",
-      "source": "新浪上海",
-      "time": "02-04",
-      "isNew": true,
-      "score": 0
+      "title": "现货白银重回90美元上方",
+      "link": "https://36kr.com/newsflashes/3668672559866499?f=rss",
+      "time": "2026-02-04 15:26",
+      "source": "36氪",
+      "image": "https://images.unsplash.com/photo-1531297420492-6029d146dc29?w=600&q=80",
+      "summary": "",
+      "category": "tech"
     },
     {
-      "title": "AMD发布当期展望 AI回报未达部分投资者预期",
-      "link": "https://finance.sina.com.cn/world/2026-02-04/doc-inhkqwsv6804398.shtml",
-      "summary": "新浪上海",
-      "source": "新浪上海",
-      "time": "02-04",
-      "isNew": true,
-      "score": 0
+      "title": "夸克、乐奇Rokid等首次接入支付宝集福",
+      "link": "https://36kr.com/newsflashes/3668669251117959?f=rss",
+      "time": "2026-02-04 15:23",
+      "source": "36氪",
+      "image": "https://images.unsplash.com/photo-1531297420492-6029d146dc29?w=600&q=80",
+      "summary": "",
+      "category": "tech"
     },
     {
-      "title": "英伟达CEO黄仁勋否认与OpenAI交易传闻：“此事毫无波澜”",
-      "link": "https://finance.sina.com.cn/world/2026-02-04/doc-inhkqwst9982977.shtml",
-      "summary": "新浪上海",
-      "source": "新浪上海",
-      "time": "02-04",
-      "isNew": true,
-      "score": 0
+      "title": "英国两家监管机构调查马斯克旗下AI聊天机器人“格罗克”风波",
+      "link": "https://36kr.com/newsflashes/3668668490687105?f=rss",
+      "time": "2026-02-04 15:22",
+      "source": "36氪",
+      "image": "https://images.unsplash.com/photo-1531297420492-6029d146dc29?w=600&q=80",
+      "summary": "",
+      "category": "tech"
     },
     {
-      "title": "蚂蚁数科 CEO 赵闻飙发全员信，宣布将成立“大模型技术创新部”",
-      "link": "https://finance.sina.com.cn/tech/digi/2026-02-04/doc-inhkpzpi4319173.shtml",
-      "summary": "新浪上海",
-      "source": "新浪上海",
-      "time": "02-04",
-      "isNew": true,
-      "score": 0
+      "title": "不止发红包，AI开始雇人打工了：时薪上千元，2万人抢着给AI当「肉身」",
+      "link": "https://www.ifanr.com/1654161?utm_source=rss&utm_medium=rss&utm_campaign=",
+      "time": "Wed, 04 Feb 2026",
+      "source": "爱范儿",
+      "image": "https://images.unsplash.com/photo-1518770660439-4636190af475?w=600&q=80",
+      "summary": "",
+      "category": "tech"
     },
     {
-      "title": "蚂蚁数科CEO发全员信，宣布将成立“大模型技术创新部”",
-      "link": "https://finance.sina.com.cn/tech/2026-02-03/doc-inhkpzpe0399139.shtml",
-      "summary": "新浪上海",
-      "source": "新浪上海",
-      "time": "02-04",
-      "isNew": true,
-      "score": 0
+      "title": "Genie 3 引发游戏股暴跌，但游戏的真正灵魂 AI 永远得不到",
+      "link": "https://www.ifanr.com/1654197?utm_source=rss&utm_medium=rss&utm_campaign=",
+      "time": "Wed, 04 Feb 2026",
+      "source": "爱范儿",
+      "image": "https://images.unsplash.com/photo-1518770660439-4636190af475?w=600&q=80",
+      "summary": "",
+      "category": "tech"
     },
     {
-      "title": "家里千兆宽带为啥还是掉线卡顿 余承东分享提升Wi-Fi信号实用技巧",
-      "link": "https://finance.sina.com.cn/tech/discovery/2026-02-03/doc-inhkpzpi4275831.shtml",
-      "summary": "新浪上海",
-      "source": "新浪上海",
-      "time": "02-04",
-      "isNew": true,
-      "score": 0
+      "title": "Kimi K2.5 带来了一个「蜂群时刻」",
+      "link": "https://www.ifanr.com/1653557?utm_source=rss&utm_medium=rss&utm_campaign=",
+      "time": "Wed, 04 Feb 2026",
+      "source": "爱范儿",
+      "image": "https://images.unsplash.com/photo-1531297420492-6029d146dc29?w=600&q=80",
+      "summary": "",
+      "category": "tech"
     },
     {
-      "title": "全球存储芯片告急！长江存储、长鑫存储启动大扩产",
-      "link": "https://finance.sina.com.cn/tech/discovery/2026-02-03/doc-inhkpvfe3710499.shtml",
-      "summary": "新浪上海",
-      "source": "新浪上海",
-      "time": "02-04",
-      "isNew": true,
-      "score": 0
+      "title": "百万网友围观的「作弊 prompt」，能帮我搞定春运买票吗？",
+      "link": "https://www.ifanr.com/1652614?utm_source=rss&utm_medium=rss&utm_campaign=",
+      "time": "Wed, 04 Feb 2026",
+      "source": "爱范儿",
+      "image": "https://images.unsplash.com/photo-1518770660439-4636190af475?w=600&q=80",
+      "summary": "",
+      "category": "tech"
     },
     {
-      "title": "“健康福”引爆下载！蚂蚁阿福App今日冲入应用商店榜前三",
-      "link": "https://finance.sina.com.cn/tech/2026-02-03/doc-inhkpvfh0484461.shtml",
-      "summary": "新浪上海",
-      "source": "新浪上海",
-      "time": "02-04",
-      "isNew": true,
-      "score": 0
+      "title": "玩了一圈元宝派和 moltbook，我发现自己正在失去做「人」的资格",
+      "link": "https://www.ifanr.com/1653987?utm_source=rss&utm_medium=rss&utm_campaign=",
+      "time": "Wed, 04 Feb 2026",
+      "source": "爱范儿",
+      "image": "https://images.unsplash.com/photo-1531297420492-6029d146dc29?w=600&q=80",
+      "summary": "",
+      "category": "tech"
     },
     {
-      "title": "意图摆脱对中国的依赖 印度斥巨资要建稀土走廊",
-      "link": "https://finance.sina.com.cn/tech/discovery/2026-02-03/doc-inhkpvfi7276074.shtml",
-      "summary": "新浪上海",
-      "source": "新浪上海",
-      "time": "02-04",
-      "isNew": true,
-      "score": 0
+      "title": "2026 年最「不是人」的一届春晚",
+      "link": "https://www.ifanr.com/1654112?utm_source=rss&utm_medium=rss&utm_campaign=",
+      "time": "Wed, 04 Feb 2026",
+      "source": "爱范儿",
+      "image": "https://images.unsplash.com/photo-1531297420492-6029d146dc29?w=600&q=80",
+      "summary": "",
+      "category": "tech"
     },
     {
-      "title": "1.25万亿美元！xAI员工赢麻了：全员换股SpaceX 提前锁定人类最强IPO",
-      "link": "https://finance.sina.com.cn/tech/roll/2026-02-03/doc-inhkpvfe3701767.shtml",
-      "summary": "新浪上海",
-      "source": "新浪上海",
-      "time": "02-04",
-      "isNew": true,
-      "score": 0
+      "title": "早报｜曝小米HyperOS 4将成「史上最稳定」版本/零跑年会被指「拉胯」，董事长连夜回应/阿里千问冠名四大卫视春晚",
+      "link": "https://www.ifanr.com/1654107?utm_source=rss&utm_medium=rss&utm_campaign=",
+      "time": "Wed, 04 Feb 2026",
+      "source": "爱范儿",
+      "image": "https://images.unsplash.com/photo-1518770660439-4636190af475?w=600&q=80",
+      "summary": "",
+      "category": "tech"
     },
     {
-      "title": "京东：春节9天投入超13亿元补贴节日在岗一线员工",
-      "link": "https://finance.sina.com.cn/tech/2026-02-03/doc-inhkpvfh0463695.shtml",
-      "summary": "新浪上海",
-      "source": "新浪上海",
-      "time": "02-04",
-      "isNew": true,
-      "score": 0
+      "title": "吉利银河 M7 亮相，定位 10 万至 15 万元区间，纯电续航较比亚迪宋 Pro 多 5 km",
+      "link": "https://www.ifanr.com/1653992?utm_source=rss&utm_medium=rss&utm_campaign=",
+      "time": "Tue, 03 Feb 2026",
+      "source": "爱范儿",
+      "image": "https://images.unsplash.com/photo-1518770660439-4636190af475?w=600&q=80",
+      "summary": "",
+      "category": "tech"
     },
     {
-      "title": "美团：为卖课造谣“外卖商家集体下架平台”，主播张某被行拘",
-      "link": "https://finance.sina.com.cn/tech/2026-02-03/doc-inhkpvfi7255076.shtml",
-      "summary": "新浪上海",
-      "source": "新浪上海",
-      "time": "02-04",
-      "isNew": true,
-      "score": 0
+      "title": "阶跃Step 3.5 Flash ：春节 AI 混战杀出的黑马，正在 Agent 时代弯道超车",
+      "link": "https://www.ifanr.com/1653972?utm_source=rss&utm_medium=rss&utm_campaign=",
+      "time": "Tue, 03 Feb 2026",
+      "source": "爱范儿",
+      "image": "https://images.unsplash.com/photo-1531297420492-6029d146dc29?w=600&q=80",
+      "summary": "",
+      "category": "tech"
     },
     {
-      "title": "越疆机器人：开启第三批全尺寸工业人形机器人2026年量产交付",
-      "link": "https://finance.sina.com.cn/tech/2026-02-03/doc-inhkpvfh0462547.shtml",
-      "summary": "新浪上海",
-      "source": "新浪上海",
-      "time": "02-04",
-      "isNew": true,
-      "score": 0
+      "title": "比亚迪全新子品牌发布！首发 4 款车型，主打超高性价比",
+      "link": "https://www.ifanr.com/1653958?utm_source=rss&utm_medium=rss&utm_campaign=",
+      "time": "Tue, 03 Feb 2026",
+      "source": "爱范儿",
+      "image": "https://images.unsplash.com/photo-1531297420492-6029d146dc29?w=600&q=80",
+      "summary": "",
+      "category": "tech"
     },
     {
-      "title": "苹果1:1前置引华为OPPO跟进，影像赛道正从卷画质转向卷手法",
-      "link": "https://finance.sina.com.cn/tech/roll/2026-02-03/doc-inhkpvfh0455462.shtml",
-      "summary": "新浪上海",
-      "source": "新浪上海",
-      "time": "02-04",
-      "isNew": true,
-      "score": 0
+      "title": "早报｜黄仁勋：从未承诺向OpenAI投资1000亿美元/腾讯元宝回应红包助力刷屏质疑/曝苹果封堵「隔空投送」版Final Cut Pro",
+      "link": "https://www.ifanr.com/1653951?utm_source=rss&utm_medium=rss&utm_campaign=",
+      "time": "Tue, 03 Feb 2026",
+      "source": "爱范儿",
+      "image": "https://images.unsplash.com/photo-1518770660439-4636190af475?w=600&q=80",
+      "summary": "",
+      "category": "tech"
     },
     {
-      "title": "三大内存巨头结成反囤积同盟：内存价格有望回归理性",
-      "link": "https://finance.sina.com.cn/tech/discovery/2026-02-03/doc-inhkpvfi7233721.shtml",
-      "summary": "新浪上海",
-      "source": "新浪上海",
-      "time": "02-04",
-      "isNew": true,
-      "score": 0
+      "title": "Moltbook 上 150 万 AI 狂欢真相曝光：以为是硅基文明来了，结果全是复读机",
+      "link": "https://www.ifanr.com/1653918?utm_source=rss&utm_medium=rss&utm_campaign=",
+      "time": "Mon, 02 Feb 2026",
+      "source": "爱范儿",
+      "image": "https://images.unsplash.com/photo-1518770660439-4636190af475?w=600&q=80",
+      "summary": "",
+      "category": "tech"
+    },
+    {
+      "title": "解密 iPhone 小折叠，这只是苹果折叠产品的开始",
+      "link": "https://www.ifanr.com/1653880?utm_source=rss&utm_medium=rss&utm_campaign=",
+      "time": "Mon, 02 Feb 2026",
+      "source": "爱范儿",
+      "image": "https://images.unsplash.com/photo-1518770660439-4636190af475?w=600&q=80",
+      "summary": "",
+      "category": "tech"
+    },
+    {
+      "title": "最懂 iPhone 相机的人，回到苹果了",
+      "link": "https://www.ifanr.com/1653501?utm_source=rss&utm_medium=rss&utm_campaign=",
+      "time": "Mon, 02 Feb 2026",
+      "source": "爱范儿",
+      "image": "https://images.unsplash.com/photo-1531297420492-6029d146dc29?w=600&q=80",
+      "summary": "",
+      "category": "tech"
+    },
+    {
+      "title": "早报｜小米YU9实车谍照疑曝光/消息称苹果正计划开发方形折叠手机/何小鹏回应机器人「原地摔」",
+      "link": "https://www.ifanr.com/1653854?utm_source=rss&utm_medium=rss&utm_campaign=",
+      "time": "Mon, 02 Feb 2026",
+      "source": "爱范儿",
+      "image": "https://images.unsplash.com/photo-1531297420492-6029d146dc29?w=600&q=80",
+      "summary": "",
+      "category": "tech"
+    },
+    {
+      "title": "15万个AI建了个朋友圈吐槽人类，100万人围观Moltbook后傻眼了：原来我们对AI一无所知",
+      "link": "https://www.ifanr.com/1653813?utm_source=rss&utm_medium=rss&utm_campaign=",
+      "time": "Sat, 31 Jan 2026",
+      "source": "爱范儿",
+      "image": "https://images.unsplash.com/photo-1531297420492-6029d146dc29?w=600&q=80",
+      "summary": "",
+      "category": "tech"
+    },
+    {
+      "title": "苹果史上第二大收购案，目标却不是手机｜硬哲学",
+      "link": "https://www.ifanr.com/1653790?utm_source=rss&utm_medium=rss&utm_campaign=",
+      "time": "Sat, 31 Jan 2026",
+      "source": "爱范儿",
+      "image": "https://images.unsplash.com/photo-1531297420492-6029d146dc29?w=600&q=80",
+      "summary": "",
+      "category": "tech"
+    },
+    {
+      "title": "早报｜苹果发布2026新春影片/三星S26系列发布时间曝光：2月25日亮相/Clawdbot再改名",
+      "link": "https://www.ifanr.com/1653810?utm_source=rss&utm_medium=rss&utm_campaign=",
+      "time": "Sat, 31 Jan 2026",
+      "source": "爱范儿",
+      "image": "https://images.unsplash.com/photo-1531297420492-6029d146dc29?w=600&q=80",
+      "summary": "",
+      "category": "tech"
+    },
+    {
+      "title": "2026 年，手机厂商是时候拥抱公有快充协议了",
+      "link": "https://www.ifanr.com/1653774?utm_source=rss&utm_medium=rss&utm_campaign=",
+      "time": "Fri, 30 Jan 2026",
+      "source": "爱范儿",
+      "image": "https://images.unsplash.com/photo-1531297420492-6029d146dc29?w=600&q=80",
+      "summary": "",
+      "category": "tech"
+    },
+    {
+      "title": "马斯克真没吹牛！世界模型 Genie 3 一键打造 GTA6 不是梦",
+      "link": "https://www.ifanr.com/1653730?utm_source=rss&utm_medium=rss&utm_campaign=",
+      "time": "Fri, 30 Jan 2026",
+      "source": "爱范儿",
+      "image": "https://images.unsplash.com/photo-1531297420492-6029d146dc29?w=600&q=80",
+      "summary": "",
+      "category": "tech"
     }
   ],
-  "world": [],
-  "ai": [
+  "us_stocks": [
     {
-      "title": "I miss thinking hard",
-      "link": "https://www.jernesto.com/articles/thinking_hard",
-      "summary": "⭐ 72 points",
-      "source": "Hacker News",
-      "time": "02-04",
-      "isNew": true
+      "title": "涨价10%！三星晶圆代工厂考虑针对4nm和8nm工艺提价",
+      "link": "https://wallstreetcn.com/articles/3764930",
+      "time": "Wed, 04 Feb 2026",
+      "source": "华尔街见闻",
+      "image": "https://images.unsplash.com/photo-1590283603385-17ffb3a7f29f?w=600&q=80",
+      "summary": "",
+      "category": "us_stocks"
     },
     {
-      "title": "Lessons learned shipping 500 units of my first hardware product",
-      "link": "https://www.simonberens.com/p/lessons-learned-shipping-500-units",
-      "summary": "⭐ 442 points",
-      "source": "Hacker News",
-      "time": "02-04",
-      "isNew": true
+      "title": "欧盟宣布调查金风科技，中方回应",
+      "link": "https://wallstreetcn.com/articles/3764934",
+      "time": "Wed, 04 Feb 2026",
+      "source": "华尔街见闻",
+      "image": "https://images.unsplash.com/photo-1590283603385-17ffb3a7f29f?w=600&q=80",
+      "summary": "",
+      "category": "us_stocks"
     },
     {
-      "title": "Data centers in space makes no sense",
-      "link": "https://civai.org/blog/space-data-centers",
-      "summary": "⭐ 369 points",
-      "source": "Hacker News",
-      "time": "02-04",
-      "isNew": true
+      "title": "下一轮金融危机，会由沃什引爆吗？",
+      "link": "https://wallstreetcn.com/articles/3764924",
+      "time": "Wed, 04 Feb 2026",
+      "source": "华尔街见闻",
+      "image": "https://images.unsplash.com/photo-1590283603385-17ffb3a7f29f?w=600&q=80",
+      "summary": "",
+      "category": "us_stocks"
     },
     {
-      "title": "Show HN: Craftplan – I built my wife a production management tool for her bakery",
-      "link": "https://github.com/puemos/craftplan",
-      "summary": "⭐ 175 points",
-      "source": "Hacker News",
-      "time": "02-04",
-      "isNew": true
+      "title": "一记警钟：英伟达对OpenAI的重新评估，为何最应触动微软？",
+      "link": "https://wallstreetcn.com/articles/3764926",
+      "time": "Wed, 04 Feb 2026",
+      "source": "华尔街见闻",
+      "image": "https://images.unsplash.com/photo-1611974765270-ca1258822981?w=600&q=80",
+      "summary": "",
+      "category": "us_stocks"
     },
     {
-      "title": "The largest zip tie is nearly 4 feet long and $75",
-      "link": "https://www.thedrive.com/news/youll-have-that-on-those-big-jobs-the-worlds-largest-zip-tie-is-nearly-4-feet-long-and-75",
-      "summary": "⭐ 50 points",
-      "source": "Hacker News",
-      "time": "02-04",
-      "isNew": true
+      "title": "估值超千亿美元！摩根大通首次覆盖Waymo：预测到2030年订单量超过2.77亿次，CAGR高达79%",
+      "link": "https://wallstreetcn.com/articles/3764927",
+      "time": "Wed, 04 Feb 2026",
+      "source": "华尔街见闻",
+      "image": "https://images.unsplash.com/photo-1590283603385-17ffb3a7f29f?w=600&q=80",
+      "summary": "",
+      "category": "us_stocks"
     },
     {
-      "title": "Deno Sandbox",
-      "link": "https://deno.com/blog/introducing-deno-sandbox",
-      "summary": "⭐ 363 points",
-      "source": "Hacker News",
-      "time": "02-04",
-      "isNew": true
+      "title": "想赚500倍？你能扛住，每2年10%下跌，每6年25%下跌吗？",
+      "link": "https://wallstreetcn.com/charts/41958544",
+      "time": "Wed, 04 Feb 2026",
+      "source": "华尔街见闻",
+      "image": "https://images.unsplash.com/photo-1590283603385-17ffb3a7f29f?w=600&q=80",
+      "summary": "",
+      "category": "us_stocks"
     },
     {
-      "title": "Resurrecting Crimsonland – Decompiling and preserving a cult 2003 classic game",
-      "link": "https://banteg.xyz/posts/crimsonland/",
-      "summary": "⭐ 68 points",
-      "source": "Hacker News",
-      "time": "02-04",
-      "isNew": true
+      "title": "OpenAI Codex再进化：推理速度提升40%，大幅削减编程延迟",
+      "link": "https://wallstreetcn.com/articles/3764918",
+      "time": "Wed, 04 Feb 2026",
+      "source": "华尔街见闻",
+      "image": "https://images.unsplash.com/photo-1590283603385-17ffb3a7f29f?w=600&q=80",
+      "summary": "",
+      "category": "us_stocks"
     },
     {
-      "title": "Xcode 26.3 – Developers can leverage coding agents directly in Xcode",
-      "link": "https://www.apple.com/newsroom/2026/02/xcode-26-point-3-unlocks-the-power-of-agentic-coding/",
-      "summary": "⭐ 269 points",
-      "source": "Hacker News",
-      "time": "02-04",
-      "isNew": true
+      "title": "从导流到封禁，这并非腾讯「写好的剧本」",
+      "link": "https://wallstreetcn.com/articles/3764922",
+      "time": "Wed, 04 Feb 2026",
+      "source": "华尔街见闻",
+      "image": "https://images.unsplash.com/photo-1590283603385-17ffb3a7f29f?w=600&q=80",
+      "summary": "",
+      "category": "us_stocks"
+    },
+    {
+      "title": "投资者嫌估值太贵！Tether融资目标从200亿砍到50亿，稳定币一哥也“认怂”？",
+      "link": "https://wallstreetcn.com/articles/3764923",
+      "time": "Wed, 04 Feb 2026",
+      "source": "华尔街见闻",
+      "image": "https://images.unsplash.com/photo-1590283603385-17ffb3a7f29f?w=600&q=80",
+      "summary": "",
+      "category": "us_stocks"
+    },
+    {
+      "title": "光伏板块爆发，马斯克下单了？",
+      "link": "https://wallstreetcn.com/articles/3764920",
+      "time": "Wed, 04 Feb 2026",
+      "source": "华尔街见闻",
+      "image": "https://images.unsplash.com/photo-1590283603385-17ffb3a7f29f?w=600&q=80",
+      "summary": "",
+      "category": "us_stocks"
+    },
+    {
+      "title": "被借怕了！银行急着给甲骨文560亿美元债权“找下家”，险资、私募接盘",
+      "link": "https://wallstreetcn.com/articles/3764921",
+      "time": "Wed, 04 Feb 2026",
+      "source": "华尔街见闻",
+      "image": "https://images.unsplash.com/photo-1611974765270-ca1258822981?w=600&q=80",
+      "summary": "",
+      "category": "us_stocks"
+    },
+    {
+      "title": "美国AI聊天机器人大战：ChatGPT份额从69.1%跌至45.3%，Gemini从14.7%升至25.1%，Grok从1.6%升至15.2%",
+      "link": "https://wallstreetcn.com/articles/3764905",
+      "time": "Wed, 04 Feb 2026",
+      "source": "华尔街见闻",
+      "image": "https://images.unsplash.com/photo-1590283603385-17ffb3a7f29f?w=600&q=80",
+      "summary": "",
+      "category": "us_stocks"
+    },
+    {
+      "title": "马斯克超级综合体：SpaceX+xAI……+特斯拉？",
+      "link": "https://wallstreetcn.com/articles/3764914",
+      "time": "Wed, 04 Feb 2026",
+      "source": "华尔街见闻",
+      "image": "https://images.unsplash.com/photo-1611974765270-ca1258822981?w=600&q=80",
+      "summary": "",
+      "category": "us_stocks"
+    },
+    {
+      "title": "Lumentum业绩大涨确立两大产业趋势：CPO和OCS光交换机",
+      "link": "https://wallstreetcn.com/member/articles/3764908",
+      "time": "Wed, 04 Feb 2026",
+      "source": "华尔街见闻",
+      "image": "https://images.unsplash.com/photo-1590283603385-17ffb3a7f29f?w=600&q=80",
+      "summary": "",
+      "category": "us_stocks"
+    },
+    {
+      "title": "中国赢在大局观，美国根本跟不上，马斯克早看到了",
+      "link": "https://wallstreetcn.com/charts/41958543",
+      "time": "Wed, 04 Feb 2026",
+      "source": "华尔街见闻",
+      "image": "https://images.unsplash.com/photo-1590283603385-17ffb3a7f29f?w=600&q=80",
+      "summary": "",
+      "category": "us_stocks"
+    },
+    {
+      "title": "Citadel经济学家谈沃什：美联储可能未来一年都不再降息，美元熊市暂停",
+      "link": "https://wallstreetcn.com/articles/3764912",
+      "time": "Wed, 04 Feb 2026",
+      "source": "华尔街见闻",
+      "image": "https://images.unsplash.com/photo-1611974765270-ca1258822981?w=600&q=80",
+      "summary": "",
+      "category": "us_stocks"
+    },
+    {
+      "title": "53.1，日本综合PMI创32个月新高",
+      "link": "https://wallstreetcn.com/articles/3764909",
+      "time": "Wed, 04 Feb 2026",
+      "source": "华尔街见闻",
+      "image": "https://images.unsplash.com/photo-1611974765270-ca1258822981?w=600&q=80",
+      "summary": "",
+      "category": "us_stocks"
+    },
+    {
+      "title": "英特尔进军GPU！",
+      "link": "https://wallstreetcn.com/articles/3764904",
+      "time": "Wed, 04 Feb 2026",
+      "source": "华尔街见闻",
+      "image": "https://images.unsplash.com/photo-1590283603385-17ffb3a7f29f?w=600&q=80",
+      "summary": "",
+      "category": "us_stocks"
+    },
+    {
+      "title": "估值3500亿美元！Anthropic向员工回购股票",
+      "link": "https://wallstreetcn.com/articles/3764906",
+      "time": "Wed, 04 Feb 2026",
+      "source": "华尔街见闻",
+      "image": "https://images.unsplash.com/photo-1611974765270-ca1258822981?w=600&q=80",
+      "summary": "",
+      "category": "us_stocks"
+    },
+    {
+      "title": "坚守“不打扰用户”，微信终于对元宝红包出手了",
+      "link": "https://wallstreetcn.com/articles/3764913",
+      "time": "Wed, 04 Feb 2026",
+      "source": "华尔街见闻",
+      "image": "https://images.unsplash.com/photo-1611974765270-ca1258822981?w=600&q=80",
+      "summary": "",
+      "category": "us_stocks"
     }
   ],
-  "stocks": [
-    {
-      "title": "🚀 RKLB Rocket Lab 最新发射任务",
-      "link": "https://www.rocketlabusa.com/news/",
-      "summary": "官方新闻",
-      "source": "Rocket Lab",
-      "time": "02-04",
-      "isNew": true
-    },
-    {
-      "title": "⚡ TSLA 特斯拉投资者关系",
-      "link": "https://ir.tesla.com/",
-      "summary": "财报公告",
-      "source": "Tesla",
-      "time": "02-04",
-      "isNew": true
-    },
-    {
-      "title": "📊 PLTR Palantir 商业动态",
-      "link": "https://investors.palantir.com/news/",
-      "summary": "合同更新",
-      "source": "Palantir",
-      "time": "02-04",
-      "isNew": true
-    }
-  ],
-  "policy": [
-    {
-      "title": "🇨🇳 国务院发布未来产业创新发展意见",
-      "link": "http://www.gov.cn",
-      "summary": "前瞻布局六大方向",
-      "source": "国务院",
-      "time": "02-04",
-      "isNew": true
-    },
-    {
-      "title": "🏭 工信部：加快制造业数字化转型",
-      "link": "https://www.miit.gov.cn",
-      "summary": "推动高端化智能化",
-      "source": "工信部",
-      "time": "02-03",
-      "isNew": false
-    },
-    {
-      "title": "💰 央行宣布降准0.5个百分点",
-      "link": "http://www.pbc.gov.cn",
-      "summary": "释放资金1万亿元",
-      "source": "央行",
-      "time": "02-01",
-      "isNew": false
-    }
-  ]
+  "policy": []
 }
