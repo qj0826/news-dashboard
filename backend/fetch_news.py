@@ -1,217 +1,172 @@
-#!/usr/bin/env python3
-"""
-新闻聚合抓取脚本 - 使用本地可访问源
-"""
-
 import json
-import requests
-from datetime import datetime
-from pathlib import Path
-import html
+import os
 import re
+import time
+import requests
+import xml.etree.ElementTree as ET
+from datetime import datetime
+from concurrent.futures import ThreadPoolExecutor
 
-DATA_DIR = Path(__file__).parent.parent / "data"
-DATA_DIR.mkdir(exist_ok=True)
+# ================= 配置区域 =================
 
-def fetch_html_news():
-    """直接抓取网页新闻 - 绕过 RSS"""
+# 模拟浏览器身份，防止被拦截
+HEADERS = {
+    'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36'
+}
+
+# RSS 数据源配置 (最稳定的获取方式)
+RSS_SOURCES = {
+    # 🏙️ 上海本地
+    'shanghai': [
+        'https://m.thepaper.cn/rss.jsp?nodeid=25635',  # 澎湃新闻-上海
+        'https://www.shobserver.com/rss/index.html',    # 上观新闻
+    ],
+    # 🌍 国际新闻
+    'world': [
+        'https://rss.huanqiu.com/hq/world.xml',         # 环球网-国际
+        'http://www.ftchinese.com/rss/news',            # FT中文网
+    ],
+    # 🤖 AI与科技
+    'ai': [
+        'https://www.36kr.com/feed',                    # 36氪 (科技创投)
+        'https://www.ifanr.com/feed',                   # 爱范儿
+    ],
+    # 📈 美股与财经
+    'stocks': [
+        'https://feed.wallstreetcn.com/feed/live',      # 华尔街见闻
+        'https://www.gelonghui.com/rss_feed.xml',       # 格隆汇
+    ],
+    # 🇨🇳 政策解读
+    'policy': [
+        'http://www.news.cn/politics/news.xml',         # 新华网-时政
+        'https://m.thepaper.cn/rss.jsp?nodeid=25429',   # 澎湃新闻-时事
+    ]
+}
+
+# 默认占位图（当新闻没有图片时使用）
+DEFAULT_IMAGES = [
+    "https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=500&q=80",
+    "https://images.unsplash.com/photo-1495020689067-958852a7765e?w=500&q=80",
+    "https://images.unsplash.com/photo-1557683316-973673baf926?w=500&q=80",
+    "https://images.unsplash.com/photo-1526304640156-00011457838e?w=500&q=80",
+]
+
+# ================= 核心功能 =================
+
+def parse_rss_feed(url, category):
+    """解析单个 RSS 源"""
+    print(f"正在抓取 [{category}]: {url}")
+    news_items = []
     
-    news_data = {
+    try:
+        response = requests.get(url, headers=HEADERS, timeout=10)
+        response.encoding = 'utf-8' # 强制utf-8
+        
+        # 简单的XML解析
+        try:
+            root = ET.fromstring(response.content)
+        except:
+            # 尝试修复一些常见的XML格式错误
+            content = response.text.replace('&', '&amp;')
+            root = ET.fromstring(content)
+
+        # 遍历新闻条目 (适配 RSS 2.0 和 Atom)
+        items = root.findall('.//item') or root.findall('.//{http://www.w3.org/2005/Atom}entry')
+        
+        for item in items[:15]: # 每个源只取前15条
+            try:
+                # 获取标题
+                title = item.find('title').text if item.find('title') is not None else "无标题"
+                
+                # 获取链接
+                link = item.find('link').text if item.find('link') is not None else ""
+                
+                # 获取描述/摘要
+                description = ""
+                desc_tag = item.find('description') or item.find('content:encoded')
+                if desc_tag is not None and desc_tag.text:
+                    # 去除HTML标签，只留纯文本
+                    description = re.sub(r'<[^>]+>', '', desc_tag.text)[:100] + "..."
+
+                # 获取时间
+                pub_date = item.find('pubDate').text if item.find('pubDate') is not None else ""
+                # 简单格式化时间
+                if pub_date:
+                    try:
+                        # 尝试将 UTC 格式转为简单格式
+                        pub_date = pub_date[:16] 
+                    except:
+                        pass
+                
+                # 尝试提取图片 (从描述中找 img 标签)
+                image = ""
+                if desc_tag is not None and desc_tag.text:
+                    img_match = re.search(r'src="(http[^"]+\.(jpg|png|jpeg))"', desc_tag.text)
+                    if img_match:
+                        image = img_match.group(1)
+                
+                # 如果没找到图片，给一个随机占位图，或者根据分类给特定图
+                if not image:
+                    # 这里你可以加逻辑，现在先留空，前端可以用CSS生成渐变
+                    image = "" 
+
+                # 来源识别
+                source_name = "网络新闻"
+                if "thepaper" in url: source_name = "澎湃新闻"
+                elif "36kr" in url: source_name = "36氪"
+                elif "huanqiu" in url: source_name = "环球网"
+                elif "wallstreet" in url: source_name = "华尔街见闻"
+                elif "news.cn" in url: source_name = "新华网"
+
+                news_items.append({
+                    "title": title.strip(),
+                    "link": link,
+                    "time": pub_date,
+                    "source": source_name,
+                    "image": image,
+                    "summary": description,
+                    "category": category
+                })
+            except Exception as e:
+                continue
+                
+    except Exception as e:
+        print(f"❌ 抓取失败 {url}: {e}")
+        
+    return news_items
+
+def fetch_all_news():
+    """主程序：并行抓取所有新闻"""
+    all_news = {
         "shanghai": [],
-        "stocks": [],
-        "policy": [],
         "world": [],
-        "ai": []
+        "ai": [],
+        "stocks": [],
+        "policy": []
     }
     
-    print("📰 开始抓取新闻...\n")
+    tasks = []
+    # 使用线程池加快速度
+    with ThreadPoolExecutor(max_workers=5) as executor:
+        for category, urls in RSS_SOURCES.items():
+            for url in urls:
+                tasks.append(executor.submit(parse_rss_feed, url, category))
     
-    # 1. 世界新闻 - BBC 中文
-    try:
-        print("🌍 抓取 BBC 新闻...")
-        headers = {'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7)'}
+    # 收集结果
+    for future in tasks:
+        items = future.result()
+        if items:
+            # 拿到结果后，放入对应的分类
+            cat = items[0]['category']
+            all_news[cat].extend(items)
+
+    # 保存到上一级目录的 data.json
+    output_path = os.path.join(os.path.dirname(os.path.dirname(__file__)), 'data.json')
+    
+    with open(output_path, 'w', encoding='utf-8') as f:
+        json.dump(all_news, f, ensure_ascii=False, indent=2)
         
-        # BBC 中文
-        response = requests.get("https://www.bbc.com/zhongwen/simp/world", 
-                              headers=headers, timeout=10)
-        response.raise_for_status()
-        
-        # 简单提取标题
-        titles = re.findall(r'class="[^"]*title[^"]*"[^>]*><a[^h]*href="([^"]+)"[^>]*>([^<]+)<', response.text)
-        
-        for i, (link, title) in enumerate(titles[:5]):
-            clean_title = html.unescape(title.strip())
-            if clean_title and len(clean_title) > 10:
-                news_data["world"].append({
-                    "title": clean_title,
-                    "link": "https://www.bbc.com" + link if link.startswith('/') else link,
-                    "summary": "",
-                    "source": "BBC",
-                    "time": datetime.now().strftime("%m-%d"),
-                    "isNew": i < 3
-                })
-        print(f"  ✓ BBC: {len(news_data['world'])} 条")
-    except Exception as e:
-        print(f"  ✗ BBC: {str(e)[:40]}")
-    
-    # 2. AI 新闻 - Hacker News (通过 API)
-    try:
-        print("🤖 抓取 Hacker News...")
-        response = requests.get("https://hacker-news.firebaseio.com/v0/topstories.json", 
-                              timeout=10)
-        top_ids = response.json()[:8]
-        
-        for i, story_id in enumerate(top_ids):
-            try:
-                story_resp = requests.get(f"https://hacker-news.firebaseio.com/v0/item/{story_id}.json",
-                                        timeout=5)
-                story = story_resp.json()
-                if story and story.get('title'):
-                    news_data["ai"].append({
-                        "title": story['title'],
-                        "link": story.get('url', f"https://news.ycombinator.com/item?id={story_id}"),
-                        "summary": f"{story.get('score', 0)} points",
-                        "source": "Hacker News",
-                        "time": datetime.now().strftime("%m-%d"),
-                        "isNew": i < 4
-                    })
-            except:
-                continue
-        print(f"  ✓ Hacker News: {len(news_data['ai'])} 条")
-    except Exception as e:
-        print(f"  ✗ Hacker News: {str(e)[:40]}")
-    
-    # 3. 上海新闻 - 使用静态示例（需要手动更新）
-    print("🏙️ 上海新闻 - 使用示例数据")
-    news_data["shanghai"] = [
-        {
-            "title": "上海市发布新一轮优化营商环境行动方案",
-            "link": "https://www.shanghai.gov.cn",
-            "summary": "上海市政府发布7.0版优化营商环境行动方案",
-            "source": "上海发布",
-            "time": "02-03",
-            "isNew": True
-        },
-        {
-            "title": "嘉定新城建设提速，多个重大项目开工",
-            "link": "https://www.jiading.gov.cn",
-            "summary": "嘉定区推动新城建设，聚焦科技创新",
-            "source": "嘉定发布",
-            "time": "02-03",
-            "isNew": True
-        },
-    ]
-    print(f"  ✓ 上海新闻: {len(news_data['shanghai'])} 条")
-    
-    # 4. 国内政策
-    print("🇨🇳 国内政策 - 使用示例数据")
-    news_data["policy"] = [
-        {
-            "title": "国务院发布关于推动未来产业创新发展的实施意见",
-            "link": "http://www.gov.cn",
-            "summary": "前瞻布局未来产业，重点推进六大方向",
-            "source": "中国政府网",
-            "time": "02-03",
-            "isNew": True
-        },
-        {
-            "title": "工信部：加快制造业数字化转型",
-            "link": "https://www.miit.gov.cn",
-            "summary": "推动制造业高端化、智能化、绿色化发展",
-            "source": "工信部",
-            "time": "02-02",
-            "isNew": False
-        },
-    ]
-    print(f"  ✓ 国内政策: {len(news_data['policy'])} 条")
-    
-    # 5. 美股新闻 - 使用综合金融新闻源
-    try:
-        print("📈 抓取美股新闻...")
-        
-        # 尝试抓取 Investing.com 或 MarketWatch
-        try:
-            # MarketWatch RSS
-            url = "https://rsshub.app/marketwatch/realtime"
-            response = requests.get(url, headers=headers, timeout=15,
-                                   proxies={'http': 'http://127.0.0.1:1082', 'https': 'http://127.0.0.1:1082'})
-            
-            if response.status_code == 200:
-                feed = feedparser.parse(response.content)
-                for entry in feed.entries[:5]:
-                    title = html.unescape(entry.get("title", "")).strip()
-                    # 只保留与你的持仓相关的股票新闻
-                    relevant = any(s in title.upper() for s in ["TESLA", "TSLA", "ROCKET LAB", "RKLB", 
-                                                                "QUANTUM", "QS", "PALANTIR", "PLTR"])
-                    if relevant or len(news_data["stocks"]) < 3:
-                        news_data["stocks"].append({
-                            "title": title[:60] + "..." if len(title) > 60 else title,
-                            "link": entry.get("link", ""),
-                            "summary": "美股市场新闻",
-                            "source": "MarketWatch",
-                            "time": format_time(entry.get("published", "")),
-                            "isNew": True
-                        })
-        except:
-            pass
-        
-        # 如果抓不到，使用预设的高质量链接
-        if len(news_data["stocks"]) < 3:
-            # 添加一些重要的股票新闻源
-            news_data["stocks"].extend([
-                {
-                    "title": "🚀 RKLB Rocket Lab 最新发射任务动态",
-                    "link": "https://www.rocketlabusa.com/news/",
-                    "summary": "Rocket Lab 发射任务与公司新闻",
-                    "source": "Rocket Lab Official",
-                    "time": datetime.now().strftime("%m-%d"),
-                    "isNew": True
-                },
-                {
-                    "title": "⚡ TSLA 特斯拉最新财报与产品动态",
-                    "link": "https://ir.tesla.com/",
-                    "summary": "特斯拉投资者关系与新闻发布",
-                    "source": "Tesla IR",
-                    "time": datetime.now().strftime("%m-%d"),
-                    "isNew": True
-                },
-                {
-                    "title": "🔋 QS QuantumScape 固态电池研发进展",
-                    "link": "https://www.quantumscape.com/news/",
-                    "summary": "QuantumScape 技术突破与业务进展",
-                    "source": "QuantumScape",
-                    "time": datetime.now().strftime("%m-%d"),
-                    "isNew": True
-                },
-                {
-                    "title": "📊 PLTR Palantir 政府与企业合同更新",
-                    "link": "https://investors.palantir.com/news/",
-                    "summary": "Palantir 商业动态与新闻",
-                    "source": "Palantir IR",
-                    "time": datetime.now().strftime("%m-%d"),
-                    "isNew": True
-                },
-            ])
-        
-        print(f"  ✓ 美股: {len(news_data['stocks'])} 条")
-    except Exception as e:
-        print(f"  ✗ 美股: {str(e)[:40]}")
-    
-    # 保存
-    output_file = DATA_DIR / "news.json"
-    with open(output_file, "w", encoding="utf-8") as f:
-        json.dump(news_data, f, ensure_ascii=False, indent=2)
-    
-    # 统计
-    print("\n" + "="*50)
-    print("✅ 抓取完成!")
-    total = sum(len(v) for v in news_data.values())
-    print(f"   总计: {total} 条新闻")
-    for k, v in news_data.items():
-        print(f"   {k}: {len(v)} 条")
-    print(f"\n💾 已保存: {output_file}")
-    
-    return news_data
+    print(f"✅ 更新完成！共获取新闻：{sum(len(v) for v in all_news.values())} 条")
 
 if __name__ == "__main__":
-    fetch_html_news()
+    fetch_all_news()
